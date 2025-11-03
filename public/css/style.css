@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: black;
+}
+
+.secoes {
+    width: 100%;
+    height: 100vh;
+}
+
+.header_landing_page {
+    width: 100%;
+    height: 10vh;
+    position: fixed;
+}
+
+.header_landing_page .container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1px 1px 15px -4px #00000075;
+    backdrop-filter: blur(2.5px);
+    font-family: 'Montserrat', Helvetica, sans-serif;
+
+}
+
+.header_landing_page .container .cont_links {
+    display: flex;
+    width: 30%;
+    justify-content: space-evenly;
+    padding: 1vh;
+}
+
+.header_landing_page .container .cont_links .link {
+    text-decoration: none;
+    color: white;
+}
+
+.header_landing_page .container .cont_logo {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1vh;
+}
+
+.logo {
+    width: 80%;
+}
+
+.ativo {
+    font-weight: bolder;
+}
+
+
+.header_landing_page .container .cont_btns_autenticar {
+    display: flex;
+    width: 10%;
+    justify-content: space-evenly;
+    padding: 1vh;
+}
+
+.header_landing_page .container .cont_btns_autenticar .btn_autenticar {
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
+.texto {
+    font-size: 1rem;
+    font-family: 'Montserrat', Helvetica, sans-serif;
+
+}
+
+.bold {
+    font-weight: bolder;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    image-rendering: crisp-edges;
+}
+
+#universo_carros .container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#universo_carros .container .cont_titulo {
+    width: 85%;
+}
+
+.titulo {
+    color: white;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 3.5rem;
+}
+
+.subtitulo {
+    color: white;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+}
+
+#universo_carros .container .cont_titulo h3 {
+    color: white;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+#universo_carros .container .cont_line_conteudo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#universo_carros .container .cont_line_conteudo img {
+    border-radius: 2vh;
+    width: 40%;
+}
+
+#universo_carros .container .cont_line_conteudo hr {
+    height: 100%;
+    border: 2.5px solid red;
+}
+
+#universo_carros .container .cont_line_conteudo p {
+    width: 30%;
+    text-align: justify;
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+
+}
+
+#filmes .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#filmes .container .cont_titulo {
+    width: 90%;
+}
+
+#filmes .container .cont_titulo hr {
+    width: 60%;
+    border: 2.5px solid red;
+}
+
+#filmes .container .cont_titulo .cont_hr {
+    display: flex;
+    width: 100%;
+}
+
+#filmes .container .cont_titulo .cont_hr #hr1 {
+    width: 40%;
+    border: 2.5px solid transparent;
+}
+
+#filmes .container .cont_titulo .cont_hr #hr2 {
+    width: 60%;
+    border: 2.5px solid #FCF05F;
+}
+
+#filmes .container .cont_cards {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
+#filmes .container .cont_cards .card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5%;
+}
+
+#filmes .container .cont_cards .card img {
+    border-radius: 5% 5% 0px 0px;
+}
+
+#filmes .container .cont_cards .card .cont_line_textos {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+#personagens .container {
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#personagens .container .cont_titulo {
+    display: flex;
+    flex-direction: column;
+}
+
+#personagens .container .cont_titulo .cont_hr {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#personagens .container .cont_titulo .cont_hr #hr1 {
+    border: 2.5px solid #FCF05F;
+    width: 50%;
+}
+
+#personagens .container .cont_titulo .cont_hr #hr2 {
+    border: 2.5px solid red;
+    width: 50%;
+}
+
+#personagens .container .cont_lines_card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#personagens .container .cont_lines_card .line_cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#personagens .container .cont_lines_card .line_cards .subtitulo {
+    width: 80%;
+}
+
+#personagens .container .cont_lines_card .line_cards .cont_cards {
+    overflow-x: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+#personagens .container .cont_lines_card .line_cards .cont_cards .card {
+    width: 30vw;
+    display: flex;
+    flex-direction: row;
+    border: 1.5px solid #d9d9d9;
+}
+
+#personagens .container .cont_lines_card .line_cards .cont_cards .card .cont_textos {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+#personagens .container .cont_lines_card .line_cards .cont_cards .card .cont_textos .text {
+    width: 80%;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+#personagens .container .cont_lines_card .line_cards .cont_cards .card .cont_textos .cont_btn {
+    width: 80%;
+
+}
+
+#personagens .container .cont_lines_card .line_cards .cont_cards .card .cont_textos .cont_btn .btn_saiba_mais {
+    width: 40%;
+    height: 5vh;
+    background-color: red;
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+.line_cards {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+

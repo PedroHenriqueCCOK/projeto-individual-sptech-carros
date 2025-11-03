@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carros</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header_landing_page">
+        <div class="container">
+            <div class="cont_links">
+                <a href="#" class="link ativo">
+                    <p class="texto">Home</p>
+                </a>
+                <a href="#universo_carros" class="link">
+                    <p class="texto">Universo</p>
+                </a>
+                <a href="#" class="link">
+                    <p class="texto">Filmes</p>
+                </a>
+                <a href="#" class="link">
+                    <p class="texto">Personagens</p>
+                </a>
+                <a href="#" class="link">
+                    <p class="texto">Copa Pistão</p>
+                </a>
+            </div>
+            <div class="cont_logo">
+                <img class="logo" src="assets/img/logo_carros.png" alt="">
+            </div>
+            <div class="cont_btns_autenticar">
+                <button class="btn_autenticar texto">Cadastro</button>
+                <hr>
+                <button class="btn_autenticar texto">Login</button>
+            </div>
+        </div>
+    </header>
+    <section id="banner">
+        <video class="video" id="video" width="100%" height="100%" playsinline autoplay muted>
+            <source src="assets/video/video_background_banner.mp4" type="video/mp4" />
+            <source src="assets/video/video_background_banner.webm" type="video/webm" />
+        </video>
+    </section>
+    <section id="universo_carros" class="secoes">
+        <div class="container">
+            <div class="cont_titulo">
+                <h1 class="titulo">Universo Carros</h1> <br>
+                <h3 class="text">Um mundo automotivo</h3>
+            </div class="text">
+            <div class="cont_line_conteudo">
+                <img src="assets/img/img_universo_carros.png" alt="">
+                <hr>
+                <p>
+                    O universo de Carros é um mundo onde só existem veículos com vida própria.
+                    Eles falam, trabalham, têm emoções e vivem em cidades e estradas feitas
+                    especialmente para eles. A história acompanha Relâmpago McQueen, um carro
+                    de corrida famoso que, por acidente, vai parar em Radiator Springs, uma
+                    pequena cidade na Rota 66. Lá ele faz novos amigos, aprende sobre humildade,
+                    amizade e percebe que a vida é muito mais do que ganhar corridas.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section id="filmes" class="secoes">
+        <div class="container">
+            <div class="cont_titulo">
+                <div class="cont_hr">
+                    <hr id="hr1">
+                    <hr id="hr2">
+                </div>
+                <h1 class="titulo">Filmes: Trilogia Carros</h1>
+                <hr>
+            </div>
+            <div class="cont_cards">
+                <div class="card">
+                    <img src="assets/img/img_carros1_filmes.png" alt="">
+                    <div class="cont_line_textos">
+                        <div class="cont_column_textos">
+                            <p class="texto bold">Carros 1</p>
+                            <p class="texto">1h 56min</p>
+                        </div>
+                        <p class="texto">2007</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/img/img_carros2_filmes.png" alt="">
+                    <div class="cont_line_textos">
+                        <div class="cont_column_textos">
+                            <p class="texto bold">Carros 1</p>
+                            <p class="texto">1h 56min</p>
+                        </div>
+                        <p class="texto">2007</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assets/img/img_carros3_filmes.png" alt="">
+                    <div class="cont_line_textos">
+                        <div class="cont_column_textos">
+                            <p class="texto bold">Carros 1</p>
+                            <p class="texto">1h 56min</p>
+                        </div>
+                        <p class="texto">2007</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="personagens" class="secoes">
+        <div class="container">
+            <div class="cont_titulo">
+                <h1 class="titulo">Personagens</h1>
+                <div class="cont_hr">
+                    <hr id="hr1">
+                    <hr id="hr2">
+                </div>
+            </div>
+            <div class="cont_lines_card">
+                <h1 class="subtitulo">Principais</h1>
+                <div class="line_cards">
+                    <div id="cards_principais" class="cont_cards"></div>
+                </div>
+                <h1 class="subtitulo">Amigos</h1>
+                <div class="line_cards">
+                    <div id="cards_amigos" class="cont_cards"></div>
+                </div>
+                <h1 class="subtitulo">Rivais</h1>
+                <div class="line_cards cards_rivais">
+                    <div id="cards_rivais" class="cont_cards"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+<script>
+    
+
+    fetch('json/personagens.json')
+        .then(response => response.json())
+        .then(personagens => {
+            personagens.forEach(equipe => {
+                if (equipe.rotulo == "Principal") {
+                    cards_principais.innerHTML += `
+                        <div class="card">
+                            <img src="${equipe.imagem}" alt="">
+                            <div class="cont_textos">
+                                <h3 class="text">${equipe.nome}</h3>
+                                <p class="text">
+                                    ${equipe.descricao}
+                                </p>
+                                <div class="cont_btn">
+                                    <button class="btn_saiba_mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                } else if (equipe.rotulo == "Amigos") {
+                    cards_amigos.innerHTML += `
+                        <div class="card">
+                            <img src="${equipe.imagem}" alt="">
+                            <div class="cont_textos">
+                                <h3 class="text">${equipe.nome}</h3>
+                                <p class="text">
+                                    ${equipe.descricao}
+                                </p>
+                                <div class="cont_btn">
+                                    <button class="btn_saiba_mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                    `
+
+                } else if (equipe.rotulo == "Rival") {
+                    cards_rivais.innerHTML += `
+                        <div class="card">
+                            <img src="${equipe.imagem}" alt="">
+                            <div class="cont_textos">
+                                <h3 class="text">${equipe.nome}</h3>
+                                <p class="text">
+                                    ${equipe.descricao}
+                                </p>
+                                <div class="cont_btn">
+                                    <button class="btn_saiba_mais">Saiba mais</button>
+                                </div>
+                            </div>
+                        </div>
+                    `
+
+                }
+            });
+
+        })
+
+    var video = document.getElementById('video')
+
+    video.disablePictureInPicture = true;
+
+</script>

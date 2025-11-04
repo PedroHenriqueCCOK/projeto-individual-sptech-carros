@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carros</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/global.css">
 </head>
 
 <body>
@@ -13,7 +14,7 @@
         <div class="container">
             <div class="cont_links">
                 <a href="#" class="link ativo">
-                    <p class="texto">Home</p>
+                    <p class="texto bolder">Home</p>
                 </a>
                 <a href="#universo_carros" class="link">
                     <p class="texto">Universo</p>
@@ -40,20 +41,20 @@
     </header>
     <section id="banner">
         <video class="video" id="video" width="100%" height="100%" playsinline autoplay muted>
-            <source src="assets/video/video_background_banner.mp4" type="video/mp4" />
-            <source src="assets/video/video_background_banner.webm" type="video/webm" />
+            <source src="https://res.cloudinary.com/dsxiq1hsi/video/upload/v1762213631/video_background_banner_qcj2q3.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/dsxiq1hsi/video/upload/v1762213631/video_background_banner_qcj2q3.webm" type="video/webm" />
         </video>
     </section>
     <section id="universo_carros" class="secoes">
         <div class="container">
             <div class="cont_titulo">
-                <h1 class="titulo">Universo Carros</h1> <br>
-                <h3 class="text">Um mundo automotivo</h3>
-            </div class="text">
+                <h1 class="titulo fontWhite">Universo Carros</h1> <br>
+                <h3 class="subtitulo fontWhite">Um mundo automotivo</h3>
+            </div>
             <div class="cont_line_conteudo">
-                <img src="assets/img/img_universo_carros.png" alt="">
+                <img src="https://i.postimg.cc/fLnm3kn5/img-universo-carros.png" alt="">
                 <hr>
-                <p>
+                <p class="descricao fontWhite">
                     O universo de Carros é um mundo onde só existem veículos com vida própria.
                     Eles falam, trabalham, têm emoções e vivem em cidades e estradas feitas
                     especialmente para eles. A história acompanha Relâmpago McQueen, um carro
@@ -71,130 +72,304 @@
                     <hr id="hr1">
                     <hr id="hr2">
                 </div>
-                <h1 class="titulo">Filmes: Trilogia Carros</h1>
+                <h1 class="titulo fontWhite">Filmes: Trilogia Carros</h1>
                 <hr>
             </div>
             <div class="cont_cards">
                 <div class="card">
-                    <img src="assets/img/img_carros1_filmes.png" alt="">
+                    <img src="https://i.postimg.cc/jS1zbZM8/img-carros1-filmes.png" alt="">
                     <div class="cont_line_textos">
                         <div class="cont_column_textos">
-                            <p class="texto bold">Carros 1</p>
-                            <p class="texto">1h 56min</p>
+                            <p class="texto fontBlack bolder">Carros 1</p>
+                            <p class="texto fontBlack">1h 56min</p>
                         </div>
-                        <p class="texto">2007</p>
+                        <p class="texto fontBlack">2007</p>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="assets/img/img_carros2_filmes.png" alt="">
+                    <img src="https://i.postimg.cc/JzFbLPpP/img-carros2-filmes.png" alt="">
                     <div class="cont_line_textos">
                         <div class="cont_column_textos">
-                            <p class="texto bold">Carros 1</p>
-                            <p class="texto">1h 56min</p>
+                            <p class="texto fontBlack bolder">Carros 2</p>
+                            <p class="texto fontBlack">1h 56min</p>
                         </div>
-                        <p class="texto">2007</p>
+                        <p class="texto fontBlack">2007</p>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="assets/img/img_carros3_filmes.png" alt="">
+                    <img src="https://i.postimg.cc/dVf8Y455/img-carros3-filmes.png" alt="">
                     <div class="cont_line_textos">
                         <div class="cont_column_textos">
-                            <p class="texto bold">Carros 1</p>
-                            <p class="texto">1h 56min</p>
+                            <p class="texto fontBlack bolder">Carros 3</p>
+                            <p class="texto fontBlack">1h 56min</p>
                         </div>
-                        <p class="texto">2007</p>
+                        <p class="texto fontBlack">2007</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="personagens" class="secoes">
+    <section id="personagens">
         <div class="container">
             <div class="cont_titulo">
-                <h1 class="titulo">Personagens</h1>
+                <h1 class="titulo fontWhite">Personagens</h1>
                 <div class="cont_hr">
                     <hr id="hr1">
                     <hr id="hr2">
                 </div>
             </div>
             <div class="cont_lines_card">
-                <h1 class="subtitulo">Principais</h1>
-                <div class="line_cards">
-                    <div id="cards_principais" class="cont_cards"></div>
+                <div id="line_cards1" class="line_cards">
+                    <h1 class="subtitulo fontWhite bolder">Principais</h1>
+                    <div class="cont_slide">
+                        <button class="btn_setas" id="btn_setas_esquerda_1" value="0"
+                            onclick="arrastarPersonagens('esquerda', 0)">
+                            <img class="img_seta" src="assets/icon/icons_setaEsquerda.png" alt="">
+                        </button>
+                        <div id="cards_principais" class="cont_cards"></div>
+                        <button class="btn_setas" id="btn_setas_direita_1" value="0"
+                            onclick="arrastarPersonagens('direita', 0)">
+                            <img class="img_seta" src="assets/icon/icons_setaDireita.png" alt="">
+                        </button>
+                    </div>
                 </div>
-                <h1 class="subtitulo">Amigos</h1>
-                <div class="line_cards">
-                    <div id="cards_amigos" class="cont_cards"></div>
+                <div id="line_cards2" class="line_cards">
+                    <h1 class="subtitulo fontWhite bolder">Amigos</h1>
+                    <div class="cont_slide">
+                        <button class="btn_setas" id="btn_setas_esquerda_2" value="1"
+                            onclick="arrastarPersonagens('esquerda', 1)">
+                            <img class="img_seta" src="assets/icon/icons_setaEsquerda.png" alt="">
+                        </button>
+                        <div id="cards_amigos" class="cont_cards"></div>
+                        <button class="btn_setas" id="btn_setas_direita_2" value="1"
+                            onclick="arrastarPersonagens('direita', 1)">
+                            <img class="img_seta" src="assets/icon/icons_setaDireita.png" alt="">
+                        </button>
+                    </div>
                 </div>
-                <h1 class="subtitulo">Rivais</h1>
-                <div class="line_cards cards_rivais">
-                    <div id="cards_rivais" class="cont_cards"></div>
+                <div id="line_cards3" class="line_cards">
+                    <h1 class="subtitulo fontWhite bolder">Rivais</h1>
+                    <div class="cont_slide">
+                        <button class="btn_setas" id="btn_setas_esquerda_3" value="2"
+                            onclick="arrastarPersonagens('esquerda', 2)">
+                            <img class="img_seta" src="assets/icon/icons_setaEsquerda.png" alt="">
+                        </button>
+                        <div id="cards_rivais" class="cont_cards"></div>
+                        <button class="btn_setas" id="btn_setas_direita_3" value="2"
+                            onclick="arrastarPersonagens('direita', 2)">
+                            <img class="img_seta" src="assets/icon/icons_setaDireita.png" alt="">
+                        </button>
+                    </div>
                 </div>
 
             </div>
         </div>
     </section>
+    <section id="lugares_iconicos" class="secoes">
+        <div class="container">
+            <h1 class="titulo fontWhite">
+                Lugares icônicos
+            </h1>
+            <div class="cont_slider">
+                <button class="btn_setas" id="btn_seta_esquerda" onclick="arrastarLugares('esquerda')">
+                    <img class="img_seta" src="assets/icon/icons_setaEsquerda.png" alt="">
+                </button>
+                <div class="cont_lugares" id="container_lugares">
+
+                </div>
+
+                <button class="btn_setas" id="btn_seta_direita" onclick="arrastarLugares('direita')">
+                    <img class="img_seta" src="assets/icon/icons_setaDireita.png" alt="">
+                </button>
+            </div>
+        </div>
+    </section>
+    <section id="minha_experiencia" class="secoes">
+        <div class="container">
+            <h1 class="titulo fontWhite">Minha experiência</h1>
+            <div class="cont_line">
+                <p class="descricao fontWhite">
+                    O filme carros foi o primeiro que eu me lembro de quando assisti, foi uma experiência muito boa com
+                    o mundo dos carros de uma forma animada e infantil, foi algo que me conquistou, na época eu só tinha
+                    brinquedo de Carros e Toy Story, McQueen foi um exemplo de dedicação no que estou fazendo, o que
+                    tento levar para cada ramo da minha vida.
+                    Fora os brinquedos, minhas roupas, toalhas, sandálias e até mesmo caixinhas que eu guardo até hoje
+                    recitativos da minha igreja com a temática de Carros.
+                    Foi um filme que marcou a minha infância e uma das melhores animações que já assisti em toda minha
+                    vida.
+                </p>
+                <hr>
+                <img class="img_minha_experiencia" src="https://i.postimg.cc/fLnm3kn5/img-universo-carros.png" alt="">
+            </div>
+        </div>
+    </section>
+    <footer id="rodape">
+        <div class="container">
+            <h1 class="subtitulo fontWhite bolder">Conheça minhas redes sociais!</h1>
+            <div class="cont_line">
+                <a href="https://github.com/PedroHenriqueCCOK">
+                    <div class="cont_column">
+                        <img src="assets/img/logo_github.png" alt="">
+                        <b class="texto bolder fontWhite">PedroHenriqueCCOK</b>
+                    </div>
+                </a>
+                <div class="cont_column">
+                        <img class="foto_pedro" src="https://i.postimg.cc/fb0YTmF9/img-pedro.jpg" alt="">
+                        <b class="texto bolder fontWhite    ">Pedro Henrique de Oliveira</b>
+                    </div>
+                <a href="https://www.linkedin.com/in/pedro-henrique-de-oliveira-67652a279">
+                    <div class="cont_column">
+                        <img src="assets/img/logo_linkedin.png" alt="">
+                        <b   class="texto bolder fontWhite  ">Pedro Henrique de Oliveira</b  >
+                    </div>
+                </a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
 <script>
-    
+    var container_cards = [
+        document.getElementById('cards_principais'),
+        document.getElementById('cards_amigos'),
+        document.getElementById('cards_rivais')
+    ]
+
+    function arrastarPersonagens(lado, secao) {
+        var larguraTela = container_cards[secao].clientWidth
+        console.log(larguraTela);
+
+        if (lado == 'esquerda') {
+            container_cards[secao].scrollLeft += -(larguraTela * 0.5)
+            console.log("esquerda");
+
+
+        } else {
+            container_cards[secao].scrollLeft += larguraTela * 0.5
+            console.log("direita");
+        }
+    }
+
+
+
 
     fetch('json/personagens.json')
         .then(response => response.json())
         .then(personagens => {
-            personagens.forEach(equipe => {
-                if (equipe.rotulo == "Principal") {
+            for (var i = 0; i < personagens.length; i++) {
+                var personagemAtual = personagens[i]
+                if (personagemAtual.rotulo == "Principal") {
                     cards_principais.innerHTML += `
                         <div class="card">
-                            <img src="${equipe.imagem}" alt="">
+                            <img src="${personagemAtual.imagem}" alt="">
                             <div class="cont_textos">
-                                <h3 class="text">${equipe.nome}</h3>
-                                <p class="text">
-                                    ${equipe.descricao}
+                                <h3 class="descricao fontWhite bolder">${personagemAtual.nome}</h3>
+                                <p class="texto fontWhite">
+                                    ${personagemAtual.descricao}
                                 </p>
-                                <div class="cont_btn">
-                                    <button class="btn_saiba_mais">Saiba mais</button>
-                                </div>
+                                <a href="personagem.html?id=${personagemAtual.id}">
+                                    <div class="cont_btn" href="perso href="personagem.html?id=${personagemAtual.id}">
+                                        <button class="btn_saiba_mais">Saiba mais</button>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     `
-                } else if (equipe.rotulo == "Amigos") {
+                } else if (personagemAtual.rotulo == "Amigos") {
                     cards_amigos.innerHTML += `
                         <div class="card">
-                            <img src="${equipe.imagem}" alt="">
+                            <img src="${personagemAtual.imagem}" alt="">
                             <div class="cont_textos">
-                                <h3 class="text">${equipe.nome}</h3>
-                                <p class="text">
-                                    ${equipe.descricao}
+                                <h3 class="descricao fontWhite bolder">${personagemAtual.nome}</h3>
+                                <p class="texto fontWhite">
+                                    ${personagemAtual.descricao}
                                 </p>
-                                <div class="cont_btn">
-                                    <button class="btn_saiba_mais">Saiba mais</button>
-                                </div>
+                                <a href="personagem.html?id=${personagemAtual.id}">
+                                    <div class="cont_btn">
+                                        <button class="btn_saiba_mais">Saiba mais</button>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     `
 
-                } else if (equipe.rotulo == "Rival") {
+                } else if (personagemAtual.rotulo == "Rival") {
                     cards_rivais.innerHTML += `
                         <div class="card">
-                            <img src="${equipe.imagem}" alt="">
+                            <img src="${personagemAtual.imagem}" alt="">
                             <div class="cont_textos">
-                                <h3 class="text">${equipe.nome}</h3>
-                                <p class="text">
-                                    ${equipe.descricao}
+                                <h3 class="descricao fontWhite bolder">${personagemAtual.nome}</h3>
+                                <p class="texto fontWhite">
+                                    ${personagemAtual.descricao}
                                 </p>
-                                <div class="cont_btn">
-                                    <button class="btn_saiba_mais">Saiba mais</button>
-                                </div>
+                                <a href="personagem.html?id=${personagemAtual.id}">
+                                    <div class="cont_btn">
+                                        <button class="btn_saiba_mais">Saiba mais</button>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     `
-
                 }
-            });
+
+
+            }
+
 
         })
+
+
+
+    fetch('json/lugares.json')
+        .then(response => response.json())
+        .then(lugares => {
+
+            for (var i = 0; i < lugares.length; i++) {
+                var lugarAtual = lugares[i]
+                container_lugares.innerHTML += `
+                    <div name="card_lugar_name" id="card_lugar${lugarAtual.id}" class="card_lugar">
+                        <div class="container" name="card_lugar_name" id="conteudo_card${lugarAtual.id}">
+                            <div class="cont_textos">
+                                <h1 class="subtitulo bolder fontWhite">${lugarAtual.nome}</h1>
+                                <p class="descricao fontWhite">${lugarAtual.descricao}</p>
+                            </div>
+                            <div class="cont_imagem">
+                                <img src="${lugarAtual.imagem}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                `
+                if (lugarAtual.id == 1) {
+                    conteudo_card1.style.backgroundColor = "#2B1B1B"
+                } else if (lugarAtual.id == 2) {
+                    conteudo_card2.style.backgroundColor = "#EA2C94"
+                } else {
+                    conteudo_card3.style.backgroundColor = "#9D553F"
+                }
+            }
+
+        })
+    function arrastarLugares(lado) {
+        var card = document.getElementsByName('card_lugar_name')
+        console.log(card);
+
+        var larguraCard = card[0].clientWidth
+        console.log(larguraCard);
+
+        if (lado == 'esquerda') {
+
+            container_lugares.scrollLeft += -larguraCard
+            console.log("esquerda");
+
+
+        } else {
+            container_lugares.scrollLeft += larguraCard
+            console.log("direita");
+
+        }
+
+    }
 
     var video = document.getElementById('video')
 

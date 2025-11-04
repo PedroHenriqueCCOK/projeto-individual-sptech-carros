@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personagem</title>
+    <link rel="stylesheet" href="css/personagem.css">
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+    <header class="header_landing_page">
+        <div class="container">
+            <div class="cont_links">
+                <a href="#" class="link ativo">
+                    <p class="texto">Home</p>
+                </a>
+                <a href="#universo_carros" class="link">
+                    <p class="texto">Universo</p>
+                </a>
+                <a href="#" class="link">
+                    <p class="texto">Filmes</p>
+                </a>
+                <a href="#" class="link">
+                    <p class="texto">Personagens</p>
+                </a>
+                <a href="#" class="link">
+                    <p class="texto">Copa Pistão</p>
+                </a>
+            </div>
+            <div class="cont_logo">
+                <img class="logo" src="assets/img/logo_carros.png" alt="">
+            </div>
+            <div class="cont_btns_autenticar">
+                <button class="btn_autenticar texto">Cadastro</button>
+                <hr>
+                <button class="btn_autenticar texto">Login</button>
+            </div>
+        </div>
+    </header>
+    <div class="container" id="container_personagem">
+        
+    </div>
+</body>
+</html>
+<script>
+    var urlParametros = window.location
+    var idParametro = urlParametros.search.replace('?id=', '')
+    var container_personagem = document.getElementById('container_personagem')
+    console.log(urlParametros);
+    console.log(`ID do personagem: ${idParametro}`);
+    fetch('json/personagens.json')
+        .then(response => response.json())
+        .then(personagens => {
+            var personagem = personagens.find(p => p.id == idParametro)
+            console.log(personagem);
+            if (personagem != undefined) {
+                container_personagem.innerHTML = `
+                <div class="container_imagem">
+                    <img src="${personagem.imagem}" alt="">
+                </div>
+                <div class="container_textos">
+                    <div class="container">
+                        <h1 class="titulo fontWhite bolder">${personagem.nome}</h1>
+                        <h3 class="subtitulo fontWhite bolder">Data de nascimento:</h3>
+                        <div class="campo">
+                            <p class="descricao fontBlack boldMedio">${personagem.nascimento}</p>
+                        </div>
+                        <h3 class="subtitulo fontWhite bolder">Modelo:</h3>
+                        <div class="campo">
+                            <p class="descricao fontBlack boldMedio">${personagem.modelo}</p>
+                        </div>
+                        <h3 class="subtitulo fontWhite bolder">Equipe:</h3>
+                        <div class="campo">
+                            <p class="descricao fontBlack boldMedio">${personagem.equipe}</p>
+                        </div>
+                        <h3 class="subtitulo fontWhite bolder">Primeira aparição:</h3>
+                        <div class="campo">
+                            <p class="descricao fontBlack boldMedio">${personagem.aparicao}</p>
+                        </div>
+                        <h3 class="subtitulo fontWhite bolder">Descrição:</h3>
+                        <div class="campo">
+                            <p class="descricao fontBlack boldMedio">${personagem.descricao}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                `
+
+                
+            }
+
+        })
+    
+</script>

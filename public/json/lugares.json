@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "nome": "Radiator Springs",
+        "descricao": "Pequena cidade localizada na mítica Rota 66, no meio do deserto americano. Antes era um ponto turístico cheio de vida, mas caiu no esquecimento depois da construção da estrada moderna, que desviou os carros viajantes.",
+        "imagem": "https://i.postimg.cc/mrF72Cq7/img-radiator-lugares.png"
+    },
+    {
+        "id": 2,
+        "nome": "Tokyo",
+        "descricao": "Uma das cidades-sede do Grand Prix Mundial no Carros 2. É moderna, cheia de luzes, placas de neon e tecnologia de ponta — o oposto total de Radiator Springs. O “Tokyo Race” mistura velocidade e cultura japonesa (drift, sushi, luzes LED).",
+        "imagem": "https://i.postimg.cc/FR53f15g/img-tokyo-lugares.png"
+    },
+    {
+        "id": 3,
+        "nome": "Porto Corsa",
+        "descricao": "Pequena cidade localizada na mítica Rota 66, no meio do deserto americano.  Antes era um ponto turístico cheio de vida, mas caiu no esquecimento depois da construção da estrada moderna, que desviou os carros viajantes.",
+        "imagem": "https://i.postimg.cc/LsZj6L7P/img-porto-lugares.png"
+    }
+]

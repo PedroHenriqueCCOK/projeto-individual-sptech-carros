@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
     padding: 0;
     margin: 0;
 }
-
+a{
+    text-decoration: none;
+}
 body {
     width: 100%;
     height: 100vh;
@@ -17,83 +18,13 @@ body {
     height: 100vh;
 }
 
-.header_landing_page {
-    width: 100%;
-    height: 10vh;
-    position: fixed;
-}
-
-.header_landing_page .container {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 1px 1px 15px -4px #00000075;
-    backdrop-filter: blur(2.5px);
-    font-family: 'Montserrat', Helvetica, sans-serif;
-
-}
-
-.header_landing_page .container .cont_links {
-    display: flex;
-    width: 30%;
-    justify-content: space-evenly;
-    padding: 1vh;
-}
-
-.header_landing_page .container .cont_links .link {
-    text-decoration: none;
-    color: white;
-}
-
-.header_landing_page .container .cont_logo {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 1vh;
-}
-
-.logo {
-    width: 80%;
-}
-
-.ativo {
-    font-weight: bolder;
-}
-
-
-.header_landing_page .container .cont_btns_autenticar {
-    display: flex;
-    width: 10%;
-    justify-content: space-evenly;
-    padding: 1vh;
-}
-
-.header_landing_page .container .cont_btns_autenticar .btn_autenticar {
-    border: none;
-    background-color: transparent;
-    color: white;
-    font-family: 'Montserrat', Helvetica, sans-serif;
-}
-
-.texto {
-    font-size: 1rem;
-    font-family: 'Montserrat', Helvetica, sans-serif;
-
-}
-
-.bold {
-    font-weight: bolder;
-}
-
 .video {
     width: 100%;
     height: 100%;
     image-rendering: crisp-edges;
 }
+
+/* SEÇÃO UNIVERSO */
 
 #universo_carros .container {
     width: 100%;
@@ -108,25 +39,6 @@ body {
 
 #universo_carros .container .cont_titulo {
     width: 85%;
-}
-
-.titulo {
-    color: white;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    font-size: 3.5rem;
-}
-
-.subtitulo {
-    color: white;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    font-size: 2rem;
-}
-
-#universo_carros .container .cont_titulo h3 {
-    color: white;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;
-    font-weight: 500;
 }
 
 #universo_carros .container .cont_line_conteudo {
@@ -148,12 +60,8 @@ body {
 
 #universo_carros .container .cont_line_conteudo p {
     width: 30%;
-    text-align: justify;
-    color: white;
-    font-size: 1.5rem;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-
 }
+/* SEÇÃO FILMES */
 
 #filmes .container {
     width: 100%;
@@ -171,6 +79,10 @@ body {
 #filmes .container .cont_titulo hr {
     width: 60%;
     border: 2.5px solid red;
+}
+
+#filmes .container .cont_titulo .titulo {
+    padding: 2rem;
 }
 
 #filmes .container .cont_titulo .cont_hr {
@@ -215,6 +127,8 @@ body {
     flex-direction: row;
 }
 
+/* SEÇÃO PERSONAGENS */
+
 #personagens .container {
 
     width: 100%;
@@ -248,8 +162,10 @@ body {
 
 #personagens .container .cont_lines_card {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 }
 
 #personagens .container .cont_lines_card .line_cards {
@@ -264,17 +180,40 @@ body {
     width: 80%;
 }
 
-#personagens .container .cont_lines_card .line_cards .cont_cards {
-    overflow-x: auto;
+#personagens .container .cont_lines_card .line_cards .cont_slide {
     width: 100%;
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    justify-content: space-around;
 
+}
+.btn_setas{
+    background-color: transparent;
+    border: none;
+}
+#personagens .container .cont_lines_card .line_cards .cont_slide .img_seta{
+    width: 2rem;
+    height: 2rem;
+
+}
+#personagens .container .cont_lines_card .line_cards .cont_cards {
+    width: 85%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 30vw;
+    overflow-y: hidden;
+    overflow-x: auto;
+    gap: 1rem;
+    scrollbar-width: none;
+}
+#personagens .container .cont_lines_card .line_cards .cont_cards::-webkit-scrollbar {
+    display: none;
 }
 
 #personagens .container .cont_lines_card .line_cards .cont_cards .card {
     width: 30vw;
+    height: 30vh;
+    margin: 1rem;
     display: flex;
     flex-direction: row;
     border: 1.5px solid #d9d9d9;
@@ -288,15 +227,20 @@ body {
     flex-direction: column;
 }
 
-#personagens .container .cont_lines_card .line_cards .cont_cards .card .cont_textos .text {
+#personagens .container .cont_lines_card .line_cards .cont_cards .card .cont_textos .descricao {
     width: 80%;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    color: white;
+}
+#personagens .container .cont_lines_card .line_cards .cont_cards .card .cont_textos .texto {
+    width: 80%;
 }
 
+#personagens .container .cont_lines_card .line_cards .cont_cards .card .cont_textos a{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 #personagens .container .cont_lines_card .line_cards .cont_cards .card .cont_textos .cont_btn {
     width: 80%;
-
 }
 
 #personagens .container .cont_lines_card .line_cards .cont_cards .card .cont_textos .cont_btn .btn_saiba_mais {
@@ -321,3 +265,129 @@ body {
 }
 
 
+
+/* SEÇÃO LUGARES ICÔNICOS */
+#lugares_iconicos .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#lugares_iconicos .container .cont_slider{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#lugares_iconicos .container .cont_lugares{
+    width: 85%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    gap: 1rem;
+    scrollbar-width: none;
+}
+
+#lugares_iconicos .container .cont_lugares .card_lugar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#lugares_iconicos .container .cont_lugares .card_lugar .container{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+}
+#lugares_iconicos .container .cont_lugares .card_lugar .container .cont_imagem{
+    width: 50%;
+    height: 100%;
+}
+#lugares_iconicos .container .cont_lugares .card_lugar .container img{
+    border-radius: 0 2rem 2rem 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+#lugares_iconicos .container .cont_lugares .card_lugar .container .cont_textos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+}
+#lugares_iconicos .container .cont_lugares .card_lugar .container .cont_textos .subtitulo{
+    width: 80%;
+}
+#lugares_iconicos .container .cont_lugares .card_lugar .container .cont_textos .descricao{
+    width: 80%;
+}
+
+/* SEÇÃO MINHA EXPERIÊNCIA */
+#minha_experiencia .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#minha_experiencia .container h1{
+    width: 80%;
+    
+}
+
+#minha_experiencia .container .cont_line{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#minha_experiencia .container .cont_line hr {
+    border: 2px solid white;
+    height: 100%;
+}
+#minha_experiencia .container .cont_line .descricao {
+    width: 40%;
+    font-size: 1.75rem;    
+}
+#minha_experiencia .container .cont_line .img_minha_experiencia {
+    border-radius: 2rem;
+}
+#rodape{
+    width: 100%;
+    height: 30vh;
+}
+#rodape .container{
+    width: 100%;
+    height: 40vh;
+    background-color: #606060;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; 
+    align-items: center;
+}
+#rodape .container .cont_line{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+#rodape .container .cont_line .cont_column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#rodape .container .cont_line .foto_pedro{
+    width: 15rem;
+    height: 15rem;
+    border-radius: 100% ;
+}

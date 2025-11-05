@@ -13,24 +13,24 @@
     <header class="header_landing_page">
         <div class="container">
             <div class="cont_links">
-                <a href="#" class="link ativo">
-                    <p class="texto bolder">Home</p>
+                <a href="#banner" class="link texto ativo">
+                    Home
                 </a>
-                <a href="#universo_carros" class="link">
-                    <p class="texto">Universo</p>
+                <a href="#universo_carros" class="link texto">
+                    Universo
                 </a>
-                <a href="#" class="link">
-                    <p class="texto">Filmes</p>
+                <a href="#filmes" class="link texto">
+                    Filmes
                 </a>
-                <a href="#" class="link">
-                    <p class="texto">Personagens</p>
+                <a href="#personagens" class="link texto">
+                    Personagens
                 </a>
-                <a href="#" class="link">
-                    <p class="texto">Copa Pistão</p>
+                <a href="#" class="link texto">
+                    Copa Pistão
                 </a>
             </div>
             <div class="cont_logo">
-                <img class="logo" src="assets/img/logo_carros.png" alt="">
+                <img class="logo" src="https://i.postimg.cc/zDjshTg0/logo-carros.png" alt="">
             </div>
             <div class="cont_btns_autenticar">
                 <button class="btn_autenticar texto">Cadastro</button>
@@ -262,7 +262,7 @@
                 if (personagemAtual.rotulo == "Principal") {
                     cards_principais.innerHTML += `
                         <div class="card">
-                            <img src="${personagemAtual.imagem}" alt="">
+                            <img src="${personagemAtual.imagem_index}" alt="">
                             <div class="cont_textos">
                                 <h3 class="descricao fontWhite bolder">${personagemAtual.nome}</h3>
                                 <p class="texto fontWhite">
@@ -277,9 +277,10 @@
                         </div>
                     `
                 } else if (personagemAtual.rotulo == "Amigos") {
+                    
                     cards_amigos.innerHTML += `
                         <div class="card">
-                            <img src="${personagemAtual.imagem}" alt="">
+                            <img src="${personagemAtual.imagem_index}" alt="">
                             <div class="cont_textos">
                                 <h3 class="descricao fontWhite bolder">${personagemAtual.nome}</h3>
                                 <p class="texto fontWhite">
@@ -297,7 +298,7 @@
                 } else if (personagemAtual.rotulo == "Rival") {
                     cards_rivais.innerHTML += `
                         <div class="card">
-                            <img src="${personagemAtual.imagem}" alt="">
+                            <img src="${personagemAtual.imagem_index}" alt="">
                             <div class="cont_textos">
                                 <h3 class="descricao fontWhite bolder">${personagemAtual.nome}</h3>
                                 <p class="texto fontWhite">

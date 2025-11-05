@@ -2,7 +2,8 @@
     {
         "id": 1,
         "nome": "Relâmpago McQueen ",
-        "imagem": "https://i.postimg.cc/xdbLTM7J/img-mcqueen-personagens.png",
+        "imagem_index": "https://i.postimg.cc/xdbLTM7J/img-mcqueen-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/XYMk7zYm/img-mcqueen-personagem.png",
         "descricao": "Relâmpago McQueen é um carro de corrida vermelho número 95, é veloz, confiante e competitivo, mas ao longo da história aprende sobre humildade, amizade e trabalho em equipe.",
         "rotulo": "Principal",
         "modelo": "Chevrolet Corvette C6.",
@@ -10,10 +11,13 @@
         "aparicao": "Carros 1",
         "nascimento": "10/05/1981"
     },
+
+
     {
         "id": 2,
         "nome": "Tom Mate ",
-        "imagem": "https://i.postimg.cc/Dzb1yLDS/img-mate-personagens.png",
+        "imagem_index": "https://i.postimg.cc/Dzb1yLDS/img-mate-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/DyD7MRcS/image-removebg-preview-4.png",
         "descricao": "O Mate é um guincho enferrujado, simpático e atrapalhado, melhor amigo do Relâmpago McQueen. Vive em Radiator Springs e é conhecido por seu bom coração, humor ingênuo e bordões engraçados.",
         "rotulo": "Principal",
         "modelo": "Chevrolet Tow Truck 1955",
@@ -24,7 +28,8 @@
     {
         "id": 3,
         "nome": "Sally Carrera",
-        "imagem": "https://i.postimg.cc/s2Z5D78S/img-sally-personagens.png",
+        "imagem_index": "https://i.postimg.cc/s2Z5D78S/img-sally-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/wjKQTGB8/img-sally-personagem.png",
         "descricao": "Sally Carrera é uma Porsche 911 azul, inteligente e gentil. Ex-advogada da cidade grande, mudou-se para Radiator Springs em busca de uma vida mais tranquila. Dona do Cozy Cone Motel, é o grande amor do Relâmpago McQueen e o coração da cidade.",
         "rotulo": "Principal",
         "modelo": "Porsche 996 Carrera 2002",
@@ -35,7 +40,8 @@
     {
         "id": 4,
         "nome": "Doc Hudson",
-        "imagem": "https://i.postimg.cc/6pPdXYHt/img-doc-personagens.png",
+        "imagem_index": "https://i.postimg.cc/6pPdXYHt/img-doc-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/sDGJzrs6/img-doc-personagem.png",
         "descricao": "O Doc Hudson, também conhecido como Hudson Hornet, é um carro clássico azul e o mentor do Relâmpago McQueen. Antigo campeão das pistas, ficou marcado por um acidente que encerrou sua carreira e o fez se afastar das corridas.",
         "rotulo": "Principal",
         "modelo": "Hudson Hornet",
@@ -43,10 +49,12 @@
         "aparicao": "Carros 1",
         "nascimento": "09/10/1951"
     },
+
     {
         "id": 5,
         "nome": "Mack",
-        "imagem": "https://i.postimg.cc/vm65HfjT/img-mack-personagens.png",
+        "imagem_index": "https://i.postimg.cc/vm65HfjT/img-mack-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/wjKQTGjr/img-mack-personagem.png",
         "descricao": "O Mack é o caminhão vermelho responsável por transportar o Relâmpago McQueen para as corridas. Leal, divertido e um grande amigo, ele está sempre disposto a ajudar McQueen em suas aventuras pelas estradas.",
         "rotulo": "Amigos",
         "modelo": "Mack Super-Liner",
@@ -57,7 +65,8 @@
     {
         "id": 6,
         "nome": "Sheriff",
-        "imagem": "https://i.postimg.cc/xdbLTM73/img-sheriff-personagens.png",
+        "imagem_index": "https://i.postimg.cc/xdbLTM73/img-sheriff-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/Sx0fNvKb/img-sheriff-personagem.png",
         "descricao": "O Sheriff é o carro de polícia preto e branco de Radiator Springs. Autoridade da cidade, é sério, protetor e gosta de manter a ordem, mas também tem um grande coração e se preocupa com todos os moradores.",
         "rotulo": "Amigos",
         "modelo": "1949 Mercury Police Cruiser",
@@ -68,7 +77,9 @@
     {
         "id": 7,
         "nome": "Luigi e Guido",
-        "imagem": "https://i.postimg.cc/FKJ0s3q9/img-italianos-personagens.png",
+        "imagem_index": "https://i.postimg.cc/FKJ0s3q9/img-italianos-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/02KCvsPL/img-guido-personagem.png",
+        "imagem_personagem2": "https://i.postimg.cc/fR4fTrRr/img-luigi-personagem.png",
         "descricao": "Luigi e Guido são os simpáticos operadores da loja de pneus 'Casa Della Tires' em Radiator Springs. Luigi, um Fiat 500 italiano, é apaixonado pela Ferrari e cheio de energia. Guido, seu pequeno assistente empilhador de pneus, é leal, rápido e adora participar das corridas ajudando McQueen nos pit stops.",
         "rotulo": "Amigos",
         "modelo": "Fiat 500 (Luigi) e Empilhadeira (Guido)",
@@ -76,10 +87,14 @@
         "aparicao": "Carros 1",
         "nascimento": "15/03/1959 (Luigi) e 20/07/1970 (Guido)"
     },
+
+
     {
         "id": 8,
         "nome": "Ramone e Flo",
-        "imagem": "https://i.postimg.cc/8zYhSty8/img-casal-personagens.png",
+        "imagem_index": "https://i.postimg.cc/8zYhSty8/img-casal-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/c4tcWS0j/img-flo-personagem.png",
+        "imagem_personagem2": "https://i.postimg.cc/HkG9shLG/img-ramone-personagem.png",
         "descricao": "Ramone é um carro baixo roxo, dono da oficina de pintura de Radiator Springs. Adora customizar e exibir seus designs. Flo é um carro clássico verde-água, dona do Flo’s V8 Café, onde todos se reúnem. É simpática e cheia de charme.",
         "rotulo": "Amigos",
         "modelo": "Chevrolet Impala Lowrider (Ramone) e Motorama Show Car (Flo)",
@@ -90,7 +105,8 @@
     {
         "id": 9,
         "nome": "Strip Weathers (The King)",
-        "imagem": "https://i.postimg.cc/QMWcx1P8/img-king-personagens.png",
+        "imagem_index": "https://i.postimg.cc/QMWcx1P8/img-king-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/RZrLVD0m/img-strip-personagem.png",
         "descricao": "O Rei (The King) é um carro de corrida azul número 43, veterano respeitado e idolatrado nas pistas. Justo e humilde, sempre compete com honra e é um exemplo para os outros corredores.",
         "rotulo": "Amigos",
         "modelo": "Plymouth Superbird 1970",
@@ -101,7 +117,8 @@
     {
         "id": 10,
         "nome": "Fillmore",
-        "imagem": "https://i.postimg.cc/zGQnr0dX/img-fillmore-personagens.png",
+        "imagem_index": "https://i.postimg.cc/zGQnr0dX/img-fillmore-personagens.png",
+        "imagem_personagem": "",
         "descricao": "Fillmore é uma kombi hippie colorida, fã de paz e natureza. Produz seu próprio combustível orgânico e vive tranquilo em Radiator Springs.",
         "rotulo": "Amigos",
         "modelo": "Volkswagen Type 2 (Kombi) 1960",
@@ -112,7 +129,8 @@
     {
         "id": 11,
         "nome": "Finn McMissile",
-        "imagem": "https://i.postimg.cc/6QGC5nSx/img-finn-personagens.png",
+        "imagem_index": "https://i.postimg.cc/6QGC5nSx/img-finn-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/RVJTmB4b/img-finn-personagem.png",
         "descricao": "Finn McMissile é um elegante carro espião britânico azul, ágil e inteligente. Especialista em missões secretas, é corajoso e habilidoso, trazendo ação e tecnologia ao mundo de Carros.",
         "rotulo": "Amigos",
         "modelo": "Aston Martin DB5 (inspirado em James Bond)",
@@ -123,7 +141,8 @@
     {
         "id": 12,
         "nome": "Holley Caixadibrita",
-        "imagem": "https://i.postimg.cc/s2Z5D78r/img-holley-personagens.png",
+        "imagem_index": "https://i.postimg.cc/s2Z5D78r/img-holley-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/vZRtHNZP/img-holley-personagem.png",
         "descricao": "A Holley Caixadibrita é uma agente secreta britânica futurista, inteligente e habilidosa, introduzida em Carros 2. Corajosa e rápida.",
         "rotulo": "Amigos",
         "modelo": "Carro esportivo britânico moderno (conceito)",
@@ -134,7 +153,8 @@
     {
         "id": 13,
         "nome": "Cruz Ramirez",
-        "imagem": "https://i.postimg.cc/8zYhStyV/img-cruz-personagens.png",
+        "imagem_index": "https://i.postimg.cc/8zYhStyV/img-cruz-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/RVJTmB4P/img-cruz-personagem.png",
         "descricao": "Cruz Ramirez é uma jovem e talentosa treinadora de corridas amarela, introduzida em Carros 3. Determinada, otimista e cheia de energia, ela ajuda Relâmpago McQueen a treinar.",
         "rotulo": "Amigos",
         "modelo": "Carro esportivo de treinamento moderno",
@@ -145,7 +165,8 @@
     {
         "id": 14,
         "nome": "Smokey",
-        "imagem": "https://i.postimg.cc/MT2VcX2y/img-smokey-personagens.png",
+        "imagem_index": "https://i.postimg.cc/MT2VcX2y/img-smokey-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/4xCQNS3g/img-smokey-personagem.png",
         "descricao": "Smokey é uma lenda da Copa Pistão e o proprietário da Smokey's Automotive Service. Ele é uma picape Hudson de 1946 pintada de laranja-avermelhado, com uma carroceria marrom. Seu personagem é uma homenagem ao lendário mecânico de corridas Smokey Yunick.",
         "rotulo": "Amigos",
         "modelo": "Hudson Pickup 1946",
@@ -156,7 +177,8 @@
     {
         "id": 15,
         "nome": "Chick Hicks",
-        "imagem": "https://i.postimg.cc/DwNqTBCk/img-chick-personagens.png",
+        "imagem_index": "https://i.postimg.cc/DwNqTBCk/img-chick-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/zXHkNr80/img-chick-personagem.png",
         "descricao": "Chick Hicks é um carro de corrida verde competitivo e arrogante. Seu maior objetivo é vencer a qualquer custo, usando estratégias sujas, tornando-se o principal rival do Relâmpago McQueen.",
         "rotulo": "Rival",
         "modelo": "Buick Grand National 1987 (modificado)",
@@ -167,7 +189,8 @@
     {
         "id": 16,
         "nome": "Sir Miles Eixoderroda",
-        "imagem": "https://i.postimg.cc/7LTSY0cJ/img-miles-personagens.png",
+        "imagem_index": "https://i.postimg.cc/7LTSY0cJ/img-miles-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/htF1P5tH/img-miles-personagem.png",
         "descricao": "Sir Miles Eixoderroda é um carro elétrico elegante e milionário, introduzido em Carros 2. Ele é o criador do combustível ecológico Allinol e se apresenta como benfeitor ambiental, mas na trama se revela um vilão manipulador.",
         "rotulo": "Rival",
         "modelo": "Range Rover Classic Elétrico (conceito)",
@@ -178,7 +201,8 @@
     {
         "id": 17,
         "nome": "Professor Zündapp",
-        "imagem": "https://i.postimg.cc/bJckGdc9/img-zundapp-personagens.png",
+        "imagem_index": "https://i.postimg.cc/bJckGdc9/img-zundapp-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/htF1P5Gc/img-zundapp-personagem.png",
         "descricao": "Professor Zündapp é o vilão cientista em Carros 2. Ele é um carro esportivo alemão verde que cria planos secretos e armadilhas para sabotar as corridas e avançar seus interesses malignos.",
         "rotulo": "Rival",
         "modelo": "Zündapp Janus 1957 (modificado)",
@@ -189,7 +213,8 @@
     {
         "id": 18,
         "nome": "Francesco Bernoulli",
-        "imagem": "https://i.postimg.cc/9fqyFZS5/img-francesco-personagens.png",
+        "imagem_index": "https://i.postimg.cc/9fqyFZS5/img-francesco-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/X7BgWb4t/img-francesco-personagem.png",
         "descricao": "Francesco Bernoulli é um carro de Fórmula 1 italiano, competitivo, confiante e um pouco arrogante. Introduzido em Carros 2, ele é o principal rival do Relâmpago McQueen nas corridas internacionais.",
         "rotulo": "Rival",
         "modelo": "Fórmula 1 (inspirado na Ferrari F2002)",
@@ -200,7 +225,8 @@
     {
         "id": 19,
         "nome": "Jackson Storm",
-        "imagem": "https://i.postimg.cc/cHywK6yR/img-storm-personagens.png",
+        "imagem_index": "https://i.postimg.cc/cHywK6yR/img-storm-personagens.png",
+        "imagem_personagem": "https://i.postimg.cc/sgF4DNgb/img-jackson-personagem.png",
         "descricao": "Jackson Storm é um carro de corrida futurista e arrogante, introduzido em Carros 3. Ele é rápido, tecnológico e rival do Relâmpago McQueen, representando a nova geração de corredores que desafiam os veteranos.",
         "rotulo": "Rival",
         "modelo": "Next-Gen Piston Cup Racer (conceito futurista)",
@@ -208,4 +234,4 @@
         "aparicao": "Carros 3",
         "nascimento": "19/09/2016"
     }
-]
+]    

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/jogo.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="grid">
+            <div class="posicao_line1 lines" id="line_1">
+                <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista1"></div>
+                <div class="partesPista partesPistaMeioCFaixa" id="partePista2"></div>
+                <div class="partesPista partesPistaDireitaCFaixa" id="partePista3"></div>
+            </div>
+            <div class="posicao_line2 lines" id="line_2">
+                <div class="partesPista bordaEsquerda" id="partePista4"></div>
+                <div class="partesPista" id="partePista5"></div>
+                <div class="partesPista bordaDireita" id="partePista6"></div>
+            </div>
+            <div class="posicao_line3 lines" id="line_3">
+                <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista7"></div>
+                <div class="partesPista partesPistaMeioCFaixa" id="partePista8"></div>
+                <div class="partesPista partesPistaDireitaCFaixa" id="partePista9"></div>
+            </div>
+            <div class="posicao_line4 lines" id="line_4">
+                <div class="partesPista bordaEsquerda" id="partePista10"></div>
+                <div class="partesPista" id="partePista11"></div>
+                <div class="partesPista bordaDireita" id="partePista12"></div>
+            </div>
+            <div class="posicao_line5 lines" id="line_5">
+                <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista13"></div>
+                <div class="partesPista partesPistaMeioCFaixa" id="partePista14"></div>
+                <div class="partesPista partesPistaDireitaCFaixa" id="partePista15"></div>
+            </div>
+            <div class="posicao_line6 lines" id="line_6">
+                <div class="partesPista bordaEsquerda" id="partePista16"></div>
+                <div class="partesPista" id="partePista17"></div>
+                <div class="partesPista bordaDireita" id="partePista18"></div>
+            </div>
+            <div class="posicao_line7 lines" id="line_7">
+                <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista19"></div>
+                <div class="partesPista partesPistaMeioCFaixa" id="partePista20"></div>
+                <div class="partesPista partesPistaDireitaCFaixa" id="partePista21"></div>
+            </div>
+            <div class="posicao_line8 lines" id="line_8">
+                <div class="partesPista bordaEsquerda" id=""></div>
+                <div class="partesPista" id=""></div>
+                <div class="partesPista bordaDireita" id=""></div>
+            </div>
+
+            <div class="linha_chegada lines" style="display: none;" id="linha_chegada">
+                <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista22"></div>
+                <div class="partesPista partesPistaMeioCFaixa" id="partePista23"></div>
+                <div class="partesPista partesPistaDireitaCFaixa" id="partePista24"></div>
+            </div>
+
+            <div class="arredores" id="arredor1"></div>
+            <div class="arredores" id="arredor2"></div>
+            <div class="arredores" id="arredor3"></div>
+            <div class="arredores" id="arredor4"></div>
+            <div class="arredores" id="arredor5"></div>
+            <div class="arredores" id="arredor6"></div>
+            <div class="arredores" id="arredor7"></div>
+            <div class="arredores" id="arredor8"></div>
+            <div class="arredores" id="arredor9"></div>
+            <div class="arredores" id="arredor10"></div>
+            <div class="arredores" id="arredor11"></div>
+            <div class="arredores" id="arredor12"></div>
+            <div class="arredores" id="arredor13"></div>
+            <div class="arredores" id="arredor14"></div>
+            <div class="arredores" id="arredor15"></div>
+            <div class="arredores" id="arredor16"></div>
+            <img id="cacto" src="assets/img/cacto.jpg" alt="">
+            <img id="img" src="assets/img/mcqueen.png" alt="">
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+
+    var colunaCarro = 3
+    var linhaCarro = 6
+
+    document.getElementById('img').style.gridRow = linhaCarro
+    document.getElementById('img').style.gridColumn = colunaCarro;
+
+    var colunaObstaculo = 0
+    var linhaObstaculo = 0
+
+    var linhaAtual = 0
+
+    var contagemLinhas = 0
+
+    function chamarObstaculo() {
+        setTimeout(verificarColisao, 5)
+        if (linhaAtual == 0) {
+            sortearColuna()
+        } else {
+            mudarLinha(colunaObstaculo)
+        }
+        setTimeout(verificarColisao, 5)
+    }
+    var trocaDeLinha = 1
+    function movimentoPista() {
+        setTimeout(verificarColisao, 5)
+
+        if (trocaDeLinha == 0) {
+            document.getElementById('line_1').classList.remove('posicao_line2')
+            document.getElementById('line_2').classList.remove('posicao_line1')
+            document.getElementById('line_3').classList.remove('posicao_line4')
+            document.getElementById('line_4').classList.remove('posicao_line3')
+            document.getElementById('line_5').classList.remove('posicao_line6')
+            document.getElementById('line_6').classList.remove('posicao_line5')
+            document.getElementById('line_7').classList.remove('posicao_line8')
+            document.getElementById('line_8').classList.remove('posicao_line7')
+
+            document.getElementById('line_1').classList.add('posicao_line1')
+            document.getElementById('line_2').classList.add('posicao_line2')
+            document.getElementById('line_3').classList.add('posicao_line3')
+            document.getElementById('line_4').classList.add('posicao_line4')
+            document.getElementById('line_5').classList.add('posicao_line5')
+            document.getElementById('line_6').classList.add('posicao_line6')
+            document.getElementById('line_7').classList.add('posicao_line7')
+            document.getElementById('line_8').classList.add('posicao_line8')
+            trocaDeLinha = 1
+        } else {
+            trocaDeLinha = 0
+
+            document.getElementById('line_1').classList.remove('posicao_line1')
+            document.getElementById('line_2').classList.remove('posicao_line2')
+            document.getElementById('line_3').classList.remove('posicao_line3')
+            document.getElementById('line_4').classList.remove('posicao_line4')
+            document.getElementById('line_5').classList.remove('posicao_line5')
+            document.getElementById('line_6').classList.remove('posicao_line6')
+            document.getElementById('line_7').classList.remove('posicao_line7')
+            document.getElementById('line_8').classList.remove('posicao_line8')
+
+            document.getElementById('line_1').classList.add('posicao_line2')
+            document.getElementById('line_2').classList.add('posicao_line1')
+            document.getElementById('line_3').classList.add('posicao_line4')
+            document.getElementById('line_4').classList.add('posicao_line3')
+            document.getElementById('line_5').classList.add('posicao_line6')
+            document.getElementById('line_6').classList.add('posicao_line5')
+            document.getElementById('line_7').classList.add('posicao_line8')
+            document.getElementById('line_8').classList.add('posicao_line7')
+        }
+    }
+
+    function sortearColuna() {
+        var colunaAleatoria = Math.floor(Math.random() * 3) + 2
+
+        colunaObstaculo = colunaAleatoria
+        mudarLinha(colunaAleatoria)
+    }
+
+    function mudarLinha(colunaAleatoria) {
+        console.log(linhaAtual);
+        
+        setTimeout(verificarColisao, 5)
+
+        document.getElementById('cacto').style.gridColumn = colunaAleatoria
+        linhaAtual++
+        console.log(linhaAtual);
+
+        linhaObstaculo = linhaAtual
+        if (linhaAtual < 8) {
+            document.getElementById('cacto').style.gridRow = linhaAtual
+            contagemLinhas++
+        } else if (linhaAtual >= 8) {
+            document.getElementById('cacto').style.gridRow = linhaAtual
+            linhaAtual = 0
+            contagemLinhas++
+        }
+        cacto.style.display = 'flex'
+
+        setTimeout(verificarColisao, 10)
+    }
+    function verificarColisao() {
+        if (linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
+            alert("Bateu!")
+        }
+    }
+
+    setInterval(() => {
+        chamarObstaculo()
+        movimentoPista()
+    }, 100);
+
+
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key == 'ArrowLeft') {
+            if (document.getElementById('img').style.gridColumn == 3) {
+                colunaCarro = 2
+
+                document.getElementById('img').style.gridColumn = colunaCarro
+            } else if (document.getElementById('img').style.gridColumn == 4) {
+                colunaCarro = 3
+                document.getElementById('img').style.gridColumn = colunaCarro
+
+            } else {
+                console.log("Cai no else do left");
+            }
+            setTimeout(verificarColisao, 1)
+
+
+        }
+        if (event.key == 'ArrowRight') {
+            if (document.getElementById('img').style.gridColumn == 3) {
+                colunaCarro = 4
+                document.getElementById('img').style.gridColumn = colunaCarro
+
+            } else if (document.getElementById('img').style.gridColumn == 2) {
+                colunaCarro = 3
+                document.getElementById('img').style.gridColumn = colunaCarro
+
+            } else {
+                console.log("Cai no else do right");
+            }
+            setTimeout(verificarColisao, 1)
+
+
+        }
+    })
+</script>

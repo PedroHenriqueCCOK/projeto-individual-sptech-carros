@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Copa Pistão</title>
     <link rel="stylesheet" href="css/jogo.css">
 </head>
 
@@ -47,9 +47,9 @@
                 <div class="partesPista partesPistaDireitaCFaixa" id="partePista21"></div>
             </div>
             <div class="posicao_line8 lines" id="line_8">
-                <div class="partesPista bordaEsquerda" id=""></div>
-                <div class="partesPista" id=""></div>
-                <div class="partesPista bordaDireita" id=""></div>
+                <div class="partesPista bordaEsquerda" id="partePista22"></div>
+                <div class="partesPista" id="partePista23"></div>
+                <div class="partesPista bordaDireita" id="partePista24"></div>
             </div>
 
             <div class="linha_chegada lines" style="display: none;" id="linha_chegada">
@@ -93,21 +93,91 @@
 
     var colunaObstaculo = 0
     var linhaObstaculo = 0
-
-    var linhaAtual = 0
-
+    var colunaAleatoria = 0
     var contagemLinhas = 0
+    var linhaAtual = 0
+    var trocaDeLinha = 1
+    var intervaloChamada = 700
+    setTimeout(() => {
+        chamarObstaculo()
+        movimentoPista()
+    }, intervaloChamada);
 
+    // FUNÇÃO QUE CHAMA O OBSTÁCULO VERIFICANDO A LINHA 
     function chamarObstaculo() {
         setTimeout(verificarColisao, 5)
         if (linhaAtual == 0) {
             sortearColuna()
         } else {
-            mudarLinha(colunaObstaculo)
+            mudarLinha(colunaAleatoria)
         }
         setTimeout(verificarColisao, 5)
+        setTimeout(() => {
+            chamarObstaculo()
+        }, intervaloChamada);
     }
-    var trocaDeLinha = 1
+
+    // FUNÇÃO QUE GERA UMA COLUNA ALEATÓRIA PARA O OBSTÁCULO
+    function sortearColuna() {
+        colunaAleatoria = Math.floor(Math.random() * 3) + 2
+        mudarLinha(colunaAleatoria)
+    }
+
+    function mudarLinha(colunaAleatoria) {
+        setTimeout(verificarColisao, 5)
+
+        document.getElementById('cacto').style.gridColumn = colunaAleatoria
+
+        linhaAtual++
+        linhaObstaculo = linhaAtual
+        if (linhaAtual < 8) {
+            document.getElementById('cacto').style.gridRow = linhaAtual
+            contagemLinhas++
+        } else {
+            document.getElementById('cacto').style.gridRow = linhaAtual
+            linhaAtual = 0
+            contagemLinhas++
+        }
+        // CONTROLADOR DE VELOCIDADE
+        if (contagemLinhas >= 20 && contagemLinhas <= 40) {
+            intervaloChamada = 700
+            console.log(intervaloChamada);
+            
+        } else if (contagemLinhas > 40 && contagemLinhas <= 60) {
+            intervaloChamada = 600
+            console.log(intervaloChamada);
+            
+        } else if (contagemLinhas > 60 && contagemLinhas <= 80) {
+            intervaloChamada = 500
+            console.log(intervaloChamada);
+        } else if (contagemLinhas > 80 && contagemLinhas <= 100) {
+            intervaloChamada = 400
+            console.log(intervaloChamada);
+        } else if (contagemLinhas > 100 && contagemLinhas <= 120) {
+            intervaloChamada = 300
+            console.log(intervaloChamada);
+            
+        } else if (contagemLinhas > 120 && contagemLinhas <= 140) {
+            intervaloChamada = 200
+            console.log(intervaloChamada);
+        }  else if (contagemLinhas > 140 && contagemLinhas <= 160) {
+            intervaloChamada = 100
+            console.log(intervaloChamada);
+        } else if (contagemLinhas > 160 && contagemLinhas <= 200) {
+            intervaloChamada = 50
+            console.log(intervaloChamada);
+        } else if (contagemLinhas > 200) {
+            intervaloChamada = 40
+            console.log(intervaloChamada);
+        }
+        cacto.style.display = 'flex'
+        setTimeout(verificarColisao, 10)
+        console.log(contagemLinhas);
+    }
+    function verificarColisao() {
+        if (linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
+        }
+    }
     function movimentoPista() {
         setTimeout(verificarColisao, 5)
 
@@ -132,7 +202,6 @@
             trocaDeLinha = 1
         } else {
             trocaDeLinha = 0
-
             document.getElementById('line_1').classList.remove('posicao_line1')
             document.getElementById('line_2').classList.remove('posicao_line2')
             document.getElementById('line_3').classList.remove('posicao_line3')
@@ -151,47 +220,12 @@
             document.getElementById('line_7').classList.add('posicao_line8')
             document.getElementById('line_8').classList.add('posicao_line7')
         }
+        setTimeout(() => {
+            movimentoPista()
+        }, intervaloChamada);
     }
 
-    function sortearColuna() {
-        var colunaAleatoria = Math.floor(Math.random() * 3) + 2
 
-        colunaObstaculo = colunaAleatoria
-        mudarLinha(colunaAleatoria)
-    }
-
-    function mudarLinha(colunaAleatoria) {
-        console.log(linhaAtual);
-        
-        setTimeout(verificarColisao, 5)
-
-        document.getElementById('cacto').style.gridColumn = colunaAleatoria
-        linhaAtual++
-        console.log(linhaAtual);
-
-        linhaObstaculo = linhaAtual
-        if (linhaAtual < 8) {
-            document.getElementById('cacto').style.gridRow = linhaAtual
-            contagemLinhas++
-        } else if (linhaAtual >= 8) {
-            document.getElementById('cacto').style.gridRow = linhaAtual
-            linhaAtual = 0
-            contagemLinhas++
-        }
-        cacto.style.display = 'flex'
-
-        setTimeout(verificarColisao, 10)
-    }
-    function verificarColisao() {
-        if (linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
-            alert("Bateu!")
-        }
-    }
-
-    setInterval(() => {
-        chamarObstaculo()
-        movimentoPista()
-    }, 100);
 
 
 

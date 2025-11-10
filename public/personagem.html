@@ -11,20 +11,20 @@
     <header class="header_landing_page">
         <div class="container">
             <div class="cont_links">
-                <a href="index.html#home" class="link ativo">
-                    <p class="texto">Home</p>
+                <a href="index.html#banner" class="link texto ativo">
+                    Home
                 </a>
-                <a href="index.html#universo_carros" class="link">
-                    <p class="texto">Universo</p>
+                <a href="index.html#universo_carros" class="link texto">
+                    Universo
                 </a>
-                <a href="index.html#filmes" class="link">
-                    <p class="texto">Filmes</p>
+                <a href="index.html#filmes" class="link texto">
+                    Filmes
                 </a>
-                <a href="index.html#personagens" class="link">
-                    <p class="texto">Personagens</p>
+                <a href="index.html#personagens" class="link texto">
+                    Personagens
                 </a>
-                <a href="#" class="link">
-                    <p class="texto">Copa Pistão</p>
+                <a href="jogo.html" class="link texto">
+                    Copa Pistão
                 </a>
             </div>
             <div class="cont_logo">
@@ -51,8 +51,15 @@
     fetch('json/personagens.json')
         .then(response => response.json())
         .then(personagens => {
-            var personagem = personagens.find(p => p.id == idParametro)
-            console.log(personagem);
+            var personagem = [] 
+            for (var i = 0; i < personagens.length; i++) {
+                var personagemAtual = personagens[i];
+                if (personagemAtual.id == idParametro) {
+                    personagem = personagemAtual
+                    console.log(personagemAtual);
+                }
+            }
+
             if (personagem != undefined) {
                 if (idParametro == 7 || idParametro == 8) {
                     container_personagem.innerHTML = `

@@ -11,19 +11,19 @@
     <header class="header_landing_page">
         <div class="container">
             <div class="cont_links">
-                <a href="index.html#banner" class="link texto ativo">
+                <a href="index.html#banner" class="link ativo">
                     Home
                 </a>
-                <a href="index.html#universo_carros" class="link texto">
+                <a href="index.html#universo_carros" class="link">
                     Universo
                 </a>
-                <a href="index.html#filmes" class="link texto">
+                <a href="index.html#filmes" class="link">
                     Filmes
                 </a>
-                <a href="index.html#personagens" class="link texto">
+                <a href="index.html#personagens" class="link">
                     Personagens
                 </a>
-                <a href="jogo.html" class="link texto">
+                <a href="jogo.html" class="link">
                     Copa Pistão
                 </a>
             </div>
@@ -31,9 +31,9 @@
                 <img class="logo" src="https://i.postimg.cc/zDjshTg0/logo-carros.png" alt="">
             </div>
             <div class="cont_btns_autenticar">
-                <button class="btn_autenticar texto">Cadastro</button>
+                <button class="btn_autenticar link">Cadastro</button>
                 <hr>
-                <button class="btn_autenticar texto">Login</button>
+                <button class="btn_autenticar link">Login</button>
             </div>
         </div>
     </header>
@@ -72,6 +72,39 @@
                                 <h1 class="titulo fontWhite bolder">${personagem.nome}</h1>
                                 <h3 class="subtitulo fontWhite bolder">Data de nascimento:</h3>
                                 <div class="campo">
+                                    <p class=" fontBlack boldMedio">${personagem.nascimento}</p>
+                                </div>
+                                <h3 class="subtitulo fontWhite bolder">Modelo:</h3>
+                                <div class="campo">
+                                    <p class=" fontBlack boldMedio">${personagem.modelo}</p>
+                                </div>
+                                <h3 class="subtitulo fontWhite bolder">Equipe:</h3>
+                                <div class="campo">
+                                    <p class=" fontBlack boldMedio">${personagem.equipe}</p>
+                                </div>
+                                <h3 class="subtitulo fontWhite bolder">Primeira aparição:</h3>
+                                <div class="campo">
+                                    <p class=" fontBlack boldMedio">${personagem.aparicao}</p>
+                                </div>
+                                <h3 class="subtitulo fontWhite bolder">Descrição:</h3>
+                                <div class="campo">
+                                    <p class=" fontBlack boldMedio">${personagem.descricao}</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    `
+                    
+                } else {
+                    container_personagem.innerHTML = `
+                        <div class="container_imagem">
+                            <img src="${personagem.imagem_personagem}" alt="">
+                        </div>
+                        <div class="container_textos">
+                            <div class="container">
+                                <h1 class="titulo fontWhite bolder">${personagem.nome}</h1>
+                                <h3 class="subtitulo fontWhite bolder">Data de nascimento:</h3>
+                                <div class="campo">
                                     <p class="descricao fontBlack boldMedio">${personagem.nascimento}</p>
                                 </div>
                                 <h3 class="subtitulo fontWhite bolder">Modelo:</h3>
@@ -89,39 +122,6 @@
                                 <h3 class="subtitulo fontWhite bolder">Descrição:</h3>
                                 <div class="campo">
                                     <p class="descricao fontBlack boldMedio">${personagem.descricao}</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    `
-                    
-                } else {
-                    container_personagem.innerHTML = `
-                        <div class="container_imagem">
-                            <img src="${personagem.imagem_personagem}" alt="">
-                        </div>
-                        <div class="container_textos">
-                            <div class="container">
-                                <h1 class="titulo fontWhite bolder">${personagem.nome}</h1>
-                                <h3 class="subtitulo fontWhite bolder">Data de nascimento:</h3>
-                                <div class="campo">
-                                    <p class="texto fontBlack boldMedio">${personagem.nascimento}</p>
-                                </div>
-                                <h3 class="subtitulo fontWhite bolder">Modelo:</h3>
-                                <div class="campo">
-                                    <p class="texto fontBlack boldMedio">${personagem.modelo}</p>
-                                </div>
-                                <h3 class="subtitulo fontWhite bolder">Equipe:</h3>
-                                <div class="campo">
-                                    <p class="texto fontBlack boldMedio">${personagem.equipe}</p>
-                                </div>
-                                <h3 class="subtitulo fontWhite bolder">Primeira aparição:</h3>
-                                <div class="campo">
-                                    <p class="texto fontBlack boldMedio">${personagem.aparicao}</p>
-                                </div>
-                                <h3 class="subtitulo fontWhite bolder">Descrição:</h3>
-                                <div class="campo">
-                                    <p class="texto fontBlack boldMedio">${personagem.descricao}</p>
                                 </div>
                             </div>
                         </div>

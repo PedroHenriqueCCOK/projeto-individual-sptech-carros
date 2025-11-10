@@ -74,7 +74,10 @@
             <div class="arredores" id="arredor14"></div>
             <div class="arredores" id="arredor15"></div>
             <div class="arredores" id="arredor16"></div>
-            <img id="cacto" src="assets/img/cacto.jpg" alt="">
+
+
+            <img id="cacto" style="display: none;"  src="assets/img/cacto.jpg" alt="">
+            <img id="bola_de_feno" style="display: none;" src="assets/img/img_bola_de_feno.png" alt="">
             <img id="img" src="assets/img/mcqueen.png" alt="">
         </div>
     </div>
@@ -83,16 +86,24 @@
 </html>
 
 <script>
+    var obstaculos = [
+        document.getElementById('cacto'),
+        document.getElementById('bola_de_feno'),
+    ]
+
 
 
     var colunaCarro = 3
     var linhaCarro = 6
+    
 
     document.getElementById('img').style.gridRow = linhaCarro
     document.getElementById('img').style.gridColumn = colunaCarro;
 
     var colunaObstaculo = 0
     var linhaObstaculo = 0
+
+    var obstaculoAtual = 0
     var colunaAleatoria = 0
     var contagemLinhas = 0
     var linhaAtual = 0
@@ -122,19 +133,26 @@
         colunaAleatoria = Math.floor(Math.random() * 3) + 2
         mudarLinha(colunaAleatoria)
     }
+    
+    function sortearObstaculo() {
+        obstaculoAtual = Math.floor(Math.random() * 2)
+
+    }
+
+
 
     function mudarLinha(colunaAleatoria) {
         setTimeout(verificarColisao, 5)
 
-        document.getElementById('cacto').style.gridColumn = colunaAleatoria
+        obstaculos[obstaculoAtual].style.gridColumn = colunaAleatoria
 
         linhaAtual++
         linhaObstaculo = linhaAtual
         if (linhaAtual < 8) {
-            document.getElementById('cacto').style.gridRow = linhaAtual
+            obstaculos[obstaculoAtual].style.gridRow = linhaAtual
             contagemLinhas++
         } else {
-            document.getElementById('cacto').style.gridRow = linhaAtual
+            obstaculos[obstaculoAtual].style.gridRow = linhaAtual
             linhaAtual = 0
             contagemLinhas++
         }

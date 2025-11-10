@@ -28,14 +28,6 @@
     padding: 1vh;
 }
 
-.header_landing_page .container .cont_links .link {
-    text-decoration: none;
-    color: white;
-}
-.header_landing_page .container .cont_links .link:hover {
-    font-weight: bold;
-    color: white;
-}
 
 .header_landing_page .container .cont_logo {
     position: fixed;
@@ -56,47 +48,64 @@
     border: none;
     background-color: transparent;
     color: white;
-    font-family: 'Montserrat', Helvetica, sans-serif;}
+    font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
 .logo {
     width: 80%;
 }
 
-.ativo {
-    font-weight: bolder;
-}
 
-
-
-
-.fontWhite{
+.fontWhite {
     color: white;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
-.fontBlack{
+
+.fontBlack {
     color: black;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
+
 .titulo {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: bold;
 }
+
 .subtitulo {
     font-size: 2rem;
     font-weight: normal;
-    
+
 }
-.descricao{
-    font-size: 1.75rem;
+
+.descricao {
+    font-size: 1.25rem;
     font-weight: normal;
-    
+
 }
-.texto{
-    font-size: 1rem;
+.textoMedium {
+    font-size: 1.1rem;
     font-weight: normal;
 }
-.bolder{
+.texto {
+    font-size: 0.5rem;
+    font-weight: normal;
+}
+
+.bolder {
     font-weight: bolder;
 }
-.boldMedio{
+
+.boldMedio {
     font-weight: 600;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 0.75rem;
+    color: white;
+}
+
+.link:hover {
+    font-weight: bold;
+    color: white;
 }

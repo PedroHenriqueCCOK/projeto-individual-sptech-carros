@@ -13,19 +13,19 @@
     <header class="header_landing_page">
         <div class="container">
             <div class="cont_links">
-                <a href="#banner" class="link texto ativo">
+                <a href="#banner" class="link ativo">
                     Home
                 </a>
-                <a href="#universo_carros" class="link texto">
+                <a href="#universo_carros" class="link">
                     Universo
                 </a>
-                <a href="#filmes" class="link texto">
+                <a href="#filmes" class="link">
                     Filmes
                 </a>
-                <a href="#personagens" class="link texto">
+                <a href="#personagens" class="link">
                     Personagens
                 </a>
-                <a href="jogo.html" class="link texto">
+                <a href="jogo.html" class="link">
                     Copa Pistão
                 </a>
             </div>
@@ -33,9 +33,9 @@
                 <img class="logo" src="https://i.postimg.cc/zDjshTg0/logo-carros.png" alt="">
             </div>
             <div class="cont_btns_autenticar">
-                <button class="btn_autenticar texto">Cadastro</button>
+                <button class="btn_autenticar link">Cadastro</button>
                 <hr>
-                <button class="btn_autenticar texto">Login</button>
+                <button class="btn_autenticar link">Login</button>
             </div>
         </div>
     </header>
@@ -122,11 +122,11 @@
                 <div id="line_cards1" class="line_cards">
                     <h1 class="subtitulo fontWhite bolder">Principais</h1>
                     <div class="cont_slide">
-                        <button class="btn_setas" id="btn_setas_esquerda_1" value="0">
+                        <button class="btn_setas" onclick="arrastarPersonagens('esquerda', 0)" id="btn_setas_esquerda_1" value="0">
                             <img class="img_seta" src="assets/icon/icons_setaEsquerda.png" alt="">
                         </button>
                         <div id="cards_principais" class="cont_cards"></div>
-                        <button class="btn_setas" id="btn_setas_direita_1" value="0">
+                        <button class="btn_setas" onclick="arrastarPersonagens('direita', 0)" id="btn_setas_direita_1" value="0">
                             <img class="img_seta" src="assets/icon/icons_setaDireita.png" alt="">
                         </button>
                     </div>
@@ -134,11 +134,11 @@
                 <div id="line_cards2" class="line_cards">
                     <h1 class="subtitulo fontWhite bolder">Amigos</h1>
                     <div class="cont_slide">
-                        <button class="btn_setas" id="btn_setas_esquerda_2" value="1">
+                        <button class="btn_setas" onclick="arrastarPersonagens('esquerda', 1)" id="btn_setas_esquerda_2" value="1">
                         <img class="img_seta" src="assets/icon/icons_setaEsquerda.png" alt="">
                         </button>
                         <div id="cards_amigos" class="cont_cards"></div>
-                        <button class="btn_setas" id="btn_setas_direita_2" value="1">
+                        <button class="btn_setas" onclick="arrastarPersonagens('direita', 1)" id="btn_setas_direita_2" value="1">
                         <img class="img_seta" src="assets/icon/icons_setaDireita.png" alt="">
                         </button>
                     </div>
@@ -146,11 +146,11 @@
                 <div id="line_cards3" class="line_cards">
                     <h1 class="subtitulo fontWhite bolder">Rivais</h1>
                     <div class="cont_slide">
-                        <button class="btn_setas" id="btn_setas_esquerda_3" value="2">
+                        <button class="btn_setas" onclick="arrastarPersonagens('esquerda', 2)" id="btn_setas_esquerda_3" value="2">
                         <img class="img_seta" src="assets/icon/icons_setaEsquerda.png" alt="">
                         </button>
                         <div id="cards_rivais" class="cont_cards"></div>
-                        <button class="btn_setas" id="btn_setas_direita_3" value="2">
+                        <button class="btn_setas" onclick="arrastarPersonagens('direita', 2)" id="btn_setas_direita_3" value="2">
                         <img class="img_seta" src="assets/icon/icons_setaDireita.png" alt="">
                         </button>
                     </div>
@@ -209,7 +209,7 @@
                 </a>
                 <div class="cont_column">
                         <img class="foto_pedro" src="https://i.postimg.cc/fb0YTmF9/img-pedro.jpg" alt="">
-                        <b class="texto bolder fontWhite    ">Pedro Henrique de Oliveira</b>
+                        <b class="texto bolder fontWhite">Pedro Henrique de Oliveira</b>
                     </div>
                 <a href="https://www.linkedin.com/in/pedro-henrique-de-oliveira-67652a279">
                     <div class="cont_column">
@@ -259,7 +259,7 @@
                             <img src="${personagemAtual.imagem_index}" alt="">
                             <div class="cont_textos">
                                 <h3 class="descricao fontWhite bolder">${personagemAtual.nome}</h3>
-                                <p class="texto fontWhite">
+                                <p class="textoSmall descricaoPersonagem fontWhite">
                                     ${personagemAtual.descricao}
                                 </p>
                                 <a href="personagem.html?id=${personagemAtual.id}">
@@ -277,7 +277,7 @@
                             <img src="${personagemAtual.imagem_index}" alt="">
                             <div class="cont_textos">
                                 <h3 class="descricao fontWhite bolder">${personagemAtual.nome}</h3>
-                                <p class="texto fontWhite">
+                                <p class="textoSmall descricaoPersonagem fontWhite">
                                     ${personagemAtual.descricao}
                                 </p>
                                 <a href="personagem.html?id=${personagemAtual.id}">
@@ -295,7 +295,7 @@
                             <img src="${personagemAtual.imagem_index}" alt="">
                             <div class="cont_textos">
                                 <h3 class="descricao fontWhite bolder">${personagemAtual.nome}</h3>
-                                <p class="texto fontWhite">
+                                <p class="textoSmall descricaoPersonagem fontWhite">
                                     ${personagemAtual.descricao}
                                 </p>
                                 <a href="personagem.html?id=${personagemAtual.id}">

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/personagem.css">
     <link rel="stylesheet" href="css/global.css">
 </head>
+
 <body>
     <header class="header_landing_page">
         <div class="container">
@@ -38,9 +40,10 @@
         </div>
     </header>
     <div class="container" id="container_personagem">
-        
+
     </div>
 </body>
+
 </html>
 <script>
     var urlParametros = window.location
@@ -51,7 +54,7 @@
     fetch('json/personagens.json')
         .then(response => response.json())
         .then(personagens => {
-            var personagem = [] 
+            var personagem = []
             for (var i = 0; i < personagens.length; i++) {
                 var personagemAtual = personagens[i];
                 if (personagemAtual.id == idParametro) {
@@ -61,78 +64,37 @@
             }
 
             if (personagem != undefined) {
-                if (idParametro == 7 || idParametro == 8) {
-                    container_personagem.innerHTML = `
-                        <div class="container_imagem">
-                            <img src="${personagem.imagem_personagem}" alt="">
-                            <img src="${personagem.imagem_personagem2}" alt="">
-                        </div>
-                        <div class="container_textos">
-                            <div class="container">
-                                <h1 class="titulo fontWhite bolder">${personagem.nome}</h1>
-                                <h3 class="subtitulo fontWhite bolder">Data de nascimento:</h3>
-                                <div class="campo">
-                                    <p class=" fontBlack boldMedio">${personagem.nascimento}</p>
-                                </div>
-                                <h3 class="subtitulo fontWhite bolder">Modelo:</h3>
-                                <div class="campo">
-                                    <p class=" fontBlack boldMedio">${personagem.modelo}</p>
-                                </div>
-                                <h3 class="subtitulo fontWhite bolder">Equipe:</h3>
-                                <div class="campo">
-                                    <p class=" fontBlack boldMedio">${personagem.equipe}</p>
-                                </div>
-                                <h3 class="subtitulo fontWhite bolder">Primeira aparição:</h3>
-                                <div class="campo">
-                                    <p class=" fontBlack boldMedio">${personagem.aparicao}</p>
-                                </div>
-                                <h3 class="subtitulo fontWhite bolder">Descrição:</h3>
-                                <div class="campo">
-                                    <p class=" fontBlack boldMedio">${personagem.descricao}</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    `
-                    
-                } else {
-                    container_personagem.innerHTML = `
-                        <div class="container_imagem">
-                            <img src="${personagem.imagem_personagem}" alt="">
-                        </div>
-                        <div class="container_textos">
-                            <div class="container">
-                                <h1 class="titulo fontWhite bolder">${personagem.nome}</h1>
-                                <h3 class="subtitulo fontWhite bolder">Data de nascimento:</h3>
-                                <div class="campo">
-                                    <p class="descricao fontBlack boldMedio">${personagem.nascimento}</p>
-                                </div>
-                                <h3 class="subtitulo fontWhite bolder">Modelo:</h3>
-                                <div class="campo">
-                                    <p class="descricao fontBlack boldMedio">${personagem.modelo}</p>
-                                </div>
-                                <h3 class="subtitulo fontWhite bolder">Equipe:</h3>
-                                <div class="campo">
-                                    <p class="descricao fontBlack boldMedio">${personagem.equipe}</p>
-                                </div>
-                                <h3 class="subtitulo fontWhite bolder">Primeira aparição:</h3>
-                                <div class="campo">
-                                    <p class="descricao fontBlack boldMedio">${personagem.aparicao}</p>
-                                </div>
-                                <h3 class="subtitulo fontWhite bolder">Descrição:</h3>
-                                <div class="campo">
-                                    <p class="descricao fontBlack boldMedio">${personagem.descricao}</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    `
-                    
-                }
 
-                
+                container_personagem.innerHTML = `
+                        <div class="container_imagem">
+                            <img src="${personagem.imagem_personagem}" alt="">
+                        </div>
+                        <div class="container_textos">
+                            <div class="container">
+                                <h1 class="subtitulo textoPersonagem fontBlack bolder">${personagem.nome}</h1>
+                                
+                                <h3 class="descricao textoPersonagem fontBlack bolder">Descrição:</h3>
+                                <p class="textoSmall textoPersonagem fontBlack ">${personagem.descricao}</p>
+                                
+                                <h3 class="descricao textoPersonagem fontBlack bolder">Data de nascimento:</h3>
+                                <p class="textoSmall textoPersonagem fontBlack ">${personagem.nascimento}</p>
+                                
+                                <h3 class="descricao textoPersonagem fontBlack bolder">Modelo:</h3>
+                                <p class="textoSmall textoPersonagem fontBlack ">${personagem.modelo}</p>
+                                
+                                <h3 class="descricao textoPersonagem fontBlack bolder">Equipe:</h3>
+                                <p class="textoSmall textoPersonagem fontBlack ">${personagem.equipe}</p>
+                                
+                                <h3 class="descricao textoPersonagem fontBlack bolder">Primeira aparição:</h3>
+                                <p class="textoSmall textoPersonagem fontBlack ">${personagem.aparicao}</p>
+                            </div>
+                        </div>
+                        
+                    `
+
+
             }
 
         })
-    
+
 </script>

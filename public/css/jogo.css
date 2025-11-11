@@ -18,7 +18,7 @@ body {
     width: 100%;
     display: grid;
     grid-template-columns: 5% 30% 30% 30% 5%;
-    grid-template-rows: 7.5% 10% 12.5% 15% 17.5% 20% 11.25% auto;
+    grid-template-rows: 7.5% 10% 12.5% 15% 17.5% 20% 11.25% 6.25%;
     border-radius: 3rem;
     overflow: hidden;
 }
@@ -31,6 +31,13 @@ body {
 
     justify-self: center;
 
+}
+#img_bola_feno {
+    display: none;
+    width: 80%;
+    height: 100%;
+    z-index: 101;
+    justify-self: center;
 }
 
 #img {

@@ -74,10 +74,8 @@
             <div class="arredores" id="arredor14"></div>
             <div class="arredores" id="arredor15"></div>
             <div class="arredores" id="arredor16"></div>
-
-
-            <img id="cacto" style="display: none;"  src="assets/img/cacto.jpg" alt="">
-            <img id="bola_de_feno" style="display: none;" src="assets/img/img_bola_de_feno.png" alt="">
+            <img name="1" id="cacto" src="assets/img/img_cacto.jpg" alt="">
+            <img name="2" id="img_bola_feno" src="assets/img/img_bola_de_feno.png" alt="">
             <img id="img" src="assets/img/mcqueen.png" alt="">
         </div>
     </div>
@@ -86,29 +84,29 @@
 </html>
 
 <script>
-    var obstaculos = [
-        document.getElementById('cacto'),
-        document.getElementById('bola_de_feno'),
-    ]
-
 
 
     var colunaCarro = 3
     var linhaCarro = 6
-    
+
+    var obstaculo = [
+        document.getElementById('cacto'),
+        document.getElementById('img_bola_feno')
+    ]
+
 
     document.getElementById('img').style.gridRow = linhaCarro
     document.getElementById('img').style.gridColumn = colunaCarro;
 
     var colunaObstaculo = 0
     var linhaObstaculo = 0
-
-    var obstaculoAtual = 0
     var colunaAleatoria = 0
     var contagemLinhas = 0
     var linhaAtual = 0
     var trocaDeLinha = 1
-    var intervaloChamada = 700
+    var intervaloChamada = 1025
+    var timeOutColisao = 0
+
     setTimeout(() => {
         chamarObstaculo()
         movimentoPista()
@@ -116,88 +114,109 @@
 
     // FUNÇÃO QUE CHAMA O OBSTÁCULO VERIFICANDO A LINHA 
     function chamarObstaculo() {
-        setTimeout(verificarColisao, 5)
+        timeOutColisao = setTimeout(verificarColisao, 1)
         if (linhaAtual == 0) {
-            sortearColuna()
+            if (contagemLinhas > 0) {
+                obstaculo[indiceObstaculo].style.display = 'none'
+            }
+            sortearObstaculo()
         } else {
-            mudarLinha(colunaAleatoria)
+            mudarLinha(indiceObstaculo, colunaAleatoria)
         }
-        setTimeout(verificarColisao, 5)
-        setTimeout(() => {
+        timeOutColisao = setTimeout(verificarColisao, 1)
+        timeOutChamarObstaculo = setTimeout(() => {
             chamarObstaculo()
         }, intervaloChamada);
     }
 
+    function sortearObstaculo() {
+        indiceObstaculo = Math.floor(Math.random() * 2)
+        console.log("Indice:", indiceObstaculo);
+        console.log(obstaculo[indiceObstaculo]);
+
+        sortearColuna()
+    }
     // FUNÇÃO QUE GERA UMA COLUNA ALEATÓRIA PARA O OBSTÁCULO
     function sortearColuna() {
         colunaAleatoria = Math.floor(Math.random() * 3) + 2
-        mudarLinha(colunaAleatoria)
-    }
-    
-    function sortearObstaculo() {
-        obstaculoAtual = Math.floor(Math.random() * 2)
+        colunaObstaculo = colunaAleatoria
 
+        mudarLinha(indiceObstaculo, colunaAleatoria)
     }
 
-
-
-    function mudarLinha(colunaAleatoria) {
-        setTimeout(verificarColisao, 5)
-
-        obstaculos[obstaculoAtual].style.gridColumn = colunaAleatoria
+    function mudarLinha(indiceObstaculo, colunaAleatoria) {
+        timeOutColisao = setTimeout(verificarColisao, 1)
+        obstaculo[indiceObstaculo].style.gridColumn = colunaAleatoria
 
         linhaAtual++
         linhaObstaculo = linhaAtual
+
         if (linhaAtual < 8) {
-            obstaculos[obstaculoAtual].style.gridRow = linhaAtual
+            obstaculo[indiceObstaculo].style.gridRow = linhaAtual
             contagemLinhas++
         } else {
-            obstaculos[obstaculoAtual].style.gridRow = linhaAtual
+            obstaculo[indiceObstaculo].style.gridRow = linhaAtual
             linhaAtual = 0
             contagemLinhas++
         }
+
         // CONTROLADOR DE VELOCIDADE
-        if (contagemLinhas >= 20 && contagemLinhas <= 40) {
-            intervaloChamada = 700
+
+        
+        if (contagemLinhas >= 0) {
+            intervaloChamada -= 5
             console.log(intervaloChamada);
-            
+        } else if (contagemLinhas >= 20 && contagemLinhas <= 40) {
+            intervaloChamada -= 5
+            console.log(intervaloChamada);
+
         } else if (contagemLinhas > 40 && contagemLinhas <= 60) {
-            intervaloChamada = 600
+            intervaloChamada -= 5
             console.log(intervaloChamada);
-            
+
         } else if (contagemLinhas > 60 && contagemLinhas <= 80) {
-            intervaloChamada = 500
+            intervaloChamada -= 5
             console.log(intervaloChamada);
         } else if (contagemLinhas > 80 && contagemLinhas <= 100) {
-            intervaloChamada = 400
+            intervaloChamada -= 5
             console.log(intervaloChamada);
         } else if (contagemLinhas > 100 && contagemLinhas <= 120) {
-            intervaloChamada = 300
+            intervaloChamada -= 5
             console.log(intervaloChamada);
-            
+
         } else if (contagemLinhas > 120 && contagemLinhas <= 140) {
-            intervaloChamada = 200
+            intervaloChamada -= 5
             console.log(intervaloChamada);
-        }  else if (contagemLinhas > 140 && contagemLinhas <= 160) {
-            intervaloChamada = 100
+        } else if (contagemLinhas > 140 && contagemLinhas <= 160) {
+            intervaloChamada -= 5
             console.log(intervaloChamada);
         } else if (contagemLinhas > 160 && contagemLinhas <= 200) {
-            intervaloChamada = 50
+            intervaloChamada -= 5
             console.log(intervaloChamada);
         } else if (contagemLinhas > 200) {
-            intervaloChamada = 40
+            intervaloChamada = 25
             console.log(intervaloChamada);
         }
-        cacto.style.display = 'flex'
-        setTimeout(verificarColisao, 10)
+        obstaculo[indiceObstaculo].style.display = 'flex'
+        timeOutColisao = setTimeout(verificarColisao, 1)
+
         console.log(contagemLinhas);
     }
     function verificarColisao() {
-        if (linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
+        console.log('Verificar:');
+
+        if (indiceObstaculo == 0 && linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
+            alert('Bateu')
+            clearTimeout(timeOutColisao)
+            clearTimeout(timeOutChamarObstaculo)
+            clearTimeout(timeOutMovimento)
+        } else if (indiceObstaculo == 1 && linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
+            contagemLinhas = 0
+            intervaloChamada = 1025
         }
     }
     function movimentoPista() {
-        setTimeout(verificarColisao, 5)
+        timeOutColisao = setTimeout(verificarColisao, 1)
 
         if (trocaDeLinha == 0) {
             document.getElementById('line_1').classList.remove('posicao_line2')
@@ -238,7 +257,7 @@
             document.getElementById('line_7').classList.add('posicao_line8')
             document.getElementById('line_8').classList.add('posicao_line7')
         }
-        setTimeout(() => {
+        timeOutMovimento = setTimeout(() => {
             movimentoPista()
         }, intervaloChamada);
     }
@@ -260,7 +279,7 @@
             } else {
                 console.log("Cai no else do left");
             }
-            setTimeout(verificarColisao, 1)
+            timeOutColisao = setTimeout(verificarColisao, 1)
 
 
         }
@@ -276,7 +295,7 @@
             } else {
                 console.log("Cai no else do right");
             }
-            setTimeout(verificarColisao, 1)
+            timeOutColisao = setTimeout(verificarColisao, 1)
 
 
         }

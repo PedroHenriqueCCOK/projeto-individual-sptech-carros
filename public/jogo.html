@@ -57,6 +57,9 @@
                 <div class="partesPista partesPistaMeioCFaixa" id="partePista23"></div>
                 <div class="partesPista partesPistaDireitaCFaixa" id="partePista24"></div>
             </div>
+            <div class="div_cronometro">
+                <h2 id="texto_cronometro" ></h2>
+            </div>
 
             <div class="arredores" id="arredor1"></div>
             <div class="arredores" id="arredor2"></div>
@@ -76,6 +79,7 @@
             <div class="arredores" id="arredor16"></div>
             <img name="1" id="cacto" src="assets/img/img_cacto.jpg" alt="">
             <img name="2" id="img_bola_feno" src="assets/img/img_bola_de_feno.png" alt="">
+            <img name="2" id="img_barril" src="assets/img/img_barril.png" alt="">
             <img id="img" src="assets/img/mcqueen.png" alt="">
         </div>
     </div>
@@ -91,7 +95,8 @@
 
     var obstaculo = [
         document.getElementById('cacto'),
-        document.getElementById('img_bola_feno')
+        document.getElementById('img_bola_feno'),
+        document.getElementById('img_barril')
     ]
 
 
@@ -121,18 +126,19 @@
             }
             sortearObstaculo()
         } else {
-            mudarLinha(indiceObstaculo, colunaAleatoria)
+            mudarLinhaObstaculo(indiceObstaculo, colunaAleatoria)
         }
         timeOutColisao = setTimeout(verificarColisao, 1)
-        timeOutChamarObstaculo = setTimeout(() => {
+        console.log('Intervalo no chamar obstaculo:',intervaloChamada);
+
+        timeOutGeral = setTimeout(() => {
             chamarObstaculo()
+            movimentoPista()
         }, intervaloChamada);
     }
 
     function sortearObstaculo() {
-        indiceObstaculo = Math.floor(Math.random() * 2)
-        console.log("Indice:", indiceObstaculo);
-        console.log(obstaculo[indiceObstaculo]);
+        indiceObstaculo = Math.floor(Math.random() * 3)
 
         sortearColuna()
     }
@@ -141,10 +147,10 @@
         colunaAleatoria = Math.floor(Math.random() * 3) + 2
         colunaObstaculo = colunaAleatoria
 
-        mudarLinha(indiceObstaculo, colunaAleatoria)
+        mudarLinhaObstaculo(indiceObstaculo, colunaAleatoria)
     }
 
-    function mudarLinha(indiceObstaculo, colunaAleatoria) {
+    function mudarLinhaObstaculo(indiceObstaculo, colunaAleatoria) {
         timeOutColisao = setTimeout(verificarColisao, 1)
         obstaculo[indiceObstaculo].style.gridColumn = colunaAleatoria
 
@@ -162,57 +168,54 @@
 
         // CONTROLADOR DE VELOCIDADE
 
-        
+
         if (contagemLinhas >= 0) {
             intervaloChamada -= 5
-            console.log(intervaloChamada);
         } else if (contagemLinhas >= 20 && contagemLinhas <= 40) {
             intervaloChamada -= 5
-            console.log(intervaloChamada);
-
         } else if (contagemLinhas > 40 && contagemLinhas <= 60) {
             intervaloChamada -= 5
-            console.log(intervaloChamada);
-
         } else if (contagemLinhas > 60 && contagemLinhas <= 80) {
             intervaloChamada -= 5
-            console.log(intervaloChamada);
         } else if (contagemLinhas > 80 && contagemLinhas <= 100) {
             intervaloChamada -= 5
-            console.log(intervaloChamada);
         } else if (contagemLinhas > 100 && contagemLinhas <= 120) {
             intervaloChamada -= 5
-            console.log(intervaloChamada);
-
         } else if (contagemLinhas > 120 && contagemLinhas <= 140) {
             intervaloChamada -= 5
-            console.log(intervaloChamada);
         } else if (contagemLinhas > 140 && contagemLinhas <= 160) {
             intervaloChamada -= 5
-            console.log(intervaloChamada);
         } else if (contagemLinhas > 160 && contagemLinhas <= 200) {
             intervaloChamada -= 5
-            console.log(intervaloChamada);
         } else if (contagemLinhas > 200) {
             intervaloChamada = 25
-            console.log(intervaloChamada);
         }
+        console.log('Intervalo no Mudar obstaculo:',intervaloChamada);
         obstaculo[indiceObstaculo].style.display = 'flex'
         timeOutColisao = setTimeout(verificarColisao, 1)
+        console.log(intervaloChamada);
 
-        console.log(contagemLinhas);
     }
     function verificarColisao() {
-        console.log('Verificar:');
 
         if (indiceObstaculo == 0 && linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
             alert('Bateu')
             clearTimeout(timeOutColisao)
-            clearTimeout(timeOutChamarObstaculo)
-            clearTimeout(timeOutMovimento)
+            clearTimeout(timeOutGeral)
         } else if (indiceObstaculo == 1 && linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
             contagemLinhas = 0
             intervaloChamada = 1025
+        } else if (indiceObstaculo == 2 && linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
+            if (colunaCarro == 2) {
+                colunaCarro = 3
+            } else if (colunaCarro == 3) {
+                colunaCarro = 2
+            } else if (colunaCarro == 4) {
+                colunaCarro = 3
+            }
+            console.log('Indice no verificar:', intervaloChamada);
+            document.getElementById('img').style.gridColumn = colunaCarro
+
         }
     }
     function movimentoPista() {
@@ -257,21 +260,36 @@
             document.getElementById('line_7').classList.add('posicao_line8')
             document.getElementById('line_8').classList.add('posicao_line7')
         }
-        timeOutMovimento = setTimeout(() => {
-            movimentoPista()
-        }, intervaloChamada);
+        console.log('Intervalo no movimento pista:',intervaloChamada);
+
     }
 
 
-
-
-
+    var tempo = 0
+    var segundo = 0
+    var minuto = 0
+    function mudarCronometro() {
+        tempo = document.getElementById('texto_cronometro')
+        segundo++
+        if (segundo >= 60) {
+            segundo = 0
+            minuto++
+        }
+        if (segundo <= 9) {
+            tempo.innerHTML = `0${minuto}:0${segundo}`        
+        } else{
+            tempo.innerHTML = `0${minuto}:${segundo}`
+        }
+    }
+setInterval(() => {
+    mudarCronometro()
+}, 1000);
     document.addEventListener('keydown', function (event) {
         if (event.key == 'ArrowLeft') {
             if (document.getElementById('img').style.gridColumn == 3) {
                 colunaCarro = 2
-
                 document.getElementById('img').style.gridColumn = colunaCarro
+
             } else if (document.getElementById('img').style.gridColumn == 4) {
                 colunaCarro = 3
                 document.getElementById('img').style.gridColumn = colunaCarro

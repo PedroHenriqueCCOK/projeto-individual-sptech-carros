@@ -65,6 +65,10 @@
     color: black;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
+.fontRed {
+    color: #8F0303;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
 
 .titulo {
     font-size: 3rem;
@@ -79,6 +83,11 @@
 
 .descricao {
     font-size: 1.25rem;
+    font-weight: normal;
+
+}
+.textoLarge{
+    font-size: 2rem;
     font-weight: normal;
 
 }

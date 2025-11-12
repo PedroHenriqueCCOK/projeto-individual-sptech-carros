@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Copa Pistão</title>
+    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/jogo.css">
 </head>
 
 <body>
     <div id="container">
         <div id="grid">
+            <div class="div_cronometro">
+                <h2 class="fontWhite" id="texto_cronometro"></h2>
+            </div>
             <div class="posicao_line1 lines" id="line_1">
                 <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista1"></div>
                 <div class="partesPista partesPistaMeioCFaixa" id="partePista2"></div>
@@ -57,9 +61,7 @@
                 <div class="partesPista partesPistaMeioCFaixa" id="partePista23"></div>
                 <div class="partesPista partesPistaDireitaCFaixa" id="partePista24"></div>
             </div>
-            <div class="div_cronometro">
-                <h2 id="texto_cronometro" ></h2>
-            </div>
+            
 
             <div class="arredores" id="arredor1"></div>
             <div class="arredores" id="arredor2"></div>
@@ -109,7 +111,7 @@
     var contagemLinhas = 0
     var linhaAtual = 0
     var trocaDeLinha = 1
-    var intervaloChamada = 1025
+    var intervaloChamada = 1000
     var timeOutColisao = 0
 
     setTimeout(() => {
@@ -129,7 +131,7 @@
             mudarLinhaObstaculo(indiceObstaculo, colunaAleatoria)
         }
         timeOutColisao = setTimeout(verificarColisao, 1)
-        console.log('Intervalo no chamar obstaculo:',intervaloChamada);
+        console.log('Intervalo no chamar obstaculo:', intervaloChamada);
 
         timeOutGeral = setTimeout(() => {
             chamarObstaculo()
@@ -139,24 +141,21 @@
 
     function sortearObstaculo() {
         indiceObstaculo = Math.floor(Math.random() * 3)
-
         sortearColuna()
     }
     // FUNÇÃO QUE GERA UMA COLUNA ALEATÓRIA PARA O OBSTÁCULO
     function sortearColuna() {
         colunaAleatoria = Math.floor(Math.random() * 3) + 2
         colunaObstaculo = colunaAleatoria
-
         mudarLinhaObstaculo(indiceObstaculo, colunaAleatoria)
     }
 
     function mudarLinhaObstaculo(indiceObstaculo, colunaAleatoria) {
         timeOutColisao = setTimeout(verificarColisao, 1)
+        
         obstaculo[indiceObstaculo].style.gridColumn = colunaAleatoria
-
         linhaAtual++
         linhaObstaculo = linhaAtual
-
         if (linhaAtual < 8) {
             obstaculo[indiceObstaculo].style.gridRow = linhaAtual
             contagemLinhas++
@@ -167,9 +166,7 @@
         }
 
         // CONTROLADOR DE VELOCIDADE
-
-
-        if (contagemLinhas >= 0) {
+        if (contagemLinhas >= 0 && contagemLinhas < 20) {
             intervaloChamada -= 5
         } else if (contagemLinhas >= 20 && contagemLinhas <= 40) {
             intervaloChamada -= 5
@@ -185,15 +182,15 @@
             intervaloChamada -= 5
         } else if (contagemLinhas > 140 && contagemLinhas <= 160) {
             intervaloChamada -= 5
-        } else if (contagemLinhas > 160 && contagemLinhas <= 200) {
+        } else if (contagemLinhas > 160 && contagemLinhas <= 180) {
             intervaloChamada -= 5
-        } else if (contagemLinhas > 200) {
-            intervaloChamada = 25
+        } else if (contagemLinhas > 180) {
+            intervaloChamada = 100
         }
-        console.log('Intervalo no Mudar obstaculo:',intervaloChamada);
+        console.log('Intervalo no Mudar obstaculo:', intervaloChamada);
         obstaculo[indiceObstaculo].style.display = 'flex'
         timeOutColisao = setTimeout(verificarColisao, 1)
-        console.log(intervaloChamada);
+        console.log(contagemLinhas);
 
     }
     function verificarColisao() {
@@ -215,12 +212,10 @@
             }
             console.log('Indice no verificar:', intervaloChamada);
             document.getElementById('img').style.gridColumn = colunaCarro
-
         }
     }
     function movimentoPista() {
         timeOutColisao = setTimeout(verificarColisao, 1)
-
         if (trocaDeLinha == 0) {
             document.getElementById('line_1').classList.remove('posicao_line2')
             document.getElementById('line_2').classList.remove('posicao_line1')
@@ -260,7 +255,7 @@
             document.getElementById('line_7').classList.add('posicao_line8')
             document.getElementById('line_8').classList.add('posicao_line7')
         }
-        console.log('Intervalo no movimento pista:',intervaloChamada);
+        console.log('Intervalo no movimento pista:', intervaloChamada);
 
     }
 
@@ -276,14 +271,15 @@
             minuto++
         }
         if (segundo <= 9) {
-            tempo.innerHTML = `0${minuto}:0${segundo}`        
-        } else{
+            tempo.innerHTML = `0${minuto}:0${segundo}`
+        } else {
             tempo.innerHTML = `0${minuto}:${segundo}`
         }
     }
-setInterval(() => {
-    mudarCronometro()
-}, 1000);
+    setInterval(() => {
+        mudarCronometro()
+    }, 1000);
+
     document.addEventListener('keydown', function (event) {
         if (event.key == 'ArrowLeft') {
             if (document.getElementById('img').style.gridColumn == 3) {

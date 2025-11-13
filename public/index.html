@@ -32,7 +32,7 @@
             <div class="cont_logo">
                 <img class="logo" src="https://i.postimg.cc/zDjshTg0/logo-carros.png" alt="">
             </div>
-            <div class="cont_btns_autenticar">
+            <div id="container_autenticar" class="cont_btns_autenticar">
                 <a href="cadastro.html" class="link">
                     Cadastro
                 </a>
@@ -45,8 +45,7 @@
     </header>
     <section id="banner">
         <video class="video" id="video" width="100%" height="100%" playsinline autoplay muted>
-            <source
-                src="https://res.cloudinary.com/dsxiq1hsi/video/upload/v1763001384/video_background2_qftixp.mp4"
+            <source src="https://res.cloudinary.com/dsxiq1hsi/video/upload/v1763001384/video_background2_qftixp.mp4"
                 type="video/mp4" />
             <source
                 src="https://res.cloudinary.com/dsxiq1hsi/video/upload/v1762213631/video_background_banner_qcj2q3.webm"
@@ -256,7 +255,7 @@
             <div class="cont_line">
                 <a href="https://github.com/PedroHenriqueCCOK">
                     <div class="cont_column">
-                        <img src="assets/img/logo_github.png" alt="">
+                        <img class="logos" src="assets/icon/logo_github.png" alt="">
                         <b class="texto bolder fontWhite">PedroHenriqueCCOK</b>
                     </div>
                 </a>
@@ -266,7 +265,7 @@
                 </div>
                 <a href="https://www.linkedin.com/in/pedro-henrique-de-oliveira-67652a279">
                     <div class="cont_column">
-                        <img src="assets/img/logo_linkedin.png" alt="">
+                        <img class="logos" src="assets/icon/logo_linkedin.png" alt="">
                         <b class="texto bolder fontWhite  ">Pedro Henrique de Oliveira</b>
                     </div>
                 </a>
@@ -277,6 +276,25 @@
 
 </html>
 <script>
+
+    if (sessionStorage.EMAIL_USUARIO != undefined && sessionStorage.NOME_USUARIO != undefined && sessionStorage.ID_USUARIO != undefined) {
+        container_autenticar.innerHTML = `<a href="login.html" onclick="sair()" class="link">Sair</a>`
+    }
+    function sair() {
+        sessionStorage.EMAIL_USUARIO = undefined
+        sessionStorage.NOME_USUARIO = undefined
+        sessionStorage.ID_USUARIO = undefined
+        container_autenticar.innerHTML = `
+            <a href="cadastro.html" class="link">
+                Cadastro
+            </a>
+            <hr>
+            <a href="login.html" class="link">
+                Login
+            </a>
+        `
+    }
+
     var container_cards = [
         document.getElementById('cards_principais'),
         document.getElementById('cards_amigos'),

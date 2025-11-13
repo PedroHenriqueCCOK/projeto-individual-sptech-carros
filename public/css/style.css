@@ -461,6 +461,11 @@ body {
     justify-content: center;
     align-items: center;
 }
+#rodape .container .cont_line .cont_column .logos{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100% ;
+}
 #rodape .container .cont_line .foto_pedro{
     width: 10rem;
     height: 10rem;

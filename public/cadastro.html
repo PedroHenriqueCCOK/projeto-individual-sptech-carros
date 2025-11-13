@@ -11,10 +11,8 @@
 
 <body>
     <div class="container">
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
-            </div>
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
         </div>
         <div class="cont_conteudo">
             <div class="cont_cadastro">
@@ -26,16 +24,28 @@
                 </div>
                 <div class="cont_inputs">
                     <label class="fontRed boldMedio descricao" for="input_nome">Nome</label>
-                    <input type="text" name="" id="input_nome" placeholder="Digite seu nome:">
+                    <input class="campo_cadastro" type="text" name="" id="input_nome" placeholder="Digite seu nome:">
                     <label class="fontRed boldMedio descricao" for="input_email">Email</label>
-                    <input type="text" name="" id="input_email" placeholder="Digite seu email:">
-                    <label class="fontRed boldMedio descricao" for="input_personagem">Personagem favorito:</label>
+                    <input class="campo_cadastro" type="text" name="" id="input_email" placeholder="Digite seu email:">
+                    <label class="fontRed boldMedio descricao" for="select_personagem">Personagem favorito:</label>
 
-                    <input type="text" name="" id="input_personagem" placeholder="Digite seu personagem:">
+                    <select class="campo_cadastro" name="" id="select_personagem">
+                        <option value="#" disabled selected>Selecione um personagem</option>
+                        <option>Relâmpago McQueen</option>
+                        <option>Tom Matter</option>
+                        <option>Doc Hudson</option>
+                        <option>Sally Rodriguez</option>
+                        <option>Francesco Virgolini</option>
+                        <option>Cruz Ramirez</option>
+                        <option>Ramon</option>
+                        <option>Jackson Storm</option>
+                    </select>
                     <label class="fontRed boldMedio descricao" for="input_senha">Senha</label>
-                    <input type="password" name="" id="input_senha" placeholder="Digite sua senha:">
+                    <input class="campo_cadastro" type="password" name="" id="input_senha"
+                        placeholder="Digite sua senha:">
                     <label class="fontRed boldMedio descricao" for="input_confirma_senha">Confirme senha:</label>
-                    <input type="password" name="" id="input_confirma_senha" placeholder="Confirme sua senha:">
+                    <input class="campo_cadastro" type="password" name="" id="input_confirma_senha"
+                        placeholder="Confirme sua senha:">
                 </div>
                 <button onclick="cadastrar()" class="btn_cadastro btn_padrao descricao fontWhite boldMedio">Criar
                     conta</button>
@@ -45,7 +55,8 @@
                 <p class="subtitulo fontWhite">Crie uma conta exclusiva para você!</p>
                 <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818903/img_mate_personagem_l3uktb.png"
                     alt="">
-                <button class="btn_login btn_padrao descricao fontWhite boldMedio">Entre em sua conta</button>
+                <button onclick="irLogin()" class="btn_login btn_padrao descricao fontWhite boldMedio">Entre em sua conta</button>
+
             </div>
         </div>
     </div>
@@ -55,7 +66,9 @@
 <script>
 
     // Array para armazenar empresas cadastradas para validação de código de ativação 
-
+    function irLogin() {
+        window.location = 'login.html'
+    }
     function cadastrar() {
         // aguardar();
         var erro = 0
@@ -69,7 +82,7 @@
         var emailVar = input_email.value
         var senhaVar = input_senha.value
         var confirmacaoSenhaVar = input_confirma_senha.value
-        var personagemVar = input_personagem.value
+        var personagemVar = select_personagem.value
         for (var i = 0; i < 10; i++) {
             var caractereAtual = nomeVar[i];
             if (listaNumeros.includes(caractereAtual)) {
@@ -77,33 +90,22 @@
             }
             erro = erroNome
         }
+
+        var emailTemCaracteres = emailVar.includes('@') && emailVar.includes('.com')
+
         // Verificando se há algum campo em branco
         if (
             nomeVar == "" ||
             emailVar == "" ||
             senhaVar == "" ||
             confirmacaoSenhaVar == "" ||
-            personagemVar == ""
+            personagemVar == "#"
         ) {
             cardErro.style.display = "block";
-            mensagem_erro.innerHTML =
-                "Campos em branco! Preeencha todos para prosseguir ";
-            finalizarAguardar();
-            return false;
-        } if (nomeVar.length <= 1 || erroNome > 0) {
-            cardErro.style.display = "block";
-            mensagem_erro.innerHTML =
-                "Nome inválido, insira valores em texto e com mais de 1 caractere";
-            console.log('Cai aqui');
-
-            finalizarAguardar();
-            return false;
-        } else {
-            setInterval(sumirMensagem, 5000);
-        }
-
+            erro++
+            mensagem_erro.innerHTML = "Campos em branco! Preeencha todos para prosseguir ";
+        } 
         if (erro == 0) {
-
             // Enviando o valor da nova input
             fetch("/usuarios/cadastrar", {
                 method: "POST",
@@ -122,30 +124,27 @@
             })
                 .then(function (resposta) {
                     console.log("resposta: ", resposta);
-
                     if (resposta.ok) {
                         cardErro.style.display = "block";
-
                         mensagem_erro.innerHTML =
                             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
                         setTimeout(() => {
                             window.location = "login.html";
                         }, "2000");
 
                         limparFormulario();
-                        finalizarAguardar();
                     } else {
                         throw "Houve um erro ao tentar realizar o cadastro!";
                     }
                 })
                 .catch(function (resposta) {
                     console.log(`#ERRO: ${resposta}`);
-                    finalizarAguardar();
                 });
 
             return false;
         }
+        setInterval(sumirMensagem, 5000)
+
     }
     function sumirMensagem() {
         cardErro.style.display = "none";

@@ -11,6 +11,9 @@
 
 <body>
     <div class="container">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
         <div class="cont_conteudo">
             <div class="cont_cadastro">
                 <div class="cont_voltar_titulo">
@@ -22,8 +25,10 @@
                 <p class="subtitulo fontWhite">Crie uma conta exclusiva para você!</p>
                 <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818905/img_mcqueen_personagem_y0mhfk.png"
                     alt="">
-                <button class="btn_cadastro btn_padrao descricao fontWhite boldMedio">Criar conta</button>
+                <button onclick="irCadastro()" class="btn_cadastro btn_padrao descricao fontWhite boldMedio">Criar
+                    conta</button>
             </div>
+
             <div class="cont_login">
                 <p class="titulo_login fontRed titulo fontBlack boldMedio">Login</p>
                 <div class="cont_inputs">
@@ -32,7 +37,8 @@
                     <label class="fontRed boldMedio subtitulo" for="">Senha</label>
                     <input type="password" name="" id="input_senha" placeholder="Digite sua senha:">
                 </div>
-                <button class="btn_login btn_padrao descricao fontWhite boldMedio">Entre em sua conta</button>
+                <button onclick="entrar()" class="btn_login btn_padrao descricao fontWhite boldMedio">Entre em sua
+                    conta</button>
             </div>
         </div>
     </div>
@@ -41,21 +47,20 @@
 </html>
 
 <script>
+    function irCadastro() {
+        window.location = 'cadastro.html'
+    }
     function entrar() {
-        aguardar();
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -71,6 +76,7 @@
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
+            console.log(resposta);
 
             if (resposta.ok) {
                 console.log(resposta);
@@ -81,18 +87,17 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
 
             } else {
+                cardErro.style.display = 'flex'
+                mensagem_erro.innerHTML = "Usuário não existente";
 
                 console.log("Houve um erro ao tentar realizar o login!");
-
                 resposta.text().then(texto => {
                     console.error(texto);
                     finalizarAguardar(texto);
@@ -102,6 +107,7 @@
         }).catch(function (erro) {
             console.log(erro);
         })
+        setInterval(sumirMensagem, 5000)
 
         return false;
     }

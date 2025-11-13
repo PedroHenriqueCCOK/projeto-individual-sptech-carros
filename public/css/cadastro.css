@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: 'Montserrat';
 }
 
 body {
@@ -21,19 +22,12 @@ body .container {
     height: 100%;
 }
 
-.alerta_erro {
-    display: flex;
-    justify-content: center;
-    width: 20%;
-}
-
 .card_erro {
     display: none;
     justify-content: center;
     align-items: center;
     background-color: #fff;
     color: black;
-    margin-top: 5%;
     margin-left: 70%;
     width: 15rem;
     position: absolute;
@@ -153,7 +147,7 @@ body .container .cont_conteudo .cont_cadastro .cont_inputs label {
     width: 80%;
 }
 
-body .container .cont_conteudo .cont_cadastro .cont_inputs input {
+body .container .cont_conteudo .cont_cadastro .cont_inputs .campo_cadastro {
     padding: 0.5rem;
     width: 80%;
     height: 100%;

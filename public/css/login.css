@@ -20,6 +20,25 @@ body .container {
     height: 100%;
 }
 
+.card_erro {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: black;
+    margin-left: 70%;
+    width: 15rem;
+    position: absolute;
+    border-radius: 0.5rem;
+    border: #ffb300 0.25rem solid;
+    padding: 10px;
+    margin-right: 10%;
+}
+
+.card_erro #mensagem_erro {
+    font-weight: 500;
+    font-size: 20px;
+}
 body .container .cont_conteudo {
     display: flex;
     justify-content: center;

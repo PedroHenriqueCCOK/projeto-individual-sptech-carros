@@ -70,6 +70,11 @@
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
 
+.fontYellow {
+    color: #8F0303;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
 .titulo {
     font-size: 3rem;
     font-weight: bold;

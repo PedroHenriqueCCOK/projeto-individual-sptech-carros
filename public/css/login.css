@@ -108,7 +108,7 @@ body .container .cont_conteudo .cont_cadastro img {
 
 body .container .cont_conteudo .cont_cadastro .btn_cadastro {
     background-color: #ffb300;
-    border: 0.25rem solid #ffffff;
+    border: none;
 }
 
 body .container .cont_conteudo .cont_login {

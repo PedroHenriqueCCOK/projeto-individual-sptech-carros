@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/global.css">
 </head>
 
-<body>
+<body onload="validarCadastro()">
     <header class="header_landing_page">
         <div class="container">
             <div class="cont_links">
@@ -33,13 +33,7 @@
                 <img class="logo" src="https://i.postimg.cc/zDjshTg0/logo-carros.png" alt="">
             </div>
             <div id="container_autenticar" class="cont_btns_autenticar">
-                <a href="cadastro.html" class="link">
-                    Cadastro
-                </a>
-                <hr>
-                <a href="login.html" class="link">
-                    Login
-                </a>
+
             </div>
         </div>
     </header>
@@ -279,23 +273,29 @@
 </html>
 <script>
 
-    if (sessionStorage.EMAIL_USUARIO != undefined && sessionStorage.NOME_USUARIO != undefined && sessionStorage.ID_USUARIO != undefined) {
-        container_autenticar.innerHTML = `<a onclick="sair()" class="link">Sair</a>`
-    } else {
-        container_autenticar.innerHTML = `
-            <a href="cadastro.html" class="link">
-                Cadastro
-            </a>
-            <hr>
-            <a href="login.html" class="link">
-                Login
-            </a>
-        `
+    function validarCadastro() {
+        console.log(sessionStorage.EMAIL_USUARIO);
+        console.log(sessionStorage.NOME_USUARIO);
+        console.log(sessionStorage.ID_USUARIO);
+
+        if (sessionStorage.EMAIL_USUARIO != undefined && sessionStorage.NOME_USUARIO != undefined && sessionStorage.ID_USUARIO != undefined) {
+            container_autenticar.innerHTML = `<a onclick="sair()" class="link">Sair</a>`
+        }
+        if (sessionStorage.EMAIL_USUARIO == undefined && sessionStorage.NOME_USUARIO == undefined && sessionStorage.ID_USUARIO == undefined) {
+            container_autenticar.innerHTML = `
+                <a href="cadastro.html" class="link">
+                    Cadastro
+                </a>
+                <hr>
+                <a href="login.html" class="link">
+                    Login
+                </a>
+            `
+        }
+
     }
     function sair() {
-        sessionStorage.EMAIL_USUARIO = undefined;
-        sessionStorage.NOME_USUARIO = undefined;
-        sessionStorage.ID_USUARIO = undefined;
+        sessionStorage.clear();
         mudarBtns()
     }
     function mudarBtns() {

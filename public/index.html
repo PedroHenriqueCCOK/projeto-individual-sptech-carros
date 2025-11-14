@@ -44,7 +44,7 @@
         </div>
     </header>
     <section id="banner">
-        <video class="video" id="video" width="100%" height="100%" playsinline autoplay muted>
+        <video class="video" id="video" width="100%" height="100%" playsinline loop autoplay muted>
             <source src="https://res.cloudinary.com/dsxiq1hsi/video/upload/v1763001384/video_background2_qftixp.mp4"
                 type="video/mp4" />
             <source
@@ -186,7 +186,9 @@
                             value="1">
                             <img class="img_seta" src="assets/icon/icons_setaEsquerda.png" alt="">
                         </button>
-                        <div id="cards_amigos" class="cont_cards"></div>
+                        <div id="cards_amigos" class="cont_cards">
+
+                        </div>
                         <button class="btn_setas" onclick="arrastarPersonagens('direita', 1)" id="btn_setas_direita_2"
                             value="1">
                             <img class="img_seta" src="assets/icon/icons_setaDireita.png" alt="">
@@ -278,12 +280,8 @@
 <script>
 
     if (sessionStorage.EMAIL_USUARIO != undefined && sessionStorage.NOME_USUARIO != undefined && sessionStorage.ID_USUARIO != undefined) {
-        container_autenticar.innerHTML = `<a href="login.html" onclick="sair()" class="link">Sair</a>`
-    }
-    function sair() {
-        sessionStorage.EMAIL_USUARIO = undefined
-        sessionStorage.NOME_USUARIO = undefined
-        sessionStorage.ID_USUARIO = undefined
+        container_autenticar.innerHTML = `<a onclick="sair()" class="link">Sair</a>`
+    } else {
         container_autenticar.innerHTML = `
             <a href="cadastro.html" class="link">
                 Cadastro
@@ -293,6 +291,24 @@
                 Login
             </a>
         `
+    }
+    function sair() {
+        sessionStorage.EMAIL_USUARIO = undefined;
+        sessionStorage.NOME_USUARIO = undefined;
+        sessionStorage.ID_USUARIO = undefined;
+        mudarBtns()
+    }
+    function mudarBtns() {
+        container_autenticar.innerHTML = `
+            <a href="cadastro.html" class="link">
+                Cadastro
+            </a>
+            <hr>
+            <a href="login.html" class="link">
+                Login
+            </a>
+        `
+
     }
 
     var container_cards = [

@@ -96,7 +96,6 @@
             } else {
                 cardErro.style.display = 'flex'
                 mensagem_erro.innerHTML = "Usuário não existente";
-
                 console.log("Houve um erro ao tentar realizar o login!");
                 resposta.text().then(texto => {
                     console.error(texto);

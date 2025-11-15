@@ -11,10 +11,12 @@
 
 <body>
     <div id="container">
+        <h1 class="fontPixel">Copa Pistão</h1>
+        <div class="div_cronometro_pontuacao">
+            <p class="fontPixel" id="texto_cronometro"></p>
+            <p class="fontPixel" id="texto_pontuacao"></p>
+        </div>
         <div id="grid">
-            <div class="div_cronometro">
-                <h2 class="fontWhite" id="texto_cronometro"></h2>
-            </div>
             <div class="posicao_line1 lines" id="line_1">
                 <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista1"></div>
                 <div class="partesPista partesPistaMeioCFaixa" id="partePista2"></div>
@@ -61,7 +63,7 @@
                 <div class="partesPista partesPistaMeioCFaixa" id="partePista23"></div>
                 <div class="partesPista partesPistaDireitaCFaixa" id="partePista24"></div>
             </div>
-            
+
 
             <div class="arredores" id="arredor1"></div>
             <div class="arredores" id="arredor2"></div>
@@ -82,7 +84,7 @@
             <img name="1" id="cacto" src="assets/img/img_cacto.jpg" alt="">
             <img name="2" id="img_bola_feno" src="assets/img/img_bola_de_feno.png" alt="">
             <img name="2" id="img_barril" src="assets/img/img_barril.png" alt="">
-            <img id="img" src="assets/img/mcqueen.png" alt="">
+            <div id="cont_carro"></div>
         </div>
     </div>
 </body>
@@ -90,6 +92,29 @@
 </html>
 
 <script>
+    var urlParametros = window.location
+    var idParametro = urlParametros.search.replace('?id=', '')
+    var container_personagem = document.getElementById('container_personagem')
+    var competidor = {}
+    console.log(urlParametros);
+    console.log(`ID do competidor: ${idParametro}`);
+    fetch('json/competidores.json')
+        .then(response => response.json())
+        .then(competidores => {
+            for (var i = 0; i < competidores.length; i++) {
+                var competidorAtual = competidores[i];
+                if (competidorAtual.id == idParametro) {
+                    competidor = competidorAtual
+                    console.log(competidorAtual);
+                }
+            }
+            if (competidor != undefined) {
+                cont_carro.innerHTML = `
+                    <img src="${competidor.imagem}" alt="">
+                `
+            }
+        })
+
 
 
     var colunaCarro = 3
@@ -102,8 +127,8 @@
     ]
 
 
-    document.getElementById('img').style.gridRow = linhaCarro
-    document.getElementById('img').style.gridColumn = colunaCarro;
+    document.getElementById('cont_carro').style.gridRow = linhaCarro
+    document.getElementById('cont_carro').style.gridColumn = colunaCarro;
 
     var colunaObstaculo = 0
     var linhaObstaculo = 0
@@ -111,7 +136,8 @@
     var contagemLinhas = 0
     var linhaAtual = 0
     var trocaDeLinha = 1
-    var intervaloChamada = 1000
+    var pontuacao = 0
+    var intervaloChamada = 1090
     var timeOutColisao = 0
 
     setTimeout(() => {
@@ -138,9 +164,11 @@
             movimentoPista()
         }, intervaloChamada);
     }
+    function chamarChegada() {
+    }
 
     function sortearObstaculo() {
-        indiceObstaculo = Math.floor(Math.random() * 3)
+        indiceObstaculo = 0
         sortearColuna()
     }
     // FUNÇÃO QUE GERA UMA COLUNA ALEATÓRIA PARA O OBSTÁCULO
@@ -152,10 +180,13 @@
 
     function mudarLinhaObstaculo(indiceObstaculo, colunaAleatoria) {
         timeOutColisao = setTimeout(verificarColisao, 1)
-        
         obstaculo[indiceObstaculo].style.gridColumn = colunaAleatoria
         linhaAtual++
         linhaObstaculo = linhaAtual
+
+        pontuacao += 5
+        texto_pontuacao.innerHTML = `Pontuação: ${pontuacao}`
+
         if (linhaAtual < 8) {
             obstaculo[indiceObstaculo].style.gridRow = linhaAtual
             contagemLinhas++
@@ -166,26 +197,12 @@
         }
 
         // CONTROLADOR DE VELOCIDADE
-        if (contagemLinhas >= 0 && contagemLinhas < 20) {
-            intervaloChamada -= 5
-        } else if (contagemLinhas >= 20 && contagemLinhas <= 40) {
-            intervaloChamada -= 5
-        } else if (contagemLinhas > 40 && contagemLinhas <= 60) {
-            intervaloChamada -= 5
-        } else if (contagemLinhas > 60 && contagemLinhas <= 80) {
-            intervaloChamada -= 5
-        } else if (contagemLinhas > 80 && contagemLinhas <= 100) {
-            intervaloChamada -= 5
-        } else if (contagemLinhas > 100 && contagemLinhas <= 120) {
-            intervaloChamada -= 5
-        } else if (contagemLinhas > 120 && contagemLinhas <= 140) {
-            intervaloChamada -= 5
-        } else if (contagemLinhas > 140 && contagemLinhas <= 160) {
-            intervaloChamada -= 5
-        } else if (contagemLinhas > 160 && contagemLinhas <= 180) {
-            intervaloChamada -= 5
-        } else if (contagemLinhas > 180) {
-            intervaloChamada = 100
+        if (contagemLinhas >= 0 && contagemLinhas <= 100) {
+            intervaloChamada -= 10
+        } else if (contagemLinhas > 100 && contagemLinhas < 500) {
+            intervaloChamada = 90
+        } else {
+            intervaloChamada -= 0.5
         }
         console.log('Intervalo no Mudar obstaculo:', intervaloChamada);
         obstaculo[indiceObstaculo].style.display = 'flex'
@@ -193,25 +210,42 @@
         console.log(contagemLinhas);
 
     }
+    var redirecionadorBarril = 0
+    var colisaoCacto = 0
+    var colisaoFeno = 0
+    var colisaoBarril = 0
     function verificarColisao() {
-
         if (indiceObstaculo == 0 && linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
-            alert('Bateu')
+            colisaoCacto++
             clearTimeout(timeOutColisao)
             clearTimeout(timeOutGeral)
+            clearInterval(intervalCronometro)
+            setTimeout(irDashboard(), 1000)
+            alert('Bateu')
         } else if (indiceObstaculo == 1 && linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
+            colisaoFeno++
             contagemLinhas = 0
-            intervaloChamada = 1025
+            intervaloChamada = 1090
+            pontuacao -= 10
         } else if (indiceObstaculo == 2 && linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
+            colisaoBarril++
+            pontuacao -= 5
             if (colunaCarro == 2) {
                 colunaCarro = 3
             } else if (colunaCarro == 3) {
-                colunaCarro = 2
+                if (redirecionadorBarril == 0) {
+                    redirecionadorBarril = 1
+                    colunaCarro = 2
+                } else {
+                    redirecionadorBarril = 0
+                    colunaCarro = 4
+
+                }
             } else if (colunaCarro == 4) {
                 colunaCarro = 3
             }
             console.log('Indice no verificar:', intervaloChamada);
-            document.getElementById('img').style.gridColumn = colunaCarro
+            document.getElementById('cont_carro').style.gridColumn = colunaCarro
         }
     }
     function movimentoPista() {
@@ -259,59 +293,109 @@
 
     }
 
-
     var tempo = 0
     var segundo = 0
     var minuto = 0
     function mudarCronometro() {
-        tempo = document.getElementById('texto_cronometro')
+        var elemento_cronometro = document.getElementById('texto_cronometro')
+
         segundo++
         if (segundo >= 60) {
             segundo = 0
             minuto++
         }
         if (segundo <= 9) {
-            tempo.innerHTML = `0${minuto}:0${segundo}`
+            tempo = `0${minuto}:0${segundo}`
+            elemento_cronometro.innerHTML = tempo
+        } else if (minuto <= 9) {
+            tempo = `0${minuto}:${segundo}`
+            elemento_cronometro.innerHTML = tempo
         } else {
-            tempo.innerHTML = `0${minuto}:${segundo}`
+            tempo = `${minuto}:${segundo}`
+            elemento_cronometro.innerHTML = tempo
         }
     }
-    setInterval(() => {
+    var intervalCronometro = setInterval(() => {
         mudarCronometro()
     }, 1000);
 
     document.addEventListener('keydown', function (event) {
         if (event.key == 'ArrowLeft') {
-            if (document.getElementById('img').style.gridColumn == 3) {
+            if (document.getElementById('cont_carro').style.gridColumn == 3) {
                 colunaCarro = 2
-                document.getElementById('img').style.gridColumn = colunaCarro
+                document.getElementById('cont_carro').style.gridColumn = colunaCarro
 
-            } else if (document.getElementById('img').style.gridColumn == 4) {
+            } else if (document.getElementById('cont_carro').style.gridColumn == 4) {
                 colunaCarro = 3
-                document.getElementById('img').style.gridColumn = colunaCarro
+                document.getElementById('cont_carro').style.gridColumn = colunaCarro
 
             } else {
                 console.log("Cai no else do left");
             }
             timeOutColisao = setTimeout(verificarColisao, 1)
-
-
         }
         if (event.key == 'ArrowRight') {
-            if (document.getElementById('img').style.gridColumn == 3) {
+            if (document.getElementById('cont_carro').style.gridColumn == 3) {
                 colunaCarro = 4
-                document.getElementById('img').style.gridColumn = colunaCarro
+                document.getElementById('cont_carro').style.gridColumn = colunaCarro
 
-            } else if (document.getElementById('img').style.gridColumn == 2) {
+            } else if (document.getElementById('cont_carro').style.gridColumn == 2) {
                 colunaCarro = 3
-                document.getElementById('img').style.gridColumn = colunaCarro
+                document.getElementById('cont_carro').style.gridColumn = colunaCarro
 
             } else {
                 console.log("Cai no else do right");
             }
             timeOutColisao = setTimeout(verificarColisao, 1)
-
-
         }
     })
+
+    function irDashboard() {
+        var usuarioVar = sessionStorage.ID_USUARIO
+        console.log("Teste session: ", usuarioVar);
+        
+        var corredorVar = competidor.id
+        var tempoVar = tempo
+        var pontuacaoVar = pontuacao
+        var colisaoCactoVar = colisaoCacto
+        var colisaoFenoVar = colisaoFeno
+        var colisaoBarrilVar = colisaoBarril
+        var pistaVar = 0
+
+
+        fetch("/jogo/registrar_dados", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                usuarioServer: usuarioVar,
+                corredorServer: corredorVar,
+                tempoServer: tempoVar,
+                pontuacaoServer: pontuacaoVar,
+                colisaoCactoServer: colisaoCactoVar,
+                colisaoFenoServer: colisaoFenoVar,
+                colisaoBarrilServer: colisaoBarrilVar
+            }),
+
+        })
+            .then(function (resposta) {
+                console.log("ESTOU NO THEN DO irDash()!")
+                console.log(resposta);
+                if (resposta.ok) {
+                    setTimeout(() => {
+                        window.location = `dashboard.html?id=${sessionStorage.ID_USUARIO}`;
+                    }, "2000");
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(resposta);
+                
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
+    }
 </script>

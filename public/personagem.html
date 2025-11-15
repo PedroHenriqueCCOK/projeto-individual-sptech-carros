@@ -51,7 +51,15 @@
     var container_personagem = document.getElementById('container_personagem')
     console.log(urlParametros);
     console.log(`ID do personagem: ${idParametro}`);
-    fetch('json/personagens.json')
+    fetch('/personagens/buscar', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idServer: idParametro,
+        })
+    })
         .then(response => response.json())
         .then(personagens => {
             var personagem = []
@@ -64,6 +72,8 @@
             }
 
             if (personagem != undefined) {
+                var nascimento = new Date(personagem.nascimento)
+                var dataNascimento = nascimento.toLocaleDateString('pt-BR');
                 container_personagem.innerHTML = `
                         <div class="container_imagem">
                             <img src="${personagem.imagem_personagem}" alt="">
@@ -76,7 +86,7 @@
                                 <p class="textoSmall textoPersonagem fontBlack ">${personagem.descricao}</p>
                                 
                                 <h3 class="descricao textoPersonagem fontBlack bolder">Data de nascimento:</h3>
-                                <p class="textoSmall textoPersonagem fontBlack ">${personagem.nascimento}</p>
+                                <p class="textoSmall textoPersonagem fontBlack ">${dataNascimento}</p>
                                 
                                 <h3 class="descricao textoPersonagem fontBlack bolder">Modelo:</h3>
                                 <p class="textoSmall textoPersonagem fontBlack ">${personagem.modelo}</p>

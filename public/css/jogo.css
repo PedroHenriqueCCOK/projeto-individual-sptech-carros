@@ -6,45 +6,27 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: black;
 }
 
 #container {
-    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
     height: 90%;
-}
-#line_1{
-
-}
-#line_2{
-
-}
-#line_3{
-
-}
-#line_4{
-
-}
-#line_5{
-
-}
-#line_6{
-
-}
-#line_7{
-
-}
-#line_8{
-
 }
 
 #grid {
-    height: 100%;
-    width: 100%;
+    height: 85%;
+    width: 65%;
     display: grid;
     grid-template-columns: 5% 30% 30% 30% 5%;
     grid-template-rows: 7.5% 10% 12.5% 15% 17.5% 20% 11.25% 6.25%;
     border-radius: 3rem;
     overflow: hidden;
+    border: 3px solid #ffffff;
 }
 
 #cacto {
@@ -59,7 +41,7 @@ body {
 }
 #img_bola_feno {
     display: none;
-    width: 80%;
+    width: 60%;
     height: 100%;
     z-index: 101;
     justify-self: center;
@@ -73,12 +55,28 @@ body {
 
     justify-self: center;
 }
-#img {
+#cont_carro {
     z-index: 999;
     width: 100%;
     max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.div_cronometro{
+#cont_carro img{
+    width: 80%;
+    height: 80%;
+}
+.div_cronometro_pontuacao{
+    width: 60%;
+    height: 10%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: end;
+    z-index: 999;
+    color: white;
+}
+.div_pontuacao{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,7 +84,7 @@ body {
     grid-area: 1/4;
     color: white;
 }
-.div_cronometro:hover{
+.div_pontuacao:hover{
     font-size: large;
 }
 .partesPista {

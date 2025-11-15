@@ -25,7 +25,7 @@
                 <a href="#personagens" class="link">
                     Personagens
                 </a>
-                <a href="jogo.html" class="link">
+                <a href="escolhaCorredor.html" class="link fontPixel">
                     Copa Pistão
                 </a>
             </div>
@@ -335,7 +335,7 @@
 
 
 
-    fetch('json/personagens.json')
+    fetch(`/personagens/listar_personagens`)
         .then(response => response.json())
         .then(personagens => {
             for (var i = 0; i < personagens.length; i++) {
@@ -350,7 +350,7 @@
                                     ${personagemAtual.descricao}
                                 </p>
                                 <a href="personagem.html?id=${personagemAtual.id}">
-                                    <div class="cont_btn" href="perso href="personagem.html?id=${personagemAtual.id}">
+                                    <div class="cont_btn" href="personagem.html?id=${personagemAtual.id}">
                                         <button class="btn_saiba_mais">Saiba mais</button>
                                     </div>
                                 </a>
@@ -399,7 +399,11 @@
             }
 
 
-        })
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao buscar os personagens: ", erro.sqlMessage); // <-- CORRIGIDO
+            res.status(500).json(erro.sqlMessage);
+        });
     var competidorAtual = 0
     var listaCompetidores = [
         document.getElementById('relampagoMcqueen'),// 0

@@ -11,8 +11,6 @@
         "aparicao": "Carros 1",
         "nascimento": "10/05/1981"
     },
-
-
     {
         "id": 2,
         "nome": "Tom Matter",
@@ -87,7 +85,7 @@
         "nascimento": "15/03/1959"
     },
     {
-        "id": 21,
+        "id": 8,
         "nome": "Guido",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818896/img_guido_index_tutaka.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818896/img_guido_personagem_abhcbe.png",
@@ -101,7 +99,7 @@
 
 
     {
-        "id": 8,
+        "id": 9,
         "nome": "Ramone",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818906/img_ramone_index_h1lqkf.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818909/img_ramone_personagem_dblzhb.png",
@@ -113,7 +111,7 @@
         "nascimento": "10/06/1959"
     },
     {
-        "id": 20,
+        "id": 10,
         "nome": "Flo",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818882/img-flo_index_szrbau.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818894/img_flo_personagem_f6etmn.png",
@@ -125,7 +123,7 @@
         "nascimento": "14/04/1957"
     },
     {
-        "id": 9,
+        "id": 11,
         "nome": "Strip Weathers (The King)",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818914/img_strip_index_wqxt4y.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818916/img_strip_personagem_k7wz4z.png",
@@ -137,7 +135,7 @@
         "nascimento": "28/02/1970"
     },
     {
-        "id": 10,
+        "id": 12,
         "nome": "Fillmore",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818892/img_fillmore_index_mcdaj9.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818892/img_fillmore_personagem_ckfv1h.png",
@@ -149,7 +147,7 @@
         "nascimento": "04/07/1960"
     },
     {
-        "id": 11,
+        "id": 13,
         "nome": "Finn McMissile",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818892/img_finn_index_vwllfr.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818893/img_finn_personagem_thozsc.png",
@@ -161,7 +159,7 @@
         "nascimento": "15/09/1965"
     },
     {
-        "id": 12,
+        "id": 14,
         "nome": "Holley Caixadibrita",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818897/img_holley_index_qyqbs4.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818897/img_holley_personagem_cbumhh.png",
@@ -173,7 +171,7 @@
         "nascimento": "10/08/2005"
     },
     {
-        "id": 13,
+        "id": 15,
         "nome": "Cruz Ramirez",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818889/img_cruz_index_rtmf20.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818890/img_cruz_personagem_d9fibo.png",
@@ -185,7 +183,7 @@
         "nascimento": "03/04/1996"
     },
     {
-        "id": 14,
+        "id": 16,
         "nome": "Smokey",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818913/img_smokey_index_knrell.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818913/img_smokey_personagem_qndnnb.png",
@@ -197,7 +195,7 @@
         "nascimento": "02/11/1946"
     },
     {
-        "id": 15,
+        "id": 17,
         "nome": "Chick Hicks",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818889/img_chick_index_qmppwo.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818889/img_chick_personagem_c3c1hm.png",
@@ -209,7 +207,7 @@
         "nascimento": "22/01/1987"
     },
     {
-        "id": 16,
+        "id": 18,
         "nome": "Sir Miles Eixoderroda",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818905/img_miles_index_lfwnns.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818906/img_miles_personagem_t9bknr.png",
@@ -221,7 +219,7 @@
         "nascimento": "17/12/1990"
     },
     {
-        "id": 17,
+        "id": 19,
         "nome": "Professor Zündapp",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818881/img_zundapp_index_fajubq.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818881/img_zundapp_personagem_arzcwt.png",
@@ -233,7 +231,7 @@
         "nascimento": "09/03/1957"
     },
     {
-        "id": 18,
+        "id": 20,
         "nome": "Francesco Bernoulli",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818894/img_francesco_index_eusz9z.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818895/img_francesco_personagem_scvngq.png",
@@ -245,7 +243,7 @@
         "nascimento": "05/05/1997"
     },
     {
-        "id": 19,
+        "id": 21,
         "nome": "Jackson Storm",
         "imagem_index": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818898/img_jackson_index_j7kiv0.png",
         "imagem_personagem": "https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818899/img_jackson_personagem_icw2dw.png",

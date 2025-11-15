@@ -20,7 +20,7 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
                         res.json({
-                            id: resultadoAutenticar[0].id,
+                            id: resultadoAutenticar[0].idUsuario,
                             nome: resultadoAutenticar[0].nome,
                             email: resultadoAutenticar[0].email,
                             personagemFav: resultadoAutenticar[0].personagemFav,
@@ -61,7 +61,6 @@ function cadastrar(req, res) {
     } else if (personagemFavorito == undefined) {
         res.status(400).send("Seu personagem favorito está undefined!");
     } else {
-
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrar(nome, email, senha, personagemFavorito)
             .then(

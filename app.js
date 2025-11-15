@@ -15,9 +15,11 @@ var HOST_APP = process.env.APP_HOST;
 
 var app = express();
 
+
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-var avisosRouter = require("./src/routes/avisos");
+var personagemRouter = require("./src/routes/personagens");
+var jogoRouter = require("./src/routes/jogo");
 var medidasRouter = require("./src/routes/medidas");
 var aquariosRouter = require("./src/routes/aquarios");
 var empresasRouter = require("./src/routes/empresas");
@@ -30,7 +32,8 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
-app.use("/avisos", avisosRouter);
+app.use("/personagens", personagemRouter);
+app.use("/jogo", jogoRouter);
 app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);
 app.use("/empresas", empresasRouter);

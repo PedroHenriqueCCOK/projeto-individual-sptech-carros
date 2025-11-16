@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="css/global.css">
 </head>
 
-<body>
-    <header class="header_landing_page">
+<body onload="validarCadastro()">
+   <header class="header_landing_page">
         <div class="container">
             <div class="cont_links">
                 <a href="index.html#banner" class="link ativo">
@@ -25,17 +25,15 @@
                 <a href="index.html#personagens" class="link">
                     Personagens
                 </a>
-                <a href="jogo.html" class="link">
+                <a href="escolhaCorredor.html" class="link fontPixel">
                     Copa Pistão
                 </a>
             </div>
             <div class="cont_logo">
                 <img class="logo" src="https://i.postimg.cc/zDjshTg0/logo-carros.png" alt="">
             </div>
-            <div class="cont_btns_autenticar">
-                <button class="btn_autenticar link">Cadastro</button>
-                <hr>
-                <button class="btn_autenticar link">Login</button>
+            <div id="container_autenticar" class="cont_btns_autenticar">
+
             </div>
         </div>
     </header>
@@ -46,6 +44,44 @@
 
 </html>
 <script>
+
+    function validarCadastro() {
+        console.log(sessionStorage.EMAIL_USUARIO);
+        console.log(sessionStorage.NOME_USUARIO);
+        console.log(sessionStorage.ID_USUARIO);
+
+        if (sessionStorage.EMAIL_USUARIO != undefined && sessionStorage.NOME_USUARIO != undefined && sessionStorage.ID_USUARIO != undefined) {
+            container_autenticar.innerHTML = `<a onclick="sair()" class="link">Sair</a>`
+        }
+        if (sessionStorage.EMAIL_USUARIO == undefined && sessionStorage.NOME_USUARIO == undefined && sessionStorage.ID_USUARIO == undefined) {
+            container_autenticar.innerHTML = `
+                <a href="cadastro.html" class="link">
+                    Cadastro
+                </a>
+                <hr>
+                <a href="login.html" class="link">
+                    Login
+                </a>
+            `
+        }
+
+    }
+    function sair() {
+        sessionStorage.clear();
+        mudarBtns()
+    }
+    function mudarBtns() {
+        container_autenticar.innerHTML = `
+            <a href="cadastro.html" class="link">
+                Cadastro
+            </a>
+            <hr>
+            <a href="login.html" class="link">
+                Login
+            </a>
+        `
+
+    }
     var urlParametros = window.location
     var idParametro = urlParametros.search.replace('?id=', '')
     var container_personagem = document.getElementById('container_personagem')

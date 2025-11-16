@@ -42,8 +42,14 @@ html{
 .header_landing_page .container .cont_btns_autenticar {
     display: flex;
     width: 10%;
+    height: 100%;
+    align-items: center;
     justify-content: space-evenly;
     padding: 1vh;
+}
+.header_landing_page .container .cont_btns_autenticar hr{
+    height: 15%;
+    margin: 0;
 }
 
 .header_landing_page .container .cont_btns_autenticar .btn_autenticar {
@@ -76,7 +82,7 @@ html{
 }
 
 .fontYellow {
-    color: #8F0303;
+    color: #bb9900;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
 

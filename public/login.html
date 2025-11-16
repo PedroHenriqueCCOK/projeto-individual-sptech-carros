@@ -12,7 +12,9 @@
 <body>
     <div class="container">
         <div class="card_erro" id="cardErro">
-            <span id="mensagem_erro"></span>
+            <img id="imagem_erro" src="" alt="">
+            <span id="mensagem_erro" class="fontBlack"></span>
+
         </div>
         <div class="cont_conteudo">
             <div class="cont_cadastro">
@@ -37,8 +39,9 @@
                     <label class="fontRed boldMedio subtitulo" for="">Senha</label>
                     <input type="password" name="" id="input_senha" placeholder="Digite sua senha:">
                 </div>
-                <button onclick="entrar()" class="btn_login btn_padrao descricao fontWhite boldMedio">Entre em sua
+                <button onclick="aguardar()" class="btn_login btn_padrao descricao fontWhite boldMedio">Entre em sua
                     conta</button>
+                <img id="img_loading" src="assets/img/icons8-girador-de-iphone.gif" style="display: none;" alt="">
             </div>
         </div>
     </div>
@@ -50,64 +53,71 @@
     function irCadastro() {
         window.location = 'cadastro.html'
     }
+    function aguardar() {
+        img_loading.style.display = 'flex'
+        setTimeout(entrar, 1000)
+    }
     function entrar() {
-
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
-
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            return false;
-        }
+            cardErro.style.display = "flex"
+            imagem_erro.src = '/assets/img/img_cancel.png'
+            mensagem_erro.innerHTML = "Insira valores válidos";
+        } else {
+            console.log("FORM LOGIN: ", emailVar);
+            console.log("FORM SENHA: ", senhaVar);
 
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resultadoAutenticar) {
+                console.log("ESTOU NO THEN DO entrar()!")
+                console.log(resultadoAutenticar);
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+                if (resultadoAutenticar.ok) {
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
+                    resultadoAutenticar.json().then(resultado => {
+                        cardErro.style.display = 'flex'
+                        imagem_erro.src = '/assets/img/img_aceitar.png'
+
+                        mensagem_erro.innerHTML = "Login realizado com sucesso!";
+                        console.log(resultado);
+                        console.log(resultado.id);
+                        console.log(resultado.email);
+                        console.log(resultado.nome);
+                        sessionStorage.EMAIL_USUARIO = resultado.email;
+                        sessionStorage.NOME_USUARIO = resultado.nome;
+                        sessionStorage.ID_USUARIO = resultado.id;
+                        setTimeout(function () {
+                            window.location = 'index.html'
+                        }, 1000); // voltar para a pagina inicial
+
+                    });
+
+                } else {
+                    cardErro.style.display = 'flex'
+                    imagem_erro.src = '/assets/img/img_cancel.png'
+                    mensagem_erro.innerHTML = "Usuário não existente";
+                    console.log("Houve um erro ao tentar realizar o login!");
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        finalizarAguardar(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
             })
-        }).then(function (resultadoAutenticar) {
-            console.log("ESTOU NO THEN DO entrar()!")
-            console.log(resultadoAutenticar);
-
-            if (resultadoAutenticar.ok) {
-                
-                resultadoAutenticar.json().then(resultado => {
-                    console.log(resultado);
-                    console.log(resultado.id);
-                    console.log(resultado.email);
-                    console.log(resultado.nome);
-                    sessionStorage.EMAIL_USUARIO = resultado.email;
-                    sessionStorage.NOME_USUARIO = resultado.nome;
-                    sessionStorage.ID_USUARIO = resultado.id;
-                    setTimeout(function () {
-                        window.location = 'index.html'
-                    }, 1000); // voltar para a pagina inicial
-                    
-                });
-
-            } else {
-                cardErro.style.display = 'flex'
-                mensagem_erro.innerHTML = "Usuário não existente";
-                console.log("Houve um erro ao tentar realizar o login!");
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-        setInterval(sumirMensagem, 5000)
+        }
+        setTimeout(sumirMensagem, 2000)
+        img_loading.style.display = 'none'
 
         return false;
     }

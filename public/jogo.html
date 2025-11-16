@@ -168,7 +168,7 @@
     }
 
     function sortearObstaculo() {
-        indiceObstaculo = 0
+        indiceObstaculo = Math.floor(Math.random() * 3)
         sortearColuna()
     }
     // FUNÇÃO QUE GERA UMA COLUNA ALEATÓRIA PARA O OBSTÁCULO
@@ -355,12 +355,18 @@
         console.log("Teste session: ", usuarioVar);
         
         var corredorVar = competidor.id
-        var tempoVar = tempo
+        var tempoVar = `00:${tempo}`
         var pontuacaoVar = pontuacao
         var colisaoCactoVar = colisaoCacto
         var colisaoFenoVar = colisaoFeno
         var colisaoBarrilVar = colisaoBarril
         var pistaVar = 0
+        var resultadoVar = 0
+        var tempoFormatado = tempoVar.replaceAll(':', '')
+
+        if (tempoFormatado > 300) {
+            resultadoVar = 1
+        }
 
 
         fetch("/jogo/registrar_dados", {
@@ -375,7 +381,8 @@
                 pontuacaoServer: pontuacaoVar,
                 colisaoCactoServer: colisaoCactoVar,
                 colisaoFenoServer: colisaoFenoVar,
-                colisaoBarrilServer: colisaoBarrilVar
+                colisaoBarrilServer: colisaoBarrilVar,
+                resultadoServer: resultadoVar
             }),
 
         })

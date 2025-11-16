@@ -9,6 +9,7 @@ function registrar(req, res) {
     var colisaoCacto = req.body.colisaoCactoServer;
     var colisaoFeno = req.body.colisaoFenoServer;
     var colisaoBarril = req.body.colisaoBarrilServer;
+    var resultadoJogo = req.body.resultadoServer
 
     // Faça as validações dos valores
     if (usuario == undefined) {
@@ -25,10 +26,12 @@ function registrar(req, res) {
         res.status(400).send("Sua colisão feno está undefined!");
     } else if (colisaoBarril == undefined) {
         res.status(400).send("Sua colisão barril está undefined!");
+    } else if (resultadoJogo == undefined) {
+        res.status(400).send("Sua colisão barril está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        jogoModel.registrar(usuario, corredor, tempo, pontuacao, colisaoCacto, colisaoFeno, colisaoBarril)
+        jogoModel.registrar(usuario, corredor, tempo, pontuacao, colisaoCacto, colisaoFeno, colisaoBarril, resultadoJogo)
             .then(
                 function (resultado) {
                     res.status(201).send("Registros inseridos com scesso!")

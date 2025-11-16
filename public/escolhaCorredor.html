@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="css/escolhaCorredor.css">
 </head>
 
-<body>
+<body onload="checarLogin()">
     <div class="container">
-        <h1 class="titulo fontPixel">Copa Pistão</h1>
-        <div class="container_instrucoes" id="id_container_instrucoes">
+        <h1 class="titulo fontPixel" >Copa Pistão</h1>
+        <div class="container_instrucoes"  id="id_container_instrucoes">
             <p class="boldMedio fontPixel">Bem vindo a Copa Pistão: O jogo é um mini game do universo Carros, onde
                 simulamos uma
                 corrida.</p>
-            <div class="cont_orientacoes">
+            <div class="cont_orientacoes" >
                 <p class="texto_intrucao fontPixel">
                     Os comandos são: <br>
                     →: Troca de faixa para a direita <br>
@@ -95,13 +95,31 @@
                         style="display: none;" id="mate" alt="">
                 </div>
             </div>
-            <button onclick="irJogo()" class="btn_jogar">Jogar</button>
+            <button onclick="irJogo()" class="btn_jogar fontPixel">Jogar</button>
+        </div>
+        <div class="cont_erro_login" id="id_cont_erro_login">
+            <img src="assets/img/icons8-erro.gif" alt="">
+            <p class="subtitulo fontPixel">Oops...</p>
+            <p class="fontPixel">Notamos que você não está conectado em uma conta</p>
+            <p class="fontPixel">Cadastre-se ou entre em uma conta para acessar nosso mini game</p>
+            <button onclick="voltarHome()" class="btn_voltar fontPixel">Voltar para a home</button>
         </div>
     </div>
 </body>
 
 </html>
 <script>
+    function checarLogin() {
+        if (sessionStorage.EMAIL_USUARIO == undefined || sessionStorage.ID_USUARIO == undefined || sessionStorage.NOME_USUARIO == undefined) {
+            id_container_instrucoes.style.display = 'none'
+            id_cont_erro_login.style.display = 'flex'
+            
+        }
+    }
+    function voltarHome() {
+        window.location = "index.html"
+    }
+
     function escolherCorredor() {
         id_container_instrucoes.style.display = 'none'
         id_container_corredores.style.display = 'flex'
@@ -158,7 +176,5 @@
     }
     function irJogo() {
         window.location = `jogo.html?id=${idSelecionado}`
-    }
-
-
+    } 
 </script>

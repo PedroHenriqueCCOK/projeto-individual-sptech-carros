@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #242424;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+body .container_graficos {
+    margin-top: 15vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 110vh;
+}
+
+body .container_graficos .cont_line {
+    display: flex;
+    width: 80%;
+    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body .container_graficos .cont_line .cont_vitoria_derrota {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+body .container_graficos .cont_line .cont_vitoria_derrota .caixa_descricao {
+    width: 7.5%;
+    height: 2.5vh;
+    border: 1.5px solid white;
+    border-radius: 0.25rem;
+    background-color: red;
+}
+
+body .container_graficos .cont_line .cont_vitoria_derrota #vitoria {
+    background-color: #4675CC;
+}
+
+body .container_graficos .cont_line .cont_vitoria_derrota .textSmall {
+    width: 35%;
+}
+
+body .container_graficos .cont_kpis {
+    display: flex;
+    width: 100%;
+    height: 20vh;
+    justify-content: space-around;
+    align-items: center;
+}
+
+body .container_graficos .cont_kpis .card_kpi {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #4675CC;
+    border-radius: 1.5rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+body .container_graficos .cont_kpis .card_kpi .textoMedium {
+    width: 80%;
+}
+
+body .container_graficos .cont_kpis .card_kpi .texto_kpi {
+    width: 80%;
+}
+
+body .container_graficos .cont_kpis #card_personagem {
+    background-color: #F40B0F;
+}
+
+
+body .container_graficos .cont_ranking_graficos {
+    width: 95%;
+    height: 55vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+body .container_graficos .cont_ranking_graficos .cont_graficos {
+    display: flex;
+    width: 75%;
+    height: 100%;
+    width: 75%;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+body .container_graficos .cont_ranking_graficos .cont_graficos  .grafico_total_vitoria_derrotas {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 28.5%;
+    height: 100%;
+    border-radius: 2rem;
+}
+body .container_graficos .cont_ranking_graficos .cont_graficos  .grafico_total_vitoria_derrotas .descricao{
+    width: 80%;
+    text-align: center;
+}
+body .container_graficos .cont_ranking_graficos .cont_graficos  .grafico_total_vitoria_derrotas #total_vitoria_derrotas{
+    width: 100%;
+    height: 50%;
+}
+
+body .container_graficos .cont_ranking_graficos .cont_graficos  .grafico_partidas_x_corredor #partidas_x_corredor{
+    width: 75%;
+    height: 50%;
+}
+
+body .container_graficos .cont_ranking_graficos .cont_graficos  .grafico_partidas_x_corredor {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 65%;
+    height: 100%;
+    border-radius: 2rem;
+}
+
+.div_grafico {
+    background-color: white;
+}
+
+body .container_graficos .cont_ranking_graficos .cont_graficos .grafico_personagens_favoritos {
+    width: 100%;
+    height: 48.5%;
+    border-radius: 2rem;
+}
+
+body .container_graficos .cont_kpis #card_personagem #resultado_kpi_personagem{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    height: 30%;
+}
+body .container_graficos .cont_kpis #card_personagem #resultado_kpi_personagem #img_personagem_kpi{
+    width: 30%;
+    height: 100%;
+}
+
+body .container_graficos .cont_kpis #card_pontuacao {
+    background-color: #D5B74B;
+}
+
+body .container_graficos .cont_kpis #card_obstaculo {
+    background-color: #46B5CC;
+}
+
+body .container_graficos .cont_kpis #card_tempo {
+    background-color: #46CC6A;
+}
+
+
+
+body .container_graficos .cont_ranking_graficos .ranking {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    border-radius: 2rem;
+}
+body .container_graficos .cont_ranking_graficos .ranking .cont_titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    background-color: #F40B0F;
+    border-radius: 2rem 2rem 0 0;
+
+}
+
+body .container_graficos .cont_ranking_graficos .ranking .cont_card{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #242424;
+}
+body .container_graficos .cont_ranking_graficos .ranking .cont_card .cards_ranking{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+body .container_graficos .cont_ranking_graficos .ranking .cont_card .cards_ranking .cont_colocacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 17.5%;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+body .container_graficos .cont_ranking_graficos .ranking .cont_card .cards_ranking .colocacao_10{
+    border-radius:  0  0  0 2rem;
+}
+body .container_graficos .cont_ranking_graficos .ranking .cont_card .cards_ranking .ranking_pontuacao{
+    width: 20%;
+}

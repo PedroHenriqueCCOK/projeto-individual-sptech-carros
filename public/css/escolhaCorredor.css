@@ -163,7 +163,13 @@ body {
 }
 
 .container .container_corredores .cont_imagem_competidor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50%;
+}
+.container .container_corredores .cont_imagem_competidor img{
+    width: 90%;
 }
 
 .container .container_corredores .btn_jogar {

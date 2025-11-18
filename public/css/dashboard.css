@@ -178,6 +178,8 @@ body .container_graficos .cont_ranking_graficos .ranking {
     align-items: center;
     width: 20%;
     height: 100%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+
     border-radius: 2rem;
 }
 body .container_graficos .cont_ranking_graficos .ranking .cont_titulo {
@@ -199,6 +201,7 @@ body .container_graficos .cont_ranking_graficos .ranking .cont_card{
     flex-direction: column;
     justify-content: center;
     background-color: #242424;
+    border-radius: 0 0 2rem 2rem;
 }
 body .container_graficos .cont_ranking_graficos .ranking .cont_card .cards_ranking{
     width: 100%;
@@ -215,9 +218,16 @@ body .container_graficos .cont_ranking_graficos .ranking .cont_card .cards_ranki
     height: 100%;
     background-color: #FFFFFF;
 }
-body .container_graficos .cont_ranking_graficos .ranking .cont_card .cards_ranking .colocacao_10{
+body .container_graficos .cont_ranking_graficos .ranking .cont_card .cards_ranking_10 .colocacao_10{
     border-radius:  0  0  0 2rem;
 }
 body .container_graficos .cont_ranking_graficos .ranking .cont_card .cards_ranking .ranking_pontuacao{
     width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body .container_graficos .cont_ranking_graficos .ranking .cont_card .cards_ranking_10 .pontuacao_10{
+    border-radius: 0 0 2rem 0;
 }

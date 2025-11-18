@@ -82,11 +82,10 @@
                 console.log(resultadoAutenticar);
 
                 if (resultadoAutenticar.ok) {
-
-                    resultadoAutenticar.json().then(resultado => {
+                    resultadoAutenticar.json()
+                    .then(resultado => {
                         cardErro.style.display = 'flex'
                         imagem_erro.src = '/assets/img/img_aceitar.png'
-
                         mensagem_erro.innerHTML = "Login realizado com sucesso!";
                         console.log(resultado);
                         console.log(resultado.id);

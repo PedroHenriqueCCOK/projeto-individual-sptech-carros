@@ -14,7 +14,7 @@
 <body onload="buscarKpis(), buscarRanking(), montarGraficoPizza(), montarGraficoBarra()">
     <header class="header_landing_page">
         <div class="container">
-            <div class="cont_links">
+            <div class="cont_links" id="links_header">
                 <a href="index.html#banner" class="link ativo">
                     Home
                 </a>
@@ -178,6 +178,29 @@
 
 </html>
 <script>
+
+     if (sessionStorage.HABILITAR_DASHBOARD == "1") {
+        links_header.innerHTML = `
+                <a href="index.html#banner" class="link ativo">
+                    Home
+                </a>
+                <a href="index.html#universo_carros" class="link">
+                    Universo
+                </a>
+                <a href="index.html#filmes" class="link">
+                    Filmes
+                </a>
+                <a href="index.html#personagens" class="link">
+                    Personagens
+                </a>
+                <a href="escolhaCorredor.html" class="link fontPixel">
+                    Copa Pistão
+                </a>
+                <a href="dashboard.html" id="link_dashboard" class="link">
+                    Dashboard
+                </a>
+            `
+    }
     nome_usuario.innerHTML = sessionStorage.NOME_USUARIO
     function buscarKpis() {
         var idUsuarioVar = sessionStorage.ID_USUARIO

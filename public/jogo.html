@@ -10,81 +10,91 @@
 </head>
 
 <body>
-    <div id="container">
-        <h1 class="fontPixel">Copa Pistão</h1>
-        <div class="div_cronometro_pontuacao">
-            <p class="fontPixel" id="texto_cronometro"></p>
-            <p class="fontPixel" id="texto_pontuacao"></p>
+    
+    <div class="container">
+        <div class="popup_end_game" style="display: none;" id="id_popup_end_game">
+            <img src="assets/img/img_end_game.png" alt="">
+            <p class="textoLarge fontPixelBlack ">Fim de jogo...</p>
+            <p class="fontPixelBlack ">Parece que o caminho chegou ao fim... por agora!</p>
+            <p class="fontPixelBlack ">Tente Novamente! A persistência leva à vitória.</p>
+            <button onclick="irDashboard()" class="btn_voltar fontPixelBlack">Ir para a dashboard</button>
         </div>
-        <div id="grid">
-            <div class="posicao_line1 lines" id="line_1">
-                <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista1"></div>
-                <div class="partesPista partesPistaMeioCFaixa" id="partePista2"></div>
-                <div class="partesPista partesPistaDireitaCFaixa" id="partePista3"></div>
+        <div id="id_cont_jogo" class="cont_jogo">
+            <h1 class="fontPixel">Copa Pistão</h1>
+            <div class="div_cronometro_pontuacao">
+                <p class="fontPixel" id="texto_cronometro"></p>
+                <p class="fontPixel" id="texto_pontuacao"></p>
             </div>
-            <div class="posicao_line2 lines" id="line_2">
-                <div class="partesPista bordaEsquerda" id="partePista4"></div>
-                <div class="partesPista" id="partePista5"></div>
-                <div class="partesPista bordaDireita" id="partePista6"></div>
-            </div>
-            <div class="posicao_line3 lines" id="line_3">
-                <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista7"></div>
-                <div class="partesPista partesPistaMeioCFaixa" id="partePista8"></div>
-                <div class="partesPista partesPistaDireitaCFaixa" id="partePista9"></div>
-            </div>
-            <div class="posicao_line4 lines" id="line_4">
-                <div class="partesPista bordaEsquerda" id="partePista10"></div>
-                <div class="partesPista" id="partePista11"></div>
-                <div class="partesPista bordaDireita" id="partePista12"></div>
-            </div>
-            <div class="posicao_line5 lines" id="line_5">
-                <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista13"></div>
-                <div class="partesPista partesPistaMeioCFaixa" id="partePista14"></div>
-                <div class="partesPista partesPistaDireitaCFaixa" id="partePista15"></div>
-            </div>
-            <div class="posicao_line6 lines" id="line_6">
-                <div class="partesPista bordaEsquerda" id="partePista16"></div>
-                <div class="partesPista" id="partePista17"></div>
-                <div class="partesPista bordaDireita" id="partePista18"></div>
-            </div>
-            <div class="posicao_line7 lines" id="line_7">
-                <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista19"></div>
-                <div class="partesPista partesPistaMeioCFaixa" id="partePista20"></div>
-                <div class="partesPista partesPistaDireitaCFaixa" id="partePista21"></div>
-            </div>
-            <div class="posicao_line8 lines" id="line_8">
-                <div class="partesPista bordaEsquerda" id="partePista22"></div>
-                <div class="partesPista" id="partePista23"></div>
-                <div class="partesPista bordaDireita" id="partePista24"></div>
-            </div>
+            <div id="grid">
+                <div class="posicao_line1 lines" id="line_1">
+                    <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista1"></div>
+                    <div class="partesPista partesPistaMeioCFaixa" id="partePista2"></div>
+                    <div class="partesPista partesPistaDireitaCFaixa" id="partePista3"></div>
+                </div>
+                <div class="posicao_line2 lines" id="line_2">
+                    <div class="partesPista bordaEsquerda" id="partePista4"></div>
+                    <div class="partesPista" id="partePista5"></div>
+                    <div class="partesPista bordaDireita" id="partePista6"></div>
+                </div>
+                <div class="posicao_line3 lines" id="line_3">
+                    <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista7"></div>
+                    <div class="partesPista partesPistaMeioCFaixa" id="partePista8"></div>
+                    <div class="partesPista partesPistaDireitaCFaixa" id="partePista9"></div>
+                </div>
+                <div class="posicao_line4 lines" id="line_4">
+                    <div class="partesPista bordaEsquerda" id="partePista10"></div>
+                    <div class="partesPista" id="partePista11"></div>
+                    <div class="partesPista bordaDireita" id="partePista12"></div>
+                </div>
+                <div class="posicao_line5 lines" id="line_5">
+                    <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista13"></div>
+                    <div class="partesPista partesPistaMeioCFaixa" id="partePista14"></div>
+                    <div class="partesPista partesPistaDireitaCFaixa" id="partePista15"></div>
+                </div>
+                <div class="posicao_line6 lines" id="line_6">
+                    <div class="partesPista bordaEsquerda" id="partePista16"></div>
+                    <div class="partesPista" id="partePista17"></div>
+                    <div class="partesPista bordaDireita" id="partePista18"></div>
+                </div>
+                <div class="posicao_line7 lines" id="line_7">
+                    <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista19"></div>
+                    <div class="partesPista partesPistaMeioCFaixa" id="partePista20"></div>
+                    <div class="partesPista partesPistaDireitaCFaixa" id="partePista21"></div>
+                </div>
+                <div class="posicao_line8 lines" id="line_8">
+                    <div class="partesPista bordaEsquerda" id="partePista22"></div>
+                    <div class="partesPista" id="partePista23"></div>
+                    <div class="partesPista bordaDireita" id="partePista24"></div>
+                </div>
 
-            <div class="linha_chegada lines" style="display: none;" id="linha_chegada">
-                <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista22"></div>
-                <div class="partesPista partesPistaMeioCFaixa" id="partePista23"></div>
-                <div class="partesPista partesPistaDireitaCFaixa" id="partePista24"></div>
+                <div class="linha_chegada lines" style="display: none;" id="linha_chegada">
+                    <div class="partesPista partesPistaEsquerdaCFaixa" id="partePista22"></div>
+                    <div class="partesPista partesPistaMeioCFaixa" id="partePista23"></div>
+                    <div class="partesPista partesPistaDireitaCFaixa" id="partePista24"></div>
+                </div>
+
+
+                <div class="arredores" id="arredor1"></div>
+                <div class="arredores" id="arredor2"></div>
+                <div class="arredores" id="arredor3"></div>
+                <div class="arredores" id="arredor4"></div>
+                <div class="arredores" id="arredor5"></div>
+                <div class="arredores" id="arredor6"></div>
+                <div class="arredores" id="arredor7"></div>
+                <div class="arredores" id="arredor8"></div>
+                <div class="arredores" id="arredor9"></div>
+                <div class="arredores" id="arredor10"></div>
+                <div class="arredores" id="arredor11"></div>
+                <div class="arredores" id="arredor12"></div>
+                <div class="arredores" id="arredor13"></div>
+                <div class="arredores" id="arredor14"></div>
+                <div class="arredores" id="arredor15"></div>
+                <div class="arredores" id="arredor16"></div>
+                <img name="1" id="cacto" src="assets/img/img_cacto.jpg" alt="">
+                <img name="2" id="img_bola_feno" src="assets/img/img_bola_de_feno.png" alt="">
+                <img name="2" id="img_barril" src="assets/img/img_barril.png" alt="">
+                <div id="cont_carro"></div>
             </div>
-
-
-            <div class="arredores" id="arredor1"></div>
-            <div class="arredores" id="arredor2"></div>
-            <div class="arredores" id="arredor3"></div>
-            <div class="arredores" id="arredor4"></div>
-            <div class="arredores" id="arredor5"></div>
-            <div class="arredores" id="arredor6"></div>
-            <div class="arredores" id="arredor7"></div>
-            <div class="arredores" id="arredor8"></div>
-            <div class="arredores" id="arredor9"></div>
-            <div class="arredores" id="arredor10"></div>
-            <div class="arredores" id="arredor11"></div>
-            <div class="arredores" id="arredor12"></div>
-            <div class="arredores" id="arredor13"></div>
-            <div class="arredores" id="arredor14"></div>
-            <div class="arredores" id="arredor15"></div>
-            <div class="arredores" id="arredor16"></div>
-            <img name="1" id="cacto" src="assets/img/img_cacto.jpg" alt="">
-            <img name="2" id="img_bola_feno" src="assets/img/img_bola_de_feno.png" alt="">
-            <img name="2" id="img_barril" src="assets/img/img_barril.png" alt="">
-            <div id="cont_carro"></div>
         </div>
     </div>
 </body>
@@ -92,6 +102,8 @@
 </html>
 
 <script>
+   
+
     var urlParametros = window.location
     var idParametro = urlParametros.search.replace('?id=', '')
     var container_personagem = document.getElementById('container_personagem')
@@ -147,7 +159,6 @@
 
     // FUNÇÃO QUE CHAMA O OBSTÁCULO VERIFICANDO A LINHA 
     function chamarObstaculo() {
-        timeOutColisao = setTimeout(verificarColisao, 1)
         if (linhaAtual == 0) {
             if (contagemLinhas > 0) {
                 obstaculo[indiceObstaculo].style.display = 'none'
@@ -214,14 +225,21 @@
     var colisaoCacto = 0
     var colisaoFeno = 0
     var colisaoBarril = 0
+
+    var auxiliarDashboard = 0
+
     function verificarColisao() {
         if (indiceObstaculo == 0 && linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
-            colisaoCacto++
             clearTimeout(timeOutColisao)
             clearTimeout(timeOutGeral)
             clearInterval(intervalCronometro)
-            setTimeout(irDashboard(), 1000)
-            alert('Bateu')
+
+            if (auxiliarDashboard == 0) {
+                setTimeout(chamarPopUpEndGame, 1500)
+                auxiliarDashboard++
+            }
+
+
         } else if (indiceObstaculo == 1 && linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
             colisaoFeno++
             contagemLinhas = 0
@@ -249,7 +267,6 @@
         }
     }
     function movimentoPista() {
-        timeOutColisao = setTimeout(verificarColisao, 1)
         if (trocaDeLinha == 0) {
             document.getElementById('line_1').classList.remove('posicao_line2')
             document.getElementById('line_2').classList.remove('posicao_line1')
@@ -350,15 +367,23 @@
         }
     })
 
+    function chamarPopUpEndGame() {
+        id_popup_end_game.style.display = 'flex'
+        id_cont_jogo.style.display = 'none'
+    }
     function irDashboard() {
-        var usuarioVar = sessionStorage.ID_USUARIO
+
+        sessionStorage.HABILITAR_DASHBOARD = 1
+
         console.log("Teste session: ", usuarioVar);
-        
+
+        var usuarioVar = sessionStorage.ID_USUARIO
+
         var corredorVar = competidor.id
         var tempoVar = `00:${tempo}`
         var pontuacaoVar = pontuacao
-        var colisaoCactoVar = colisaoCacto
-        var colisaoFenoVar = colisaoFeno
+        var colisaoCactoVar = 1
+        var colisaoFenoVar = colisaoFeno / 3
         var colisaoBarrilVar = colisaoBarril
         var pistaVar = 0
         var resultadoVar = 0
@@ -367,8 +392,6 @@
         if (tempoFormatado > 300) {
             resultadoVar = 1
         }
-
-
         fetch("/jogo/registrar_dados", {
             method: "POST",
             headers: {
@@ -384,22 +407,19 @@
                 colisaoBarrilServer: colisaoBarrilVar,
                 resultadoServer: resultadoVar
             }),
-
         })
             .then(function (resposta) {
                 console.log("ESTOU NO THEN DO irDash()!")
                 console.log(resposta);
                 if (resposta.ok) {
-                    setTimeout(() => {
-                        window.location = `dashboard.html?id=${sessionStorage.ID_USUARIO}`;
-                    }, "2000");
+                    window.location = `dashboard.html?id=${sessionStorage.ID_USUARIO}`;
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
                 }
             })
             .catch(function (resposta) {
                 console.log(resposta);
-                
+
                 console.log(`#ERRO: ${resposta}`);
             });
 

@@ -12,7 +12,7 @@
 <body onload="validarCadastro()">
     <header class="header_landing_page">
         <div class="container">
-            <div class="cont_links">
+            <div class="cont_links" id="links_header">
                 <a href="#banner" class="link ativo">
                     Home
                 </a>
@@ -27,6 +27,9 @@
                 </a>
                 <a href="escolhaCorredor.html" class="link fontPixel">
                     Copa Pistão
+                </a>
+                <a href="dashboard.html" style="display: none;" id="link_dashboard" class="link">
+                    Dashboard
                 </a>
             </div>
             <div class="cont_logo">
@@ -277,6 +280,47 @@
         console.log(sessionStorage.EMAIL_USUARIO);
         console.log(sessionStorage.NOME_USUARIO);
         console.log(sessionStorage.ID_USUARIO);
+        console.log(sessionStorage.HABILITAR_DASHBOARD);
+        if (sessionStorage.HABILITAR_DASHBOARD == "1") {
+            links_header.innerHTML = `
+                <a href="#banner" class="link ativo">
+                    Home
+                </a>
+                <a href="#universo_carros" class="link">
+                    Universo
+                </a>
+                <a href="#filmes" class="link">
+                    Filmes
+                </a>
+                <a href="#personagens" class="link">
+                    Personagens
+                </a>
+                <a href="escolhaCorredor.html" class="link fontPixel">
+                    Copa Pistão
+                </a>
+                <a href="dashboard.html" id="link_dashboard" class="link">
+                    Dashboard
+                </a>
+            `
+        } else {
+            links_header.innerHTML = `
+                <a href="#banner" class="link ativo">
+                    Home
+                </a>
+                <a href="#universo_carros" class="link">
+                    Universo
+                </a>
+                <a href="#filmes" class="link">
+                    Filmes
+                </a>
+                <a href="#personagens" class="link">
+                    Personagens
+                </a>
+                <a href="escolhaCorredor.html" class="link fontPixel">
+                    Copa Pistão
+                </a>
+            `
+        }
 
         if (sessionStorage.EMAIL_USUARIO != undefined && sessionStorage.NOME_USUARIO != undefined && sessionStorage.ID_USUARIO != undefined) {
             container_autenticar.innerHTML = `<a onclick="sair()" class="link">Sair</a>`
@@ -293,6 +337,8 @@
             `
         }
 
+
+
     }
     function sair() {
         sessionStorage.clear();
@@ -308,6 +354,7 @@
                 Login
             </a>
         `
+        validarCadastro()
 
     }
 

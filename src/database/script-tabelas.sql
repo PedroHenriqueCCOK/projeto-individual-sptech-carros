@@ -17,7 +17,10 @@ CREATE TABLE usuario (
 	nome VARCHAR(75),
 	email VARCHAR(75),
 	senha VARCHAR(75),
-	personagemFav VARCHAR(75)
+	fkPersonagemFav INT,
+    jaJogou TINYINT,
+    FOREIGN KEY (fkPersonagemFav)
+		REFERENCES personagens(id)
 );
 
 CREATE TABLE personagens (
@@ -56,19 +59,24 @@ INSERT INTO personagens (nome, imagem_index, imagem_personagem, descricao, rotul
 ('Francesco Bernoulli', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818894/img_francesco_index_eusz9z.png', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818895/img_francesco_personagem_scvngq.png', 'Francesco Bernoulli é um carro de Fórmula 1 italiano, competitivo, confiante e um pouco arrogante. Introduzido em Carros 2, ele é o principal rival do Relâmpago McQueen nas corridas internacionais.', 'Rival', 'Fórmula 1 (inspirado na Ferrari F2002)', 'Team Italy', 'Carros 2', '1997-05-05'),
 ('Jackson Storm', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818898/img_jackson_index_j7kiv0.png', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818899/img_jackson_personagem_icw2dw.png', 'Jackson Storm é um carro de corrida futurista e arrogante, introduzido em Carros 3. Ele é rápido, tecnológico e rival do Relâmpago McQueen, representando a nova geração de corredores que desafiam os veteranos.', 'Rival', 'Next-Gen Piston Cup Racer (conceito futurista)', 'Ignitr', 'Carros 3', '2016-09-19');
 
+select * from personagens;
 CREATE TABLE corredor (
     idCorredor INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
-    imagem VARCHAR(150) NOT NULL
+    imagem VARCHAR(150) NOT NULL,
+    cor CHAR(7)
 );
 
-INSERT INTO corredor (nome, imagem) VALUES
-('Relâmpago McQueen', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763160586/img_costas_mcqueen_rglooz.png'),
-('Chick Hicks', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763160586/img_costas_chick_boitzv.png'),
-('Strip Weathers', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763160586/img_costas_strip_wx9rct.png'),
-('Cruz Ramirez', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763160587/img_costas_cruz_bxilqm.png'),
-('Jackson Storm', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763160586/img_costas_storm_ziqro9.png'),
-('Tom Matter', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763160586/img_costas_mate_euzvnf.png');
+INSERT INTO corredor (nome, imagem,cor) VALUES
+('Relâmpago McQueen', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763160586/img_costas_mcqueen_rglooz.png', '#F40B0F'),
+('Chick Hicks', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763160586/img_costas_chick_boitzv.png', '#19B73B'),
+('Strip Weathers', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763160586/img_costas_strip_wx9rct.png', '#00D3FF'),
+('Cruz Ramirez', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763160587/img_costas_cruz_bxilqm.png', '#FAD85D'),
+('Jackson Storm', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763160586/img_costas_storm_ziqro9.png', '#0E00CF'),
+('Tom Matter', 'https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763160586/img_costas_mate_euzvnf.png', '#651416');
+
+select * from corredor;
+
 
 CREATE TABLE jogo (
     idJogo INT PRIMARY KEY AUTO_INCREMENT,
@@ -79,9 +87,96 @@ CREATE TABLE jogo (
     colisaoCacto INT,
     colisaoFeno INT,
     colisaoBarril INT,
+    resultado TINYINT,
     -- Configuração das Chaves Estrangeiras (FKs)
-    FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario), -- Assumindo que a PK de Usuario é idUsuario
-    FOREIGN KEY (fkCorredor) REFERENCES corredor(idCorredor) -- Assumindo que a PK de Competidor é idCompetidor
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
+    FOREIGN KEY (fkCorredor) REFERENCES corredor(idCorredor)
 );
 
-select * from jogo;
+-- SELECT PARA KPI MAIOR PONTUAÇÃO
+SELECT MAX(pontuacao) FROM jogo WHERE fkUsuario = 1;
+
+-- SELECT PARA KPI PERSONAGEM FAVORITO
+SELECT 
+    p.nome,
+    p.imagem_personagem,
+    u.fkPersonagemFav,
+    COUNT(u.fkPersonagemFav) AS personagemFavorito
+FROM
+    usuario AS u
+        JOIN
+    personagens AS p ON u.fkPersonagemFav = p.id
+GROUP BY u.fkPersonagemFav
+ORDER BY personagemFavorito DESC
+LIMIT 1;
+
+-- SELECT PARA KPI de MAIOR TEMPO
+SELECT 
+    MAX(j.tempo) AS tempo
+FROM
+    jogo AS j
+        JOIN
+    usuario AS u ON u.idUsuario = j.fkUsuario
+WHERE
+    u.idUsuario = 1;
+
+-- SELECT PARA KPI DE OBSTÁCULO MAIS BATIDO
+SELECT 
+    SUM(j.colisaoCacto) AS cacto,
+    SUM(j.colisaoFeno) AS feno,
+    SUM(j.colisaoBarril) AS barril
+FROM
+    jogo AS j
+        JOIN
+    usuario AS u ON u.idUsuario = j.fkUsuario
+WHERE
+    u.idUsuario = 1;
+
+SELECT DISTINCT
+    u.nome, j.tempo, j.pontuacao
+FROM
+    usuario AS u
+        JOIN
+    jogo AS j ON j.fkUsuario = u.idUsuario
+ORDER BY j.pontuacao DESC 
+LIMIT 10;
+
+ select count(fkCorredor) from jogo GROUP BY fkUsuario;
+
+SELECT 
+	
+    j.resultado
+FROM
+    jogo AS j
+        JOIN
+    usuario AS u ON u.idUsuario = j.fkUsuario
+	WHERE u.idUsuario = 2;
+    
+    
+-- SELECT PARA GRAFICO DE QUANTIDADE DE JOGOS POR CORREDOR
+SELECT 
+    c.nome, 
+    COUNT(j.fkCorredor) AS quantidade, 
+    c.cor
+FROM
+    jogo AS j
+        JOIN
+    usuario AS u ON u.idUsuario = j.fkUsuario
+        JOIN
+    corredor AS c ON j.fkCorredor = c.idCorredor
+WHERE
+    u.idUsuario = 2
+GROUP BY j.fkCorredor;
+
+
+SELECT 
+    autor.nome
+FROM
+    autores
+        JOIN
+    livros ON autores.id = livros.autor_id
+    JOIN
+    emprestimos ON livros.id = emprestimos.livro_id
+    WHERE emprestimos.data_devolucao = NULL;
+
+SELECT * FROM jogo;

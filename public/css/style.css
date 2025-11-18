@@ -325,7 +325,13 @@ body {
     font-weight: bold;
     border-radius: 5px;
     font-size: 0.85rem;
+    transition: all 0.25s;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+#personagens .container .cont_lines_card .line_cards .cont_cards .card .cont_textos .cont_btn .btn_saiba_mais:hover {
+    transition: all 0.25s;
+    width: 85%;
+
 }
 
 .line_cards {

@@ -29,6 +29,13 @@ html{
     justify-content: space-evenly;
     padding: 1vh;
 }
+.header_landing_page .container .cont_links .link{
+    transition: ease-in-out 0.25s;
+}
+.header_landing_page .container .cont_links .link:hover{
+    
+    transition: ease-in-out 0.25s;
+}
 
 
 .header_landing_page .container .cont_logo {
@@ -66,6 +73,11 @@ html{
 .fontPixel{
     font-family: 'Public Pixel', sans-serif, Arial, Helvetica, sans-serif;
     color: white;
+}
+
+.fontPixelBlack{
+    font-family: 'Public Pixel', sans-serif, Arial, Helvetica, sans-serif;
+    color: black;
 }
 .fontWhite {
     color: white;

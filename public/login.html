@@ -80,26 +80,20 @@
             }).then(function (resultadoAutenticar) {
                 console.log("ESTOU NO THEN DO entrar()!")
                 console.log(resultadoAutenticar);
-
-                if (resultadoAutenticar.ok) {
+                if (resultadoAutenticar.ok == true) {
                     resultadoAutenticar.json()
-                    .then(resultado => {
-                        cardErro.style.display = 'flex'
-                        imagem_erro.src = '/assets/img/img_aceitar.png'
-                        mensagem_erro.innerHTML = "Login realizado com sucesso!";
-                        console.log(resultado);
-                        console.log(resultado.id);
-                        console.log(resultado.email);
-                        console.log(resultado.nome);
-                        sessionStorage.EMAIL_USUARIO = resultado.email;
-                        sessionStorage.NOME_USUARIO = resultado.nome;
-                        sessionStorage.ID_USUARIO = resultado.id;
-                        setTimeout(function () {
-                            window.location = 'index.html'
-                        }, 1000); // voltar para a pagina inicial
+                        .then(resultado => {
+                            cardErro.style.display = 'flex'
+                            imagem_erro.src = '/assets/img/img_aceitar.png'
+                            mensagem_erro.innerHTML = "Login realizado com sucesso!";
+                            console.log(resultado);
+                            sessionStorage.EMAIL_USUARIO = resultado.email;
+                            sessionStorage.NOME_USUARIO = resultado.nome;
+                            sessionStorage.ID_USUARIO = resultado.id;
+                            setTimeout(function () {
+                            }, 1000); // voltar para a pagina inicial
 
-                    });
-
+                        });
                 } else {
                     cardErro.style.display = 'flex'
                     imagem_erro.src = '/assets/img/img_cancel.png'
@@ -107,7 +101,6 @@
                     console.log("Houve um erro ao tentar realizar o login!");
                     resposta.text().then(texto => {
                         console.error(texto);
-                        finalizarAguardar(texto);
                     });
                 }
 

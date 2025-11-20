@@ -24,17 +24,30 @@ body .container {
 
 .card_erro {
     display: none;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     color: black;
-    margin-left: 70%;
-    width: 15rem;
+    width: 20rem;
+    height: 10vh;
     position: absolute;
     border-radius: 0.5rem;
-    border: #ffb300 0.25rem solid;
-    padding: 10px;
-    margin-right: 10%;
+    margin-left: 70%;
+    margin-top: -30%;
+    transition: all 0.5s ease-out;
+}
+
+.card_erro img {
+    height: 50%;
+}
+
+.card_erro span {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.25rem;
+    width: 60%;
 }
 
 .card_erro #mensagem_erro {

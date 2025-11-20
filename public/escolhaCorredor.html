@@ -11,12 +11,12 @@
 
 <body onload="checarLogin()">
     <div class="container">
-        <h1 class="titulo fontPixel" >Copa Pistão</h1>
-        <div class="container_instrucoes"  id="id_container_instrucoes">
+        <h1 class="titulo fontPixel">Copa Pistão</h1>
+        <div class="container_instrucoes" id="id_container_instrucoes">
             <p class="boldMedio fontPixel">Bem vindo a Copa Pistão: O jogo é um mini game do universo Carros, onde
                 simulamos uma
                 corrida.</p>
-            <div class="cont_orientacoes" >
+            <div class="cont_orientacoes">
                 <p class="texto_intrucao fontPixel">
                     Os comandos são: <br>
                     →: Troca de faixa para a direita <br>
@@ -61,8 +61,7 @@
                             alt="">
                         <p class="textoMedium fontPixel boldMedio">Strip Weathers</p>
                     </div>
-                    <div class="corredor" id="cruz_select" onclick="corredorEscolhido(3)"
-                        onmouseover="trocarImagem(3)">
+                    <div class="corredor" id="cruz_select" onclick="corredorEscolhido(3)" onmouseover="trocarImagem(3)">
                         <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/cruz_pixel_qfgzv7.png"
                             alt="">
                         <p class="textoMedium fontPixel boldMedio">Cruz Ramirez</p>
@@ -73,8 +72,7 @@
                             alt="">
                         <p class="textoMedium fontPixel boldMedio">Jackson Storm</p>
                     </div>
-                    <div class="corredor" id="mate_select" onclick="corredorEscolhido(5)"
-                        onmouseover="trocarImagem(5)">
+                    <div class="corredor" id="mate_select" onclick="corredorEscolhido(5)" onmouseover="trocarImagem(5)">
                         <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/mate_pixel_cs87c4.png"
                             alt="">
                         <p class="textoMedium fontPixel boldMedio">Tom Matter</p>
@@ -113,7 +111,7 @@
         if (sessionStorage.EMAIL_USUARIO == undefined || sessionStorage.ID_USUARIO == undefined || sessionStorage.NOME_USUARIO == undefined) {
             id_container_instrucoes.style.display = 'none'
             id_cont_erro_login.style.display = 'flex'
-            
+
         }
     }
     function voltarHome() {
@@ -134,14 +132,11 @@
     ]
 
     function trocarImagem(indiceCorredor) {
-        if (idSelecionado == 0) {
-            for (var i = 0; i < corredores.length; i++) {
-                var imagemAtual = corredores[i];
-                imagemAtual.style.display = 'none'
-            }
-
-            corredores[indiceCorredor].style.display = 'block'
+        for (var i = 0; i < corredores.length; i++) {
+            var imagemAtual = corredores[i];
+            imagemAtual.style.display = 'none'
         }
+        corredores[indiceCorredor].style.display = 'block'
     }
 
     var selects_corredores = [

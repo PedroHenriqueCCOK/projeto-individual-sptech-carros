@@ -12,7 +12,9 @@
 <body>
     <div class="container">
         <div class="card_erro" id="cardErro">
-            <span id="mensagem_erro"></span>
+            <img id="imagem_erro" src="" alt="">
+            <span id="mensagem_erro" class="fontBlack"></span>
+
         </div>
         <div class="cont_conteudo">
             <div class="cont_cadastro">
@@ -40,21 +42,53 @@
                         <option value="9">Ramon</option>
                         <option value="21">Jackson Storm</option>
                     </select>
+
+
                     <label class="fontRed boldMedio descricao" for="input_senha">Senha</label>
-                    <input class="campo_cadastro" type="password" name="" id="input_senha"
-                        placeholder="Digite sua senha:">
+                    <input class="campo_cadastro" id="input_senha" type="password" placeholder="********" required
+                        oninput="verificar()">
+                    <div class="checks_cadastro" id="div_checks_cadastro" style="display: none;">
+                        <div class="check">
+                            Letra maiúscula
+                            <div class="check_img"><img id="check_upper" src="assets/img/img_cancel.png"
+                                    alt=""></div>
+                        </div>
+                        <div class="check">
+                            Letra minúscula
+                            <div class="check_img"><img id="check_lower" src="assets/img/img_cancel.png"
+                                    alt=""></div>
+                        </div>
+                        <div class="check">
+                            Número
+                            <div class="check_img"><img id="check_num" src="assets/img/img_cancel.png"
+                                    alt=""></div>
+                        </div>
+                        <div class="check">
+                            Caractere especial
+                            <div class="check_img"><img id="check_especial"
+                                    src="assets/img/img_cancel.png" alt=""></div>
+                        </div>
+                        <div class="check">
+                            8 ou mais caracteres
+                            <div class="check_img"><img id="check_tamanho"
+                                    src="assets/img/img_cancel.png" alt=""></div>
+                        </div>
+
+                    </div>
                     <label class="fontRed boldMedio descricao" for="input_confirma_senha">Confirme senha:</label>
                     <input class="campo_cadastro" type="password" name="" id="input_confirma_senha"
                         placeholder="Confirme sua senha:">
                 </div>
-                <button onclick="cadastrar()" class="btn_cadastro btn_padrao descricao fontWhite boldMedio">Criar conta</button>
+                <button onclick="cadastrar()" class="btn_cadastro btn_padrao descricao fontWhite boldMedio">Criar
+                    conta</button>
             </div>
             <div class="cont_login">
                 <p class="titulo fontWhite">Bem vindo de volta, corredor!</p>
                 <p class="subtitulo fontWhite">Crie uma conta exclusiva para você!</p>
                 <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818903/img_mate_personagem_l3uktb.png"
                     alt="">
-                <button onclick="irLogin()" class="btn_login btn_padrao descricao fontWhite boldMedio">Entre em sua conta</button>
+                <button onclick="irLogin()" class="btn_login btn_padrao descricao fontWhite boldMedio">Entre em sua
+                    conta</button>
 
             </div>
         </div>
@@ -64,6 +98,90 @@
 </html>
 <script>
 
+    function verificar() {
+        senha = input_senha.value;
+        var tamanho_senha = senha.length;
+        var senha_minuscula = senha.toLowerCase();
+        var senha_maiuscula = senha.toUpperCase();
+        var crit1 = 0;
+        var crit2 = 0;
+        var crit3 = 0;
+        var crit4 = 0;
+        var crit5 = 0;
+
+
+        div_checks_cadastro.style.display = 'flex';
+
+        // Tem letra maiúscula
+        check_upper.src = 'assets/img/img_cancel.png';
+        crit1 = 0;
+
+        if (senha_minuscula != senha) {
+            crit1 = 1;
+            check_upper.src = 'assets/img/img_cancel.png';
+        }
+
+        // Tem letra minúscula
+        check_lower.src = 'assets/img/img_cancel.png';
+        crit2 = 0;
+
+        if (senha_maiuscula != senha) {
+            crit2 = 1;
+            check_lower.src = 'assets/img/img_cancel.png';
+        }
+
+        // Tem número
+        var listaNum = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        var temNum = [];
+
+        check_num.src = 'assets/img/img_cancel.png';
+        crit3 = 0;
+
+        if (listaNum.length > 0) {
+            for (var i = 0; i < senha.length; i++) {
+                if (listaNum.includes(senha[i])) {
+                    temNum.push(senha[i]);
+                }
+
+                if (temNum.length > 0) {
+                    crit3 = 1;
+                    check_num.src = '.imgs/icons/iconel.png';
+                }
+            }
+        }
+
+        // Tem caractere especial
+        var listaEspecial = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '+', '=', '{', '}', ';', ':', '?', '/', '`', '~', ',', '.', '[', ']', '|', '¨'];
+        var temEspecial = [];
+
+        check_especial.src = '../public/assets/icons/icons-cancelar.png';
+        crit4 = 0;
+
+        if (listaEspecial.length > 0) {
+            for (var i = 0; i < senha.length; i++) {
+                if (listaEspecial.includes(senha[i])) {
+                    temEspecial.push(senha[i]);
+                }
+
+                if (temEspecial.length > 0) {
+                    crit4 = 1;
+                    check_especial.src = '../public/assets/icons/icons-ok.png';
+                }
+            }
+        }
+
+        // Tem pelo menos 8 caracteres
+        check_tamanho.src = '../public/assets/icons/icons-cancelar.png';
+        crit5 = 0;
+
+        if (tamanho_senha >= 8) {
+            crit5 = 1;
+            check_tamanho.src = '../public/assets/icons/icons-ok.png';
+        }
+
+        criteriosAtendidos = crit1 + crit2 + crit3 + crit4 + crit5
+
+    }
     // Array para armazenar empresas cadastradas para validação de código de ativação 
     function irLogin() {
         window.location = 'login.html'
@@ -100,10 +218,11 @@
             confirmacaoSenhaVar == "" ||
             personagemVar == "#"
         ) {
-            cardErro.style.display = "block";
+            cardErro.style.display = "flex";
             erro++
-            mensagem_erro.innerHTML = "Campos em branco! Preeencha todos para prosseguir ";
-        } 
+            mensagem_erro.innerHTML = "Preeencha todos para prosseguir ";
+            imagem_erro.src = '/assets/img/img_cancel.png'
+        }
         if (erro == 0) {
             // Enviando o valor da nova input
             fetch("/usuarios/cadastrar", {
@@ -124,23 +243,26 @@
                 .then(function (resposta) {
                     console.log("resposta: ", resposta);
                     if (resposta.ok) {
-                        cardErro.style.display = "block";
+                        cardErro.style.display = "flex";
+                        imagem_erro.src = '/assets/img/img_aceitar.png'
                         mensagem_erro.innerHTML =
                             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
                         setTimeout(() => {
-                            window.location = "login.html";
+                            window.location = "login.html"
                         }, "2000");
 
-                        limparFormulario();
                     } else {
                         throw "Houve um erro ao tentar realizar o cadastro!";
                     }
                 })
                 .catch(function (resposta) {
+                    cardErro.style.display = "flex";
+                    erro++
+                    mensagem_erro.innerHTML = "Já existe um usuário com esse email! ";
+                    imagem_erro.src = '/assets/img/img_cancel.png'
                     console.log(`#ERRO: ${resposta}`);
                 });
 
-            return false;
         }
         setInterval(sumirMensagem, 5000)
 

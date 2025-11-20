@@ -275,6 +275,11 @@
 
 </html>
 <script>
+    document.addEventListener('click', () => {
+        video.muted = false;      
+        video.play();             
+    }, { once: true });
+
 
     function validarCadastro() {
         console.log(sessionStorage.EMAIL_USUARIO);

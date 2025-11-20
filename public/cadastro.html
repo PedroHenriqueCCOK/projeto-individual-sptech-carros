@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="css/global.css">
 </head>
 
-<body>
+<body id="body">
     <div class="container">
         <div class="card_erro" id="cardErro">
             <img id="imagem_erro" src="" alt="">
             <span id="mensagem_erro" class="fontBlack"></span>
 
         </div>
-        <div class="cont_conteudo">
+        <div class="cont_conteudo" id="id_cont_conteudo">
             <div class="cont_cadastro">
                 <div class="cont_voltar_titulo">
                     <a href="index.html" class="voltar">
@@ -29,8 +29,8 @@
                     <input class="campo_cadastro" type="text" name="" id="input_nome" placeholder="Digite seu nome:">
                     <label class="fontRed boldMedio descricao" for="input_email">Email</label>
                     <input class="campo_cadastro" type="text" name="" id="input_email" placeholder="Digite seu email:">
-                    <label class="fontRed boldMedio descricao" for="select_personagem">Personagem favorito:</label>
 
+                    <label class="fontRed boldMedio descricao" for="select_personagem">Personagem favorito:</label>
                     <select class="campo_cadastro" name="" id="select_personagem">
                         <option value="#" disabled selected>Selecione um personagem</option>
                         <option value="1">Relâmpago McQueen</option>
@@ -47,31 +47,30 @@
                     <label class="fontRed boldMedio descricao" for="input_senha">Senha</label>
                     <input class="campo_cadastro" id="input_senha" type="password" placeholder="********" required
                         oninput="verificar()">
-                    <div class="checks_cadastro" id="div_checks_cadastro" style="display: none;">
+                    <div class="checks_cadastro" id="div_checks_cadastro">
                         <div class="check">
-                            Letra maiúscula
-                            <div class="check_img"><img id="check_upper" src="assets/img/img_cancel.png"
-                                    alt=""></div>
+                            <p class="text_check texto textoSmall"> Letra maiúscula</p>
+                            <div class="check_img"><img id="check_upper" src="assets/img/img_cancel.png" alt="">
+                            </div>
                         </div>
                         <div class="check">
-                            Letra minúscula
-                            <div class="check_img"><img id="check_lower" src="assets/img/img_cancel.png"
-                                    alt=""></div>
+                            <p class="text_check texto textoSmall"> Letra minúscula</p>
+                            <div class="check_img"><img id="check_lower" src="assets/img/img_cancel.png" alt="">
+                            </div>
                         </div>
                         <div class="check">
-                            Número
-                            <div class="check_img"><img id="check_num" src="assets/img/img_cancel.png"
-                                    alt=""></div>
+                            <p class="text_check texto textoSmall"> Número</p>
+                            <div class="check_img"><img id="check_num" src="assets/img/img_cancel.png" alt="">
+                            </div>
                         </div>
                         <div class="check">
-                            Caractere especial
-                            <div class="check_img"><img id="check_especial"
-                                    src="assets/img/img_cancel.png" alt=""></div>
+                            <p class="text_check texto textoSmall"> Caractere especial</p>
+                            <div class="check_img"><img id="check_especial" src="assets/img/img_cancel.png" alt="">
+                            </div>
                         </div>
                         <div class="check">
-                            8 ou mais caracteres
-                            <div class="check_img"><img id="check_tamanho"
-                                    src="assets/img/img_cancel.png" alt=""></div>
+                            <p class="text_check texto textoSmall"> 8 ou mais caracteres</p>
+                            <div class="check_img"><img id="check_tamanho" src="assets/img/img_cancel.png" alt=""></div>
                         </div>
 
                     </div>
@@ -97,9 +96,14 @@
 
 </html>
 <script>
+    var criteriosAtendidos = 0
 
     function verificar() {
-        senha = input_senha.value;
+        body.style.height = "120vh"
+        id_cont_conteudo.style.height = "90%"
+        div_checks_cadastro.style.display = 'flex';
+
+        var senha = input_senha.value;
         var tamanho_senha = senha.length;
         var senha_minuscula = senha.toLowerCase();
         var senha_maiuscula = senha.toUpperCase();
@@ -110,31 +114,28 @@
         var crit5 = 0;
 
 
-        div_checks_cadastro.style.display = 'flex';
-
         // Tem letra maiúscula
-        check_upper.src = 'assets/img/img_cancel.png';
+        check_upper.src = '/assets/img/img_cancel.png';
         crit1 = 0;
 
         if (senha_minuscula != senha) {
             crit1 = 1;
-            check_upper.src = 'assets/img/img_cancel.png';
+            check_upper.src = 'assets/img/img_aceitar.png';
         }
 
         // Tem letra minúscula
-        check_lower.src = 'assets/img/img_cancel.png';
-        crit2 = 0;
-
+        check_lower.src = '/assets/img/img_cancel.png';
+        crit1 = 0;
         if (senha_maiuscula != senha) {
             crit2 = 1;
-            check_lower.src = 'assets/img/img_cancel.png';
+            check_lower.src = 'assets/img/img_aceitar.png';
         }
 
         // Tem número
         var listaNum = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
         var temNum = [];
 
-        check_num.src = 'assets/img/img_cancel.png';
+        check_num.src = '/assets/img/img_cancel.png';
         crit3 = 0;
 
         if (listaNum.length > 0) {
@@ -145,7 +146,7 @@
 
                 if (temNum.length > 0) {
                     crit3 = 1;
-                    check_num.src = '.imgs/icons/iconel.png';
+                    check_num.src = 'assets/img/img_aceitar.png';
                 }
             }
         }
@@ -154,7 +155,7 @@
         var listaEspecial = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '+', '=', '{', '}', ';', ':', '?', '/', '`', '~', ',', '.', '[', ']', '|', '¨'];
         var temEspecial = [];
 
-        check_especial.src = '../public/assets/icons/icons-cancelar.png';
+        check_especial.src = '/assets/img/img_cancel.png';
         crit4 = 0;
 
         if (listaEspecial.length > 0) {
@@ -165,52 +166,36 @@
 
                 if (temEspecial.length > 0) {
                     crit4 = 1;
-                    check_especial.src = '../public/assets/icons/icons-ok.png';
+                    check_especial.src = 'assets/img/img_aceitar.png';
                 }
             }
         }
 
         // Tem pelo menos 8 caracteres
-        check_tamanho.src = '../public/assets/icons/icons-cancelar.png';
+        check_tamanho.src = '/assets/img/img_cancel.png';
         crit5 = 0;
 
         if (tamanho_senha >= 8) {
             crit5 = 1;
-            check_tamanho.src = '../public/assets/icons/icons-ok.png';
+            check_tamanho.src = 'assets/img/img_aceitar.png';
         }
 
         criteriosAtendidos = crit1 + crit2 + crit3 + crit4 + crit5
 
     }
+
     // Array para armazenar empresas cadastradas para validação de código de ativação 
     function irLogin() {
         window.location = 'login.html'
     }
     function cadastrar() {
-        // aguardar();
-        var erro = 0
-        var erroNome = 0;
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var listaNumeros = [
-            0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-        ]
+        // Verificando se há algum campo em branco
         var nomeVar = input_nome.value
         var emailVar = input_email.value
-        var senhaVar = input_senha.value
-        var confirmacaoSenhaVar = input_confirma_senha.value
-        var personagemVar = select_personagem.value
-        for (var i = 0; i < 10; i++) {
-            var caractereAtual = nomeVar[i];
-            if (listaNumeros.includes(caractereAtual)) {
-                erroNome++
-            }
-            erro = erroNome
-        }
+        var senhaVar = select_personagem.value
+        var confirmacaoSenhaVar = input_senha.value
+        var personagemVar = input_confirma_senha.value
 
-        var emailTemCaracteres = emailVar.includes('@') && emailVar.includes('.com')
-
-        // Verificando se há algum campo em branco
         if (
             nomeVar == "" ||
             emailVar == "" ||
@@ -222,8 +207,33 @@
             erro++
             mensagem_erro.innerHTML = "Preeencha todos para prosseguir ";
             imagem_erro.src = '/assets/img/img_cancel.png'
-        }
-        if (erro == 0) {
+        } else if (nomeVar.length <= 1) {
+            cardErro.style.display = "flex";
+            erro++
+            mensagem_erro.innerHTML = "Insira um nome com mais de 1 caractere! ";
+            imagem_erro.src = '/assets/img/img_cancel.png'
+        } else if (emailVar.includes("@") == false || emailVar.endsWith(".com") == false) {
+            cardErro.style.display = "flex";
+            erro++
+            mensagem_erro.innerHTML = "O email deve conter @ e .com!";
+            imagem_erro.src = '/assets/img/img_cancel.png'
+        } else if (emailVar.includes("@") == false || emailVar.endsWith(".com") == false) {
+            cardErro.style.display = "flex";
+            erro++
+            mensagem_erro.innerHTML = "O email deve conter @ e .com!";
+            imagem_erro.src = '/assets/img/img_cancel.png'
+        } else if (criteriosAtendidos != 5) {
+            cardErro.style.display = "flex";
+            erro++
+            mensagem_erro.innerHTML = "A senha deve atender todos os critérios!";
+            imagem_erro.src = '/assets/img/img_cancel.png'
+        } else if (senhaVar != confirmacaoSenhaVar) {
+
+            cardErro.style.display = "flex";
+            erro++
+            mensagem_erro.innerHTML = "A confrimação de senha ser igual a senha!";
+            imagem_erro.src = '/assets/img/img_cancel.png'
+        } else {
             // Enviando o valor da nova input
             fetch("/usuarios/cadastrar", {
                 method: "POST",
@@ -244,7 +254,7 @@
                     console.log("resposta: ", resposta);
                     if (resposta.ok) {
                         cardErro.style.display = "flex";
-                        imagem_erro.src = '/assets/img/img_aceitar.png'
+                        imagem_erro.src = 'assets/img/img_aceitar.png'
                         mensagem_erro.innerHTML =
                             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
                         setTimeout(() => {
@@ -265,6 +275,7 @@
 
         }
         setInterval(sumirMensagem, 5000)
+
 
     }
     function sumirMensagem() {

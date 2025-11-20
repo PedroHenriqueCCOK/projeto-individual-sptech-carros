@@ -59,7 +59,7 @@ body .container .cont_conteudo {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 80%;
     height: 90%;
     border-radius: 5rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
@@ -173,4 +173,38 @@ body .container .cont_conteudo .cont_cadastro .cont_inputs .campo_cadastro {
 body .container .cont_conteudo .cont_cadastro .btn_cadastro {
     background-color: #8F0303;
     border: none;
+}
+
+
+body .container .cont_conteudo .cont_cadastro .cont_inputs .checks_cadastro {
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+}
+body .container .cont_conteudo .cont_cadastro .cont_inputs .checks_cadastro .check{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: auto;
+}
+body .container .cont_conteudo .cont_cadastro .cont_inputs .checks_cadastro .check .text_check{
+    height: 50%;
+    width: 100%;
+
+}
+body .container .cont_conteudo .cont_cadastro .cont_inputs .checks_cadastro .check .check_img{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+body .container .cont_conteudo .cont_cadastro .cont_inputs .checks_cadastro .check .check_img img{
+    width: 50%;
+
 }

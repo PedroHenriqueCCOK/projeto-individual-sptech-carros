@@ -21,8 +21,6 @@ var usuarioRouter = require("./src/routes/usuarios");
 var personagemRouter = require("./src/routes/personagens");
 var jogoRouter = require("./src/routes/jogo");
 var dashboardRouter = require("./src/routes/dashboard");
-var aquariosRouter = require("./src/routes/aquarios");
-var empresasRouter = require("./src/routes/empresas");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -35,8 +33,6 @@ app.use("/usuarios", usuarioRouter);
 app.use("/personagens", personagemRouter);
 app.use("/jogo", jogoRouter);
 app.use("/dashboard", dashboardRouter);
-app.use("/aquarios", aquariosRouter);
-app.use("/empresas", empresasRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

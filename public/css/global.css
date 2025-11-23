@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.cdnfonts.com/css/public-pixel');
-html{
+
+html {
     scroll-behavior: smooth;
 }
 
@@ -29,14 +30,17 @@ html{
     justify-content: space-evenly;
     padding: 1vh;
 }
-.header_landing_page .container .cont_links .link{
+
+.header_landing_page .container .cont_links .link {
     transition: ease-in-out 0.25s;
 }
-.header_landing_page .container .cont_links .link:hover{
-    
+
+.header_landing_page .container .cont_links .link:hover {
+
     transition: ease-in-out 0.25s;
 }
-.header_landing_page .container .cont_links .fontPixel{
+
+.header_landing_page .container .cont_links .fontPixel {
     font-size: 0.5rem;
 }
 
@@ -57,7 +61,8 @@ html{
     justify-content: space-evenly;
     padding: 1vh;
 }
-.header_landing_page .container .cont_btns_autenticar hr{
+
+.header_landing_page .container .cont_btns_autenticar hr {
     height: 15%;
     margin: 0;
 }
@@ -73,15 +78,16 @@ html{
     width: 80%;
 }
 
-.fontPixel{
+.fontPixel {
     font-family: 'Public Pixel', sans-serif, Arial, Helvetica, sans-serif;
     color: white;
 }
 
-.fontPixelBlack{
+.fontPixelBlack {
     font-family: 'Public Pixel', sans-serif, Arial, Helvetica, sans-serif;
     color: black;
 }
+
 .fontWhite {
     color: white;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
@@ -91,6 +97,7 @@ html{
     color: black;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
+
 .fontRed {
     color: #8F0303;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
@@ -117,9 +124,11 @@ html{
     font-weight: normal;
 
 }
-.textoLarge{
+
+.textoLarge {
     font-size: 1.65rem;
 }
+
 .textoMedium {
     font-size: 1rem;
     font-weight: normal;
@@ -152,4 +161,69 @@ html{
 .link:hover {
     font-weight: bold;
     color: white;
+}
+
+
+body .tela_carregar {
+    display: none;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/img/img_background_carregar.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+body .tela_carregar .container_carregar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 80%;
+    height: 80%;
+}
+
+body .tela_carregar .container_carregar .cont_mcqueen {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    height: 22.5%;
+}
+
+body .tela_carregar .container_carregar .cont_mcqueen .texto_carregar {
+    width: 10%;
+    text-align: end;
+}
+
+body .tela_carregar .container_carregar .cont_mcqueen #img_mcqueen {
+    transition: ease-in 3ms;
+    margin-left: 0%;
+    width: 20%;
+    height: 60%;
+}
+
+body .tela_carregar .container_carregar #id_linha_carregar {
+    width: 0%;
+    height: 5%;
+    display: flex;
+
+    align-items: flex-start;
+
+    background-color: #000000;
+    border: none;
+    border-bottom: 5px solid red;
+}
+
+body .tela_carregar .container_carregar #id_linha_branca {
+    width: 0%;
+    height: 1%;
+    background-color: #FFFFFF;
+    display: flex;
+
+    align-items: flex-start;
+
+    border: none;
 }

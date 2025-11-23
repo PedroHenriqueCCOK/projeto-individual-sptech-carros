@@ -470,6 +470,7 @@
         var labels = []
         var dadosGrafico = []
         var backgrounds = []
+
         console.log('iniciando plotagem do gráfico...');
         for (var i = 0; i < resposta.length; i++) {
             var resultadoAtual = resposta[i];
@@ -477,7 +478,6 @@
             dadosGrafico.push(resultadoAtual.quantidade)
             backgrounds.push(resultadoAtual.cor)
         }
-
 
         // Criando estrutura para plotar gráfico - dados 
         var dados = {

@@ -1,0 +1,5 @@
+        var json = [
+            {"classe": "Tank","quantidade": 3},
+            {"classe": "Tank","quantidade": 3},
+            {"classe": "Tank", "quantidade": 3}
+        ]

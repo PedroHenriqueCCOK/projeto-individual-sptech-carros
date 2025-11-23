@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="css/jogo.css">
 </head>
 
-<body>
-    
-    <div class="container">
+<body id="body">
+
+    <div class="container" id="id_container">
         <div class="popup_end_game" style="display: none;" id="id_popup_end_game">
             <img src="assets/img/img_end_game.png" alt="">
             <p class="textoLarge fontPixelBlack ">Fim de jogo...</p>
@@ -97,13 +97,23 @@
             </div>
         </div>
     </div>
+    <div class="tela_carregar" id="id_tela_carregar">
+        <div class="container_carregar">
+            <div class="cont_mcqueen">
+                <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763678007/img_mcqueen_lado_esquerdo_dojbcm.png"
+                    alt="" id="img_mcqueen">
+                <p class="fontWhite texto_carregar" id="id_texto_carregar">10%</p>
+            </div>
+            <hr class="linha_carregar" id="id_linha_carregar">
+            <hr class="linha_branca" id="id_linha_branca">
+        </div>
+    </div>
+
 </body>
 
 </html>
 
 <script>
-   
-
     var urlParametros = window.location
     var idParametro = urlParametros.search.replace('?id=', '')
     var container_personagem = document.getElementById('container_personagem')
@@ -128,7 +138,24 @@
         })
 
 
+    var porcentagemCarregado = 0
+    function paginaCarregar() {
+        id_container.style.display = 'none'
+        id_tela_carregar.style.display = 'flex'
 
+        if (porcentagemCarregado > 15) {
+            img_mcqueen.style.marginLeft = `${porcentagemCarregado - 20}%`
+        }
+        porcentagemCarregado += 1
+        id_texto_carregar.innerHTML = `${porcentagemCarregado}%`
+        id_linha_branca.style.width = `${porcentagemCarregado}%`
+        id_linha_carregar.style.width = `${porcentagemCarregado}%`
+        var timeOutCarregar = setTimeout(paginaCarregar, 20)
+        if (porcentagemCarregado >= 100) {
+            clearTimeout(timeOutCarregar)
+            window.location = `dashboard.html?id=${sessionStorage.ID_USUARIO}`  
+        }
+    }
     var colunaCarro = 3
     var linhaCarro = 6
 
@@ -137,7 +164,6 @@
         document.getElementById('img_bola_feno'),
         document.getElementById('img_barril')
     ]
-
 
     document.getElementById('cont_carro').style.gridRow = linhaCarro
     document.getElementById('cont_carro').style.gridColumn = colunaCarro;
@@ -149,7 +175,7 @@
     var linhaAtual = 0
     var trocaDeLinha = 1
     var pontuacao = 0
-    var intervaloChamada = 1090
+    var intervaloChamada = 590
     var timeOutColisao = 0
 
     setTimeout(() => {
@@ -209,12 +235,10 @@
 
         // CONTROLADOR DE VELOCIDADE
         if (contagemLinhas >= 0 && contagemLinhas <= 100) {
-            intervaloChamada -= 10
-        } else if (contagemLinhas > 100 && contagemLinhas < 500) {
-            intervaloChamada = 90
-        } else {
-            intervaloChamada -= 0.5
-        }
+            intervaloChamada -= 5
+        } else if (contagemLinhas > 500) {
+            intervaloChamada -= 0.001
+        } 
         console.log('Intervalo no Mudar obstaculo:', intervaloChamada);
         obstaculo[indiceObstaculo].style.display = 'flex'
         timeOutColisao = setTimeout(verificarColisao, 1)
@@ -243,7 +267,7 @@
         } else if (indiceObstaculo == 1 && linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
             colisaoFeno++
             contagemLinhas = 0
-            intervaloChamada = 1090
+            intervaloChamada = 590
             pontuacao -= 10
         } else if (indiceObstaculo == 2 && linhaCarro == linhaObstaculo && colunaCarro == colunaObstaculo) {
             colisaoBarril++
@@ -412,7 +436,7 @@
                 console.log("ESTOU NO THEN DO irDash()!")
                 console.log(resposta);
                 if (resposta.ok) {
-                    window.location = `dashboard.html?id=${sessionStorage.ID_USUARIO}`;
+                    paginaCarregar()
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
                 }

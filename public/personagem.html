@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -138,26 +138,33 @@
                             <img src="${personagem.imagem_personagem}" alt="">
                         </div>
                         <div class="container_textos">
-                            <div class="container">
-                                <h1 class="subtitulo textoPersonagem fontBlack bolder">${personagem.nome}</h1>
+                                <p  class="textoLarge textoPersonagem fontBlack bolder">${personagem.nome}</p>
+                                <div class="div_campos">
+                                    <p  class="textoSmall textoPersonagem fontBlack bolder">Descrição:</p>
+                                    <p class="textoSmall textoPersonagem fontBlack ">${personagem.descricao}</p>
+                                </div>
                                 
-                                <h3 class="descricao textoPersonagem fontBlack bolder">Descrição:</h3>
-                                <p class="textoSmall textoPersonagem fontBlack ">${personagem.descricao}</p>
+                                <div class="div_campos">
+                                    <p  class="textoSmall textoPersonagem fontBlack bolder">Data de nascimento:</p>
+                                    <p class="textoSmall textoPersonagem fontBlack ">${dataNascimento}</p>
+                                </div>
                                 
-                                <h3 class="descricao textoPersonagem fontBlack bolder">Data de nascimento:</h3>
-                                <p class="textoSmall textoPersonagem fontBlack ">${dataNascimento}</p>
+                                <div class="div_campos">
+                                    <p  class="textoSmall textoPersonagem fontBlack bolder">Modelo:</p>
+                                    <p class="textoSmall textoPersonagem fontBlack ">${personagem.modelo}</p>
+                                </div>
                                 
-                                <h3 class="descricao textoPersonagem fontBlack bolder">Modelo:</h3>
-                                <p class="textoSmall textoPersonagem fontBlack ">${personagem.modelo}</p>
+                                <div class="div_campos">
+                                    <p  class="textoSmall textoPersonagem fontBlack bolder">Equipe:</p>
+                                    <p class="textoSmall textoPersonagem fontBlack ">${personagem.equipe}</p>
+                                </div>
                                 
-                                <h3 class="descricao textoPersonagem fontBlack bolder">Equipe:</h3>
-                                <p class="textoSmall textoPersonagem fontBlack ">${personagem.equipe}</p>
+                                <div class="div_campos">
+                                    <p  class="textoSmall textoPersonagem fontBlack bolder">Primeira aparição:</p>
+                                    <p class="textoSmall textoPersonagem fontBlack ">${personagem.aparicao}</p>
+                                </div>
                                 
-                                <h3 class="descricao textoPersonagem fontBlack bolder">Primeira aparição:</h3>
-                                <p class="textoSmall textoPersonagem fontBlack ">${personagem.aparicao}</p>
-                            </div>
                         </div>
-                        
                     `
 
 

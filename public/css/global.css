@@ -36,6 +36,9 @@ html{
     
     transition: ease-in-out 0.25s;
 }
+.header_landing_page .container .cont_links .fontPixel{
+    font-size: 0.5rem;
+}
 
 
 .header_landing_page .container .cont_logo {
@@ -115,8 +118,7 @@ html{
 
 }
 .textoLarge{
-    font-size: 2rem;
-
+    font-size: 1.65rem;
 }
 .textoMedium {
     font-size: 1rem;

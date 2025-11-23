@@ -26,27 +26,27 @@ body {
 }
 
 .container_textos {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
     
-}
-
-.container_textos .container {
-    width: 80%;
+    width: 40%;
     height: 80%;
     border-radius: 2.5rem;
     background-color: white;
-    
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+    
 }
 
-.container_textos .container .textoPersonagem{
+.container_textos  .textoLarge{
     width: 80%;
 }
+.container_textos  .div_campos{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    text-align: start;
+
+}
+

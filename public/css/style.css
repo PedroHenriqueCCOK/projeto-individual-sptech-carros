@@ -29,6 +29,25 @@ body {
 
 /* SEÇÃO UNIVERSO */
 
+#universo_carros .container_btns {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+#universo_carros .container_btns #btn_white {
+    background-color: white;
+}
+#universo_carros .container_btns .btn_video {
+    width: 10%;
+    height: 80%;
+    background-color: black;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    border: none;
+}
 #universo_carros .container {
     width: 100%;
     height: 100%;

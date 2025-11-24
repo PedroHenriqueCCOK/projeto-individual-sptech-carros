@@ -20,7 +20,6 @@ function cadastrar(nome, email, senha, personagemFavorito) {
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
-    
 }
 
 module.exports = {

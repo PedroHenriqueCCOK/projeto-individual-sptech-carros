@@ -33,13 +33,13 @@
                 </a>
             </div>
             <div class="cont_logo">
-                <img class="logo" src="https://i.postimg.cc/zDjshTg0/logo-carros.png" alt="">
+                <img class="logo" src="assets/icon/logo_carros.png" alt="">
             </div>
             <div id="container_autenticar" class="cont_btns_autenticar">
 
             </div>
         </div>
-    </header>
+    </header>   
     <section id="banner">
         <video class="video" id="video" width="100%" height="100%" playsinline loop autoplay muted>
             <source src="https://res.cloudinary.com/dsxiq1hsi/video/upload/v1763001384/video_background2_qftixp.mp4"
@@ -50,6 +50,10 @@
         </video>
     </section>
     <section id="universo_carros" class="secoes">
+        <div class="container_btns">
+            <button class="btn_video textoMedium fontBlack" id="btn_white" onclick="mudarVideo()">Pausar/Despausar vídeo</button>
+            <button class="btn_video textoMedium fontWhite" onclick="mudarSom()">Mutar/Desmutar vídeo</button>
+        </div>
         <div class="container">
             <div class="cont_titulo">
                 <h1 class="titulo fontWhite">Universo Carros</h1> <br>
@@ -275,8 +279,29 @@
 
 </html>
 <script>
+    var mutado = true 
+    var pausado = false
+    function mudarVideo() {
+        if (pausado) {
+            video.play();             
+            pausado = false
+        } else{
+            video.pause();             
+            pausado = true
+        }
+
+    }
+    function mudarSom() {
+        if (mutado) {
+            video.muted = false;
+            mutado = false
+        } else{
+            video.muted = true;
+            mutado = true
+        }
+    }
     document.getElementById("banner").addEventListener('click', () => {
-        video.muted = false;      
+              
         video.play();             
     }, { once: true });
 

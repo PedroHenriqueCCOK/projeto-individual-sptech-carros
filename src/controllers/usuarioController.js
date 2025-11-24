@@ -7,9 +7,10 @@ function autenticar(req, res) {
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
+        
         res.status(400).send("Sua senha está indefinida!");
-    } else {
 
+    } else {
         usuarioModel.autenticar(email, senha)
             .then(
                 function (resultadoAutenticar) {
@@ -39,9 +40,7 @@ function autenticar(req, res) {
                 }
             );
     }
-
 }
-
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;

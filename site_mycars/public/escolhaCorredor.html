@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa Pistão: Escolha de personagens</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/escolhaCorredor.css">
+</head>
+
+<body onload="checarLogin()">
+    <div class="container">
+        <h1 class="titulo fontPixel">Copa Pistão</h1>
+        <div class="container_instrucoes" id="id_container_instrucoes">
+            <p class="boldMedio fontPixel">Bem vindo a Copa Pistão: O jogo é um mini game do universo Carros, onde
+                simulamos uma
+                corrida.</p>
+            <div class="cont_orientacoes">
+                <p class="texto_intrucao fontPixel">
+                    Os comandos são: <br>
+                    →: Troca de faixa para a direita <br>
+                    ← : Troca de faixa para a esquerda <br>
+                </p>
+                <p class="texto_intrucao fontPixel">
+                    Obstáculos: <br>
+                    Cacto: Termina o jogo <br>
+                    Bola de feno: Desacelera <br>
+                    Óleo na pista: Troca de faixa <br>
+                </p>
+            </div>
+            <div class="cont_imagens">
+                <img class="imgs_obstaculos" src="assets/img/img_cacto.jpg" alt="">
+                <img class="imgs_obstaculos" src="assets/img/img_bola_de_feno.png" alt="">
+                <img class="imgs_obstaculos" src="assets/img/img_barril.png" alt="">
+            </div>
+            <button onclick="escolherCorredor()" class="btn_escolher_competidor fontPixel">Escolher corredor</button>
+        </div>
+
+        <div class="container_corredores" id="id_container_corredores" style="display: none;">
+            <div class="cont_line">
+                <div class="cont_escolhas">
+                    <div class="campo_corredores">
+                        <p class="textoLarge fontPixel">Corredores</p>
+                    </div>
+                    <div class="corredor" id="mcqueen_select" onclick="corredorEscolhido(0)"
+                        onmouseover="trocarImagem(0)">
+                        <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/mcqueen_pixel_wap5n4.png"
+                            alt="">
+                        <p class="textoMedium fontPixel boldMedio">Relâmpago McQueen</p>
+                    </div>
+                    <div class="corredor" id="chick_select" onclick="corredorEscolhido(1)"
+                        onmouseover="trocarImagem(1)">
+                        <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/chick_pixel_zsvslp.png"
+                            alt="">
+                        <p class="textoMedium fontPixel boldMedio">Chick Hicks</p>
+                    </div>
+                    <div class="corredor" id="strip_select" onclick="corredorEscolhido(2)"
+                        onmouseover="trocarImagem(2)">
+                        <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/strip_pixel_yvg9or.png"
+                            alt="">
+                        <p class="textoMedium fontPixel boldMedio">Strip Weathers</p>
+                    </div>
+                    <div class="corredor" id="cruz_select" onclick="corredorEscolhido(3)" onmouseover="trocarImagem(3)">
+                        <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/cruz_pixel_qfgzv7.png"
+                            alt="">
+                        <p class="textoMedium fontPixel boldMedio">Cruz Ramirez</p>
+                    </div>
+                    <div class="corredor" id="storm_select" onclick="corredorEscolhido(4)"
+                        onmouseover="trocarImagem(4)">
+                        <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/jackson_pixel_mkckds.png"
+                            alt="">
+                        <p class="textoMedium fontPixel boldMedio">Jackson Storm</p>
+                    </div>
+                    <div class="corredor" id="mate_select" onclick="corredorEscolhido(5)" onmouseover="trocarImagem(5)">
+                        <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/mate_pixel_cs87c4.png"
+                            alt="">
+                        <p class="textoMedium fontPixel boldMedio">Tom Matter</p>
+                    </div>
+                </div>
+                <div class="cont_imagem_competidor">
+                    <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/mcqueen_pixel_wap5n4.png"
+                        style="display: flex;" id="mcqueen" alt="">
+                    <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/chick_pixel_zsvslp.png"
+                        style="display: none;" id="chick" alt="">
+                    <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/strip_pixel_yvg9or.png"
+                        style="display: none;" id="strip" alt="">
+                    <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/cruz_pixel_qfgzv7.png"
+                        style="display: none;" id="cruz" alt="">
+                    <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/jackson_pixel_mkckds.png"
+                        style="display: none;" id="storm" alt="">
+                    <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763132335/mate_pixel_cs87c4.png"
+                        style="display: none;" id="mate" alt="">
+                </div>
+            </div>
+            <button onclick="irJogo()" class="btn_jogar fontPixel">Jogar</button>
+        </div>
+        <div class="cont_erro_login" id="id_cont_erro_login">
+            <img src="assets/img/icons8-erro.gif" alt="">
+            <p class="subtitulo fontPixel">Oops...</p>
+            <p class="fontPixel">Notamos que você não está conectado em uma conta</p>
+            <p class="fontPixel">Cadastre-se ou entre em uma conta para acessar nosso mini game</p>
+            <button onclick="voltarHome()" class="btn_voltar fontPixel">Voltar para a home</button>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function checarLogin() {
+        if (sessionStorage.EMAIL_USUARIO == undefined || sessionStorage.ID_USUARIO == undefined || sessionStorage.NOME_USUARIO == undefined) {
+            id_container_instrucoes.style.display = 'none'
+            id_cont_erro_login.style.display = 'flex'
+
+        }
+    }
+    function voltarHome() {
+        window.location = "index.html"
+    }
+
+    function escolherCorredor() {
+        id_container_instrucoes.style.display = 'none'
+        id_container_corredores.style.display = 'flex'
+    }
+    var corredores = [
+        document.getElementById('mcqueen'),
+        document.getElementById('chick'),
+        document.getElementById('strip'),
+        document.getElementById('cruz'),
+        document.getElementById('storm'),
+        document.getElementById('mate')
+    ]
+
+    function trocarImagem(indiceCorredor) {
+        for (var i = 0; i < corredores.length; i++) {
+            var imagemAtual = corredores[i];
+            imagemAtual.style.display = 'none'
+        }
+        corredores[indiceCorredor].style.display = 'block'
+    }
+
+    var selects_corredores = [
+        document.getElementById('mcqueen_select'),
+        document.getElementById('chick_select'),
+        document.getElementById('strip_select'),
+        document.getElementById('cruz_select'),
+        document.getElementById('storm_select'),
+        document.getElementById('mate_select')
+
+    ]
+    var idSelecionado = 1
+    function corredorEscolhido(indiceCorredor) {
+        console.log("Estou aqui");
+        console.log(selects_corredores[indiceCorredor].style.width);
+        for (var i = 0; i < selects_corredores.length; i++) {
+            var selectAtual = selects_corredores[i];
+            selectAtual.style.width = '75%'
+            selectAtual.style.height = '10%'
+
+        }
+        for (var i = 0; i < corredores.length; i++) {
+            var imagemAtual = corredores[i];
+            imagemAtual.style.display = 'none'
+        }
+
+        corredores[indiceCorredor].style.display = 'block'
+
+        selects_corredores[indiceCorredor].style.width = '80%'
+        selects_corredores[indiceCorredor].style.height = '12.5%'
+        idSelecionado = indiceCorredor + 1
+    }
+    function irJogo() {
+        window.location = `jogo.html?id=${idSelecionado}`
+    } 
+</script>

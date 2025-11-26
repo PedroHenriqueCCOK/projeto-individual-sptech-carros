@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carros: Dashboard</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body onload="buscarKpis(), buscarRanking(), montarGraficoPizza(), montarGraficoBarra()">
+    <header class="header_landing_page">
+        <div class="container">
+            <div class="cont_links" id="links_header">
+                <a href="index.html#banner" class="link ativo">
+                    Home
+                </a>
+                <a href="index.html#universo_carros" class="link">
+                    Universo
+                </a>
+                <a href="index.html#filmes" class="link">
+                    Filmes
+                </a>
+                <a href="index.html#personagens" class="link">
+                    Personagens
+                </a>
+                <a href="escolhaCorredor.html" class="link fontPixel">
+                    Copa Pistão
+                </a>
+            </div>
+            <div class="cont_logo">
+                <img class="logo" src="https://i.postimg.cc/zDjshTg0/logo-carros.png" alt="">
+            </div>
+            <div id="container_autenticar" class="cont_btns_autenticar">
+
+            </div>
+        </div>
+    </header>
+
+    <div class="container_graficos">
+        <h1 class="titulo fontWhite">Dashboard</h1>
+        <div class="cont_line">
+            <p class="subtitulo fontWhite">Olá, <span id="nome_usuario">Corredor </span></p>
+            <div class="cont_vitoria_derrota">
+                <div class="caixa_descricao" id="vitoria"></div>
+                <p class="textoSmall fontWhite ">Vitória: >= 03:00</p>
+                <div class="caixa_descricao" id="derrota"></div>
+                <p class="textoSmall fontWhite">Derrota: < 03:00</p>
+            </div>
+        </div>
+        <div class="cont_kpis">
+            <div class="card_kpi" id="card_personagem">
+                <p class="textoMedium fontWhite">Personagem favorito dos usuários</p>
+                <div id="resultado_kpi_personagem">
+                    <p class="texto_kpi fontWhite boldMedio" id="kpi_personagem_favorito">Vazio</p>
+                    <img id="img_personagem_kpi" src="" alt="">
+                </div>
+            </div>
+            <div class="card_kpi" id="card_pontuacao">
+                <p class="textoMedium fontWhite">Sua maior pontuação </p>
+                <p class="texto_kpi fontWhite boldMedio" id="kpi_maior_pontuacao">Vazio</p>
+            </div>
+            <div class="card_kpi" id="card_obstaculo">
+                <p class="textoMedium fontWhite">Obstáculo mais batido nas partidas</p>
+                <p class="texto_kpi fontWhite boldMedio" id="kpi_obstaculo">Vazio</p>
+            </div>
+            <div class="card_kpi" id="card_tempo">
+                <p class="textoMedium fontWhite">Maior tempo atingido</p>
+                <p class="texto_kpi fontWhite boldMedio" id="kpi_maior_tempo">Vazio</p>
+            </div>
+        </div>
+        <div class="cont_ranking_graficos">
+            <div class="cont_graficos">
+                <div class="div_grafico grafico_total_vitoria_derrotas">
+                    <p class="fontBlack descricao bolder">Total de vitórias e derrotas</p>
+                    <canvas id="total_vitoria_derrotas"></canvas>
+                </div>
+                <div class="div_grafico grafico_partidas_x_corredor">
+                    <p class="fontBlack descricao bolder">Quantidade de partidas por corredor</p>
+                    <canvas id="partidas_x_corredor"></canvas>
+                </div>
+            </div>
+            <div class="ranking">
+                <div class="cont_titulo">
+                    <p class="titulo_ranking boldMedio fontWhite">Top 10 dos melhores jogadores</p>
+
+                </div>
+                <div class="cont_card">
+                    <div class="cards_ranking">
+                        <div class="cont_colocacao boldMedio fontBlack">
+                            <p id="colocao_1">1º</p>
+                        </div>
+                        <p class="ranking_nome fontWhite textoSmall" id="nome_1">Vazio</p>
+                        <p class="ranking_tempo fontWhite textoSmall" id="tempo_1">Vazio</p>
+                        <p class="ranking_pontuacao fontWhite textoSmall" id="pontuacao_1">Vazio</p>
+                    </div>
+                    <div class="cards_ranking">
+                        <div class="cont_colocacao boldMedio fontBlack">
+                            <p id="colocao_2">2º</p>
+                        </div>
+                        <p class="ranking_nome fontWhite textoSmall" id="nome_2">Vazio</p>
+                        <p class="ranking_tempo fontWhite textoSmall" id="tempo_2">Vazio</p>
+                        <p class="ranking_pontuacao fontWhite textoSmall" id="pontuacao_2">Vazio</p>
+                    </div>
+                    <div class="cards_ranking">
+                        <div class="cont_colocacao boldMedio fontBlack">
+                            <p id="colocao_3">3º</p>
+                        </div>
+                        <p class="ranking_nome fontWhite textoSmall" id="nome_3">Vazio</p>
+                        <p class="ranking_tempo fontWhite textoSmall" id="tempo_3">Vazio</p>
+                        <p class="ranking_pontuacao fontWhite textoSmall" id="pontuacao_3">Vazio</p>
+                    </div>
+                    <div class="cards_ranking">
+                        <div class="cont_colocacao boldMedio fontBlack">
+                            <p id="colocao_4">4º</p>
+                        </div>
+                        <p class="ranking_nome fontWhite textoSmall" id="nome_4">Vazio</p>
+                        <p class="ranking_tempo fontWhite textoSmall" id="tempo_4">Vazio</p>
+                        <p class="ranking_pontuacao fontWhite textoSmall" id="pontuacao_4">Vazio</p>
+                    </div>
+                    <div class="cards_ranking">
+                        <div class="cont_colocacao boldMedio fontBlack">
+                            <p id="colocao_5">5º</p>
+                        </div>
+                        <p class="ranking_nome fontWhite textoSmall" id="nome_5">Vazio</p>
+                        <p class="ranking_tempo fontWhite textoSmall" id="tempo_5">Vazio</p>
+                        <p class="ranking_pontuacao fontWhite textoSmall" id="pontuacao_5">Vazio</p>
+                    </div>
+                    <div class="cards_ranking">
+                        <div class="cont_colocacao boldMedio fontBlack">
+                            <p id="colocao_6">6º</p>
+                        </div>
+                        <p class="ranking_nome fontWhite textoSmall" id="nome_6">Vazio</p>
+                        <p class="ranking_tempo fontWhite textoSmall" id="tempo_6">Vazio</p>
+                        <p class=" fontWhite textoSmall ranking_pontuacao" id="pontuacao_6">Vazio</p>
+
+                    </div>
+                    <div class="cards_ranking">
+                        <div class="cont_colocacao boldMedio fontBlack">
+                            <p id="colocao_7">7º</p>
+                        </div>
+                        <p class="ranking_nome fontWhite textoSmall" id="nome_7">Vazio</p>
+                        <p class="ranking_tempo fontWhite textoSmall" id="tempo_7">Vazio</p>
+                        <p class="ranking_pontuacao fontWhite textoSmall" id="pontuacao_7">Vazio</p>
+                    </div>
+                    <div class="cards_ranking">
+                        <div class="cont_colocacao boldMedio fontBlack">
+                            <p id="colocao_8">8º</p>
+                        </div>
+                        <p class="ranking_nome fontWhite textoSmall" id="nome_8">Vazio</p>
+                        <p class="ranking_tempo fontWhite textoSmall" id="tempo_8">Vazio</p>
+                        <p class="ranking_pontuacao fontWhite textoSmall" id="pontuacao_8">Vazio</p>
+                    </div>
+                    <div class="cards_ranking">
+                        <div class="cont_colocacao boldMedio fontBlack">
+                            <p id="colocao_9">9º</p>
+                        </div>
+                        <p class="ranking_nome fontWhite textoSmall" id="nome_9">Vazio</p>
+                        <p class="ranking_tempo fontWhite textoSmall" id="tempo_9">Vazio</p>
+                        <p class="ranking_pontuacao fontWhite textoSmall" id="pontuacao_9">Vazio</p>
+                    </div>
+                    <div class="cards_ranking cards_ranking_10">
+                        <div class="cont_colocacao colocacao_10 boldMedio fontBlack">
+                            <p id="colocao_10">10º</p>
+                        </div>
+                        <p class="ranking_nome fontWhite textoSmall" id="nome_10">Vazio</p>
+                        <p class="ranking_tempo fontWhite textoSmall" id="tempo_10">Vazio</p>
+                        <p class="ranking_pontuacao fontWhite textoSmall pontuacao_10" id="pontuacao_10">Vazio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+
+     if (sessionStorage.HABILITAR_DASHBOARD == "1") {
+        links_header.innerHTML = `
+                <a href="index.html#banner" class="link ativo">
+                    Home
+                </a>
+                <a href="index.html#universo_carros" class="link">
+                    Universo
+                </a>
+                <a href="index.html#filmes" class="link">
+                    Filmes
+                </a>
+                <a href="index.html#personagens" class="link">
+                    Personagens
+                </a>
+                <a href="escolhaCorredor.html" class="link fontPixel">
+                    Copa Pistão
+                </a>
+                <a href="dashboard.html" id="link_dashboard" class="link">
+                    Dashboard
+                </a>
+            `
+    }
+    nome_usuario.innerHTML = sessionStorage.NOME_USUARIO
+    function buscarKpis() {
+        var idUsuarioVar = sessionStorage.ID_USUARIO
+        fetch('/dashboard/buscarKpiPersonagemFav')
+            .then(response => response.json())
+            .then(personagensFav => {
+                var kpiPersonagemFav = personagensFav[0]
+                if (kpiPersonagemFav != undefined) {
+                    kpi_personagem_favorito.innerHTML = kpiPersonagemFav.nome
+                    img_personagem_kpi.src = `${kpiPersonagemFav.imagem_personagem}`
+
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+        fetch("/dashboard/buscarKpiPontuacao", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuarioVar,
+            }),
+
+        })
+            .then(response => response.json())
+            .then(pontuacoes => {
+                console.log(pontuacoes);
+                var kpiPontuacao = pontuacoes[0]
+                if (kpiPontuacao != undefined) {
+                    kpi_maior_pontuacao.innerHTML = kpiPontuacao.pontuacao
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+        fetch("/dashboard/buscarKpiTempo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuarioVar,
+            }),
+
+        })
+            .then(response => response.json())
+            .then(tempos => {
+                console.log(tempos);
+                kpiTempo = tempos[0]
+                if (kpiTempo != undefined) {
+                    kpi_maior_tempo.innerHTML = kpiTempo.tempo
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+        fetch("/dashboard/buscarKpiObstaculo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuarioVar,
+            }),
+
+        })
+            .then(response => response.json())
+            .then(obstaculo => {
+
+                console.log(obstaculo);
+                jsonObstaculo = obstaculo[0]
+                if (jsonObstaculo.cacto > jsonObstaculo.feno && jsonObstaculo.cacto > jsonObstaculo.barril) {
+                    kpi_obstaculo.innerHTML = `Cacto (${jsonObstaculo.cacto})`
+                } else if (jsonObstaculo.feno > jsonObstaculo.cacto && jsonObstaculo.feno > jsonObstaculo.barril) {
+                    kpi_obstaculo.innerHTML = `Bola de feno (${jsonObstaculo.feno})`
+                } else if (jsonObstaculo.barril > jsonObstaculo.cacto && jsonObstaculo.barril > jsonObstaculo.feno) {
+                    kpi_obstaculo.innerHTML = `Barril de óleo (${jsonObstaculo.barril})`
+                } else if (jsonObstaculo.barril == jsonObstaculo.cacto) {
+                    kpi_obstaculo.innerHTML = `Barril de óleo e Cacto(${jsonObstaculo.barril})`
+                } else if (jsonObstaculo.barril == jsonObstaculo.feno) {
+                    kpi_obstaculo.innerHTML = `Barril de óleo e Bola de feno(${jsonObstaculo.barril})`
+                } else if (jsonObstaculo.cacto == jsonObstaculo.feno) {
+                    kpi_obstaculo.innerHTML = `Cacto e Bola de feno(${jsonObstaculo.feno})`
+                }
+
+                if (kpiTempo != undefined) {
+                    console.log(jsonObstaculo);
+
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+    }
+
+
+    var camposRanking = [
+        [
+            document.getElementById('nome_1'),
+            document.getElementById('tempo_1'),
+            document.getElementById('pontuacao_1')
+        ],
+        [
+            document.getElementById('nome_2'),
+            document.getElementById('tempo_2'),
+            document.getElementById('pontuacao_2')
+        ],
+        [
+            document.getElementById('nome_3'),
+            document.getElementById('tempo_3'),
+            document.getElementById('pontuacao_3')
+        ],
+        [
+            document.getElementById('nome_4'),
+            document.getElementById('tempo_4'),
+            document.getElementById('pontuacao_4')
+        ],
+        [
+            document.getElementById('nome_5'),
+            document.getElementById('tempo_5'),
+            document.getElementById('pontuacao_5')
+        ],
+        [
+            document.getElementById('nome_6'),
+            document.getElementById('tempo_6'),
+            document.getElementById('pontuacao_6')
+        ],
+        [
+            document.getElementById('nome_7'),
+            document.getElementById('tempo_7'),
+            document.getElementById('pontuacao_7')
+        ],
+        [
+            document.getElementById('nome_8'),
+            document.getElementById('tempo_8'),
+            document.getElementById('pontuacao_8')
+        ],
+        [
+            document.getElementById('nome_9'),
+            document.getElementById('tempo_9'),
+            document.getElementById('pontuacao_9')
+        ],
+        [
+            document.getElementById('nome_10'),
+            document.getElementById('tempo_10'),
+            document.getElementById('pontuacao_10')
+        ],
+
+    ]
+
+    function buscarRanking() {
+        fetch("/dashboard/buscarRanking")
+            .then(response => response.json())
+            .then(ranking => {
+                console.log(ranking);
+                for (var i = 0; i < ranking.length; i++) {
+                    var usuarioAtual = ranking[i];
+                    var campoNomeRanking = camposRanking[i][0]
+                    var campoTempoRanking = camposRanking[i][1]
+                    var campoPontuacaoRanking = camposRanking[i][2]
+
+                    campoNomeRanking.innerHTML = usuarioAtual.nome
+                    campoTempoRanking.innerHTML = usuarioAtual.tempo
+                    campoPontuacaoRanking.innerHTML = usuarioAtual.pontuacao
+                }
+
+            })
+
+    }
+
+    function montarGraficoPizza() {
+        var idUsuarioVar = sessionStorage.ID_USUARIO
+        fetch("/dashboard/montarGraficoPizza", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuarioVar,
+            }),
+
+        })
+            .then(response => response.json())
+            .then(dados => {
+
+                if (dados != undefined) {
+                    plotarGraficoPizza(dados)
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+    }
+    function plotarGraficoPizza(resposta) {
+        var vitorias = 0
+        var derrotas = 0
+        for (var i = 0; i < resposta.length; i++) {
+            var resultadoAtual = resposta[i];
+            if (resultadoAtual.resultado == 0) {
+                derrotas++
+            } else {
+                vitorias++
+            }
+        }
+        // Criando estrutura para plotar gráfico - dados 
+        var dados = {
+            labels: [
+                'Vitória',
+                'Derrota',
+            ],
+            datasets: [{
+                label: 'Total',
+                data: [vitorias, derrotas],
+                backgroundColor: [
+                    '#4675CC',
+                    '#F40B0F',
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        // Configuração do gráfico
+        var config = {
+            // Tipo de gráfico: 'doughnut' (Rosca) é ideal para essa estrutura
+            type: 'doughnut',
+            data: dados,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                }
+            },
+        };
+        
+
+        // Adicionando gráfico criado em div na tela
+        var myChart = new Chart(
+            document.getElementById(`total_vitoria_derrotas`),
+            config
+        );
+    }
+    function montarGraficoBarra() {
+        var idUsuarioVar = sessionStorage.ID_USUARIO
+        fetch("/dashboard/montarGraficoBarra", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuarioVar,
+            }),
+
+        })
+            .then(response => response.json())
+            .then(dados => {
+                console.log("DADOS GRAFICO PIZZA: ", dados);
+
+                if (dados != undefined) {
+                    plotarGraficoBarra(dados)
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+    }
+    function plotarGraficoBarra(resposta) {
+        var labels = []
+        var dadosGrafico = []
+        var backgrounds = []
+
+        console.log('iniciando plotagem do gráfico...');
+        for (var i = 0; i < resposta.length; i++) {
+            var resultadoAtual = resposta[i];
+            labels.push(resultadoAtual.nome)
+            dadosGrafico.push(resultadoAtual.quantidade)
+            backgrounds.push(resultadoAtual.cor)
+        }
+
+        // Criando estrutura para plotar gráfico - dados 
+        var dados = {
+            labels: labels,
+            datasets: [{
+                label: "Quantidade de corredores",
+                data: dadosGrafico,
+                backgroundColor: backgrounds,
+                borderWidth: 1
+            }]
+        };
+        var config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            },
+        };
+        // Adicionando gráfico criado em div na tela
+        var myChart = new Chart(
+            document.getElementById(`partidas_x_corredor`),
+            config
+        );
+    }
+
+</script>

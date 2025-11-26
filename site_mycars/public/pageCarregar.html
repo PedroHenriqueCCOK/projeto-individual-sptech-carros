@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    
+    var porcentagemCarregado = 0
+    function paginaCarregar(urlPagina) {
+        id_container.style.display = 'none'
+        id_tela_carregar.style.display = 'flex'
+
+        if (porcentagemCarregado > 15) {
+            img_mcqueen.style.marginLeft = `${porcentagemCarregado - 20}%`
+        }
+        porcentagemCarregado += 1
+        id_texto_carregar.innerHTML = `${porcentagemCarregado}%`
+        id_linha_branca.style.width = `${porcentagemCarregado}%`
+        id_linha_carregar.style.width = `${porcentagemCarregado}%`
+        var timeOutCarregar = setTimeout(paginaCarregar, 20)
+        if (porcentagemCarregado >= 100) {
+            clearTimeout(timeOutCarregar)
+        }
+    }
+    module.exports = paginaCarregar(urlPagina);
+</script>

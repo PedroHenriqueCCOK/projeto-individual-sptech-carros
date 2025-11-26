@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carros: Cadastro</title>
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="css/global.css">
+</head>
+
+<body id="body"     >
+    <div class="container" id="id_container_carregar">
+        <div class="card_erro" id="cardErro">
+            <img id="imagem_erro" src="" alt="">
+            <span id="mensagem_erro" class="fontBlack"></span>
+
+        </div>
+        <div class="cont_conteudo" id="id_cont_conteudo">
+            <div class="cont_cadastro">
+                <div class="cont_voltar_titulo">
+                    <a href="index.html" class="voltar">
+                        <img class="" src="assets/icon/icons_setaEsquerda.png" alt="">
+                    </a>
+                    <p class="titulo_cadastro fontRed titulo fontBlack boldMedio">Cadastro</p>
+                </div>
+                <div class="cont_inputs">
+                    <label class="fontRed boldMedio descricao" for="input_nome">Nome</label>
+                    <input class="campo_cadastro" type="text" name="" id="input_nome" placeholder="Digite seu nome:">
+                    <label class="fontRed boldMedio descricao" for="input_email">Email</label>
+                    <input class="campo_cadastro" type="text" name="" id="input_email" placeholder="Digite seu email:">
+
+                    <label class="fontRed boldMedio descricao" for="select_personagem">Personagem favorito:</label>
+                    <select class="campo_cadastro" name="" id="select_personagem">
+                        <option value="#" disabled selected>Selecione um personagem</option>
+                        <option value="1">Relâmpago McQueen</option>
+                        <option value="2">Tom Matter</option>
+                        <option value="3">Sally Rodriguez</option>
+                        <option value="4">Doc Hudson</option>
+                        <option value="20">Francesco Virgolini</option>
+                        <option value="15">Cruz Ramirez</option>
+                        <option value="9">Ramon</option>
+                        <option value="21">Jackson Storm</option>
+                    </select>
+
+
+                    <label class="fontRed boldMedio descricao" for="input_senha">Senha</label>
+                    <input class="campo_cadastro" id="input_senha" type="password" placeholder="********" required
+                        oninput="verificar()">
+                    <div class="checks_cadastro" id="div_checks_cadastro">
+                        <div class="check">
+                            <p class="text_check texto textoSmall"> Letra maiúscula</p>
+                            <div class="check_img"><img id="check_upper" src="assets/img/img_cancel.png" alt="">
+                            </div>
+                        </div>
+                        <div class="check">
+                            <p class="text_check texto textoSmall"> Letra minúscula</p>
+                            <div class="check_img"><img id="check_lower" src="assets/img/img_cancel.png" alt="">
+                            </div>
+                        </div>
+                        <div class="check">
+                            <p class="text_check texto textoSmall"> Número</p>
+                            <div class="check_img"><img id="check_num" src="assets/img/img_cancel.png" alt="">
+                            </div>
+                        </div>
+                        <div class="check">
+                            <p class="text_check texto textoSmall"> Caractere especial</p>
+                            <div class="check_img"><img id="check_especial" src="assets/img/img_cancel.png" alt="">
+                            </div>
+                        </div>
+                        <div class="check">
+                            <p class="text_check texto textoSmall"> 8 ou mais caracteres</p>
+                            <div class="check_img"><img id="check_tamanho" src="assets/img/img_cancel.png" alt=""></div>
+                        </div>
+
+                    </div>
+                    <label class="fontRed boldMedio descricao" for="input_confirma_senha">Confirme senha:</label>
+                    <input class="campo_cadastro" type="password" name="" id="input_confirma_senha"
+                        placeholder="Confirme sua senha:">
+                </div>
+                <button onclick="cadastrar()" class="btn_cadastro btn_padrao descricao fontWhite boldMedio">Criar
+                    conta</button>
+            </div>
+            <div class="cont_login">
+                <p class="titulo fontWhite">Bem vindo de volta, corredor!</p>
+                <p class="subtitulo fontWhite">Crie uma conta exclusiva para você!</p>
+                <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1762818903/img_mate_personagem_l3uktb.png"
+                    alt="">
+                <button onclick="irLogin()" class="btn_login btn_padrao descricao fontWhite boldMedio">Entre em sua
+                    conta</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="tela_carregar" id="id_tela_carregar">
+        <div class="container_carregar">
+            <div class="cont_mcqueen">
+                <img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1763678007/img_mcqueen_lado_esquerdo_dojbcm.png" alt="" id="img_mcqueen">
+                <p class="fontWhite texto_carregar" id="id_texto_carregar">10%</p>
+            </div>
+            <hr class="linha_carregar" id="id_linha_carregar">
+            <hr class="linha_branca" id="id_linha_branca" >
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var criteriosAtendidos = 0
+    var porcentagemCarregado = 0
+    function paginaCarregar() {
+        body.style.height = '100vh'
+        id_container_carregar.style.display = 'none'
+        id_tela_carregar.style.display = 'flex'
+
+        if (porcentagemCarregado > 15) {
+            img_mcqueen.style.marginLeft = `${porcentagemCarregado - 20}%`   
+        }
+        porcentagemCarregado += 1
+        id_texto_carregar.innerHTML = `${porcentagemCarregado}%`
+        id_linha_branca.style.width = `${porcentagemCarregado}%`
+        id_linha_carregar.style.width = `${porcentagemCarregado}%`
+        var timeOutCarregar = setTimeout(paginaCarregar, 20)
+        if (porcentagemCarregado >= 100) {
+            clearTimeout(timeOutCarregar)
+            irLogin()
+        }
+    }
+    function verificar() {
+        body.style.height = "120vh"
+        id_cont_conteudo.style.height = "90%"
+        div_checks_cadastro.style.display = 'flex';
+
+        var senha = input_senha.value;
+        var tamanho_senha = senha.length;
+        var senha_minuscula = senha.toLowerCase();
+        var senha_maiuscula = senha.toUpperCase();
+        var crit1 = 0;
+        var crit2 = 0;
+        var crit3 = 0;
+        var crit4 = 0;
+        var crit5 = 0;
+
+
+        // Tem letra maiúscula
+        check_upper.src = '/assets/img/img_cancel.png';
+        crit1 = 0;
+
+        if (senha_minuscula != senha) {
+            crit1 = 1;
+            check_upper.src = 'assets/img/img_aceitar.png';
+        }
+
+        // Tem letra minúscula
+        check_lower.src = '/assets/img/img_cancel.png';
+        crit1 = 0;
+        if (senha_maiuscula != senha) {
+            crit2 = 1;
+            check_lower.src = 'assets/img/img_aceitar.png';
+        }
+
+        // Tem número
+        var listaNum = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        var temNum = [];
+
+        check_num.src = '/assets/img/img_cancel.png';
+        crit3 = 0;
+
+        if (listaNum.length > 0) {
+            for (var i = 0; i < senha.length; i++) {
+                if (listaNum.includes(senha[i])) {
+                    temNum.push(senha[i]);
+                }
+
+                if (temNum.length > 0) {
+                    crit3 = 1;
+                    check_num.src = 'assets/img/img_aceitar.png';
+                }
+            }
+        }
+
+        // Tem caractere especial
+        var listaEspecial = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '+', '=', '{', '}', ';', ':', '?', '/', '`', '~', ',', '.', '[', ']', '|', '¨'];
+        var temEspecial = [];
+
+        check_especial.src = '/assets/img/img_cancel.png';
+        crit4 = 0;
+
+        if (listaEspecial.length > 0) {
+            for (var i = 0; i < senha.length; i++) {
+                if (listaEspecial.includes(senha[i])) {
+                    temEspecial.push(senha[i]);
+                }
+
+                if (temEspecial.length > 0) {
+                    crit4 = 1;
+                    check_especial.src = 'assets/img/img_aceitar.png';
+                }
+            }
+        }
+
+        // Tem pelo menos 8 caracteres
+        check_tamanho.src = '/assets/img/img_cancel.png';
+        crit5 = 0;
+
+        if (tamanho_senha >= 8) {
+            crit5 = 1;
+            check_tamanho.src = 'assets/img/img_aceitar.png';
+        }
+
+        criteriosAtendidos = crit1 + crit2 + crit3 + crit4 + crit5
+
+    }
+
+    // Array para armazenar empresas cadastradas para validação de código de ativação 
+    function irLogin() {
+        window.location = 'login.html'
+    }
+    function cadastrar() {
+        // Verificando se há algum campo em branco
+        var nomeVar = input_nome.value
+        var emailVar = input_email.value
+        var personagemVar = select_personagem.value
+        var senhaVar = input_senha.value
+        var confirmacaoVar = input_confirma_senha.value
+
+        if (
+            nomeVar == "" ||
+            emailVar == "" ||
+            senhaVar == "" ||
+            confirmacaoVar == "" ||
+            personagemVar == "#"
+        ) {
+            mensagem_erro.innerHTML = "Preeencha todos para prosseguir ";
+            imagem_erro.src = '/assets/img/img_cancel.png'
+            cardErro.style.display = "flex";
+        } else if (nomeVar.length <= 1) {
+            mensagem_erro.innerHTML = "Insira um nome com mais de 1 caractere! ";
+            imagem_erro.src = '/assets/img/img_cancel.png'
+            cardErro.style.display = "flex";
+        } else if (emailVar.includes("@") == false || emailVar.endsWith(".com") == false) {
+            mensagem_erro.innerHTML = "O email deve conter @ e .com!";
+            imagem_erro.src = '/assets/img/img_cancel.png'
+            cardErro.style.display = "flex";
+        } else if (emailVar.includes("@") == false || emailVar.endsWith(".com") == false) {
+            mensagem_erro.innerHTML = "O email deve conter @ e .com!";
+            imagem_erro.src = '/assets/img/img_cancel.png'
+            cardErro.style.display = "flex";
+        } else if (criteriosAtendidos != 4) {
+            mensagem_erro.innerHTML = "A senha deve atender todos os critérios!";
+            imagem_erro.src = '/assets/img/img_cancel.png'
+            cardErro.style.display = "flex";
+        } else if (senhaVar != confirmacaoVar) {
+            mensagem_erro.innerHTML = "A confirmação de senha ser igual a senha!";
+            imagem_erro.src = '/assets/img/img_cancel.png'
+            cardErro.style.display = "flex";
+        } else {
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                    personagemServer: personagemVar
+                }),
+
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+                    if (resposta.ok) {
+                        imagem_erro.src = 'assets/img/img_aceitar.png'
+                        mensagem_erro.innerHTML = "Cadastro realizado com sucesso!"
+                        cardErro.style.display = "flex";
+                        setTimeout(() => {
+                            paginaCarregar()
+                        }, "1500");
+
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    mensagem_erro.innerHTML = "Já existe um usuário com esse email! ";
+                    imagem_erro.src = '/assets/img/img_cancel.png'
+                    cardErro.style.display = "flex";
+                    console.log(`#ERRO: ${resposta}`);
+                });
+
+        }
+        setInterval(sumirMensagem, 5000)
+
+
+    }
+    function sumirMensagem() {
+        cardErro.style.display = "none";
+    }
+</script>

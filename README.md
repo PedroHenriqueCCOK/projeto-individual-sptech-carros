@@ -1,4 +1,4 @@
-<img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1765481091/logo_carros_cuhxyl.png" width="600px">
+<img src="https://res.cloudinary.com/dsxiq1hsi/image/upload/v1765481091/logo_carros_cuhxyl.png" width="250px">
 
 _Projeto individual MyCars: O universo dos carros_
 
